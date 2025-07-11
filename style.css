@@ -16,7 +16,8 @@
 }
 
 body {
-    font-family: 'Nunito', 'Comic Sans MS', cursive, sans-serif;
+font-family: 'Roboto', 'Comic Sans MS', cursive, sans-serif;
+
     margin: 0;
     padding: 0;
     background-color: var(--light);
@@ -25,7 +26,8 @@ body {
     overflow-x: hidden;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 
 header {
     background: linear-gradient(135deg, var(--primary), var(--secondary));

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Git & GitHub Basics</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    header {
+      background-color: #2d3436;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    .concept-box {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #0984e3;
+      margin-top: 0;
+    }
+
+    .example-box {
+      background-color: #f0f7fd;
+      border-left: 4px solid #3498db;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 6px;
+    }
+
+    .analogy {
+      background: #f9f9f9;
+      padding: 12px;
+      border-left: 4px solid #dfe6e9;
+      font-style: italic;
+      margin: 15px 0;
+    }
+
+    .activity {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    code {
+      background-color: #eef;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: block;
+      margin: 6px 0;
+      white-space: pre-wrap;
+    }
+
+    a {
+      color: #0984e3;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .key-term {
+      background-color: #fff5ba;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Git & GitHub Basics</h1>
+    <p>Understanding version control and how to use GitHub</p>
+  </header>
+
+  <div class="concept-box">
+    <h2>Version Control Basics</h2>
+    <p>
+      Imagine working on a school project with friends. Everyone is editing the same document. It gets messy, right?
+      <span class="key-term">Version control</span> helps track every change, so you can go back in time, see who did what, and avoid mistakes.
+    </p>
+
+    <div class="example-box">
+      <strong>Think of it like:</strong>
+      <ul>
+        <li>A time machine for your code</li>
+        <li>A shared notebook where each change is saved and labeled</li>
+        <li>You can go back to any earlier version if something breaks</li>
+      </ul>
+    </div>
+
+    <div class="analogy">
+      It's like using "Undo" and "Redo" — but for your entire project history!
+    </div>
+
+    <div class="activity">
+      <strong>Try This:</strong> Ask your teacher to show you how a file changes over time using version control software like Git.
+    </div>
+  </div>
+
+  <div class="concept-box">
+    <h2>GitHub Setup</h2>
+    <p>
+      <span class="key-term">GitHub</span> is like a digital locker where you keep all your project versions safe and share them with others.
+      It works with Git to store your files online.
+    </p>
+
+    <div class="example-box">
+      <strong>Steps to Get Started:</strong>
+      <ol>
+        <li>Go to <a href="https://github.com" target="_blank">github.com</a> and create a free account</li>
+        <li>Download Git from <a href="https://git-scm.com" target="_blank">git-scm.com</a></li>
+        <li>Open a terminal or Git Bash</li>
+        <li>Set your name and email:</li>
+        <code>git config --global user.name "Your Name"</code>
+        <code>git config --global user.email "you@example.com"</code>
+        <li>Create a new folder for your project</li>
+        <code>git init</code>
+        <li>Create a new GitHub repository and link it:</li>
+        <code>git remote add origin https://github.com/your-username/your-repo.git</code>
+      </ol>
+    </div>
+
+    <div class="analogy">
+      Git is your journal. GitHub is your cloud diary, accessible from anywhere.
+    </div>
+
+    <div class="activity">
+      <strong>Try This:</strong> Create your first GitHub repository and push your HTML project to it!
+    </div>
+  </div>
+
+</body>
+</html>

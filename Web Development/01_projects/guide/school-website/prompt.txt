@@ -1,0 +1,273 @@
+I am creating a step by step procedure for students to build a web page.
+the below content details it out. create an html page, make it minimalistic and elegent. use boostrap for styling
+whereever we have question, hints, action - use appropriate styling
+wherever there is a view, embed that as an iframe with an option to open the page in a new window
+the text i have given in question, hints , action are just pointers, you can rephrase it in simple english for the students to understand
+
+create the web page layout such that in the left side there is a collapsible nav bar
+
+<CONTENT-START>
+
+question
+what you have observed in this project page
+
+hints
+there are totally x number of sections
+all arranged one below other
+
+hints
+all arranged one below other, they have used flex,
+		display: flex;
+		justify-content: center;
+		flex-direction:column;
+		align-items: center;
+
+action
+lets construct the skeleton for this
+
+view
+school-website-v1-01.html
+
+question
+what you observe in the header
+
+hints
+blue background
+school name in big font
+tag line in small font
+menus are there
+in the header box in top and bottom there are good space
+
+
+hints
+h1 - school name
+p - tagline
+menus are anchor tag inside div
+	display: flex;
+    justify-content: center;
+	gap:10px;
+		
+view
+school-website-v1-02.html
+
+hints
+menu text color white
+background blue
+enough spacing
+corners rounded
+
+action
+lets structure the menu properly
+
+view
+school-website-v1-03.html
+
+action
+now lets construct the footer
+
+hints
+observe the background color
+font color
+spacing
+
+view
+school-website-v1-04.html
+
+question
+what you observe in the welcome page
+
+hints
+width is not 100%
+background color is different
+just a title and an image
+
+hints
+h1 text
+image fitting to the parent
+
+view
+school-website-v1-05.html
+
+question
+do you see any difference from the original project page and yours
+
+hints
+rounder border for the section
+rounded border for the image
+overall page backgrouund color is different
+below the image the spacing is less
+welcome message is not in white color and also spacing
+
+
+view
+school-website-v1-06.html
+
+question
+when you click on the menu is it navigating
+
+hints
+id for each section and href value in anchor tag
+
+view
+school-website-v1-07.html
+
+milestone-achieved
+congrats we have not just created the skeleton but also created 3 sections with menu & image
+
+
+
+milestone 2 start
+
+question
+does about us layout looks familiar ?
+
+hints
+looks like a grid layout with two column
+about us heading looks like H1 and para tag included
+Vision & Mission heading looks like h2 with bulleted points
+look at spacing on the edges of this section
+and also this section doesnt have any background color
+
+action
+lets first create the html and assign classes. post that style the css
+
+view
+school-website-v2-01.html
+
+hints
+when applying css consider following
+grid layout
+padding and border radius
+
+view
+school-website-v2-02.html
+
+
+message
+now this looks like a easy part.
+a table with two columns. as usual lets create the html struture and then style it
+
+view
+school-website-v2-03.html
+
+
+hints
+now lets style the section
+few standard things. spacing, width, rounded corners
+table is occupying 100% width
+give styling for th and td
+
+view
+school-website-v2-04.html
+
+
+milestone-achieved
+congrats we were able to complete 2 more sections and this time it was lot more easier
+
+
+milestone 3 start
+
+message
+Achievements looks like a standard one. flex with usual section styling
+
+hints
+watch for background color
+the title is centred
+and the individual cards has different color and rounded corner
+
+action
+As usual lets start with creating the html layout first
+
+
+view
+school-website-v3-01.html
+
+hints
+individual cards has its own charachter -> font size,rounded corner, bg color,
+title font size is something to watch out
+
+view
+school-website-v3-02.html
+
+hints
+gallery has two sections, the first one is a grid layout images and the second one is embedded html
+
+action
+lets first create the html layout for the gallery images
+
+view
+school-website-v3-03.html
+
+caution
+image styling need to be revisited
+
+view
+school-website-v3-04.html
+
+hints
+copy the youtube share button and paste it header
+
+view
+school-website-v3-05.html
+
+
+milestone-achieved
+congrats we are almost there and complete two interesting sections. now lets take the final dive
+
+milestone 4 start
+
+message
+here the image is not a standard image but icon pack.
+for including this icon there is a standard way
+
+caution
+explain how to integrate font awesome icon
+
+action
+we take our standard route, first html layout
+
+view
+school-website-v4-01.html
+
+hints
+looks like a standard flex
+
+view
+school-website-v4-02.html
+
+message
+marquee is a scrolling text and one of the most popular views in the webpage
+
+caution
+explain the concept of marquee
+
+view
+school-website-v4-03.html
+
+message
+we are in the last section. looks like a standard icon, text and embedded map
+
+view
+school-website-v4-04.html
+
+milestone-achieved
+congrats we are there !
+
+milestone recap and next journey start
+
+message
+this project work would have given you a very exciting journey of building a real time website ! and sure this will help you to progress further in the web development learning journey.
+lets look at some of the action items
+
+hints
+lets recap and create a checklist of how to build a website
+<pls fill the checklist based on the notes>
+
+actions
+learn the area where you struggled
+recap and practice
+  <fill in most used styling>
+take another project and work on it immediately
+
+milestone-achieved
+lets begin our next journey on hosting, mobile view and more !

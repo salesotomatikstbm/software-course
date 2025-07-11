@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Version Control & Deployment Quiz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      line-height: 1.6;
+    }
+    .quiz-container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #3D52A0;
+    }
+    .question {
+      margin-bottom: 25px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .option {
+      background: #e1f5fe;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .option:hover {
+      background: #b3e5fc;
+    }
+    .visual-example {
+      display: none;
+      background: #f9f9f9;
+      padding: 15px;
+      border-left: 4px solid #3D52A0;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+    .code {
+      font-family: 'Courier New', monospace;
+      background: #263238;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .result {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .correct {
+      background: #e8f5e9;
+      color: #2e7d32;
+      display: block !important;
+    }
+    .incorrect {
+      background: #ffebee;
+      color: #c62828;
+      display: block !important;
+    }
+    .terminal {
+      background: black;
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Version Control & Deployment Quiz</h1>
+
+    <!-- Q1: Version Control -->
+    <div class="question">
+      <h3>1. What is the primary purpose of version control?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(1, 'a')">To track changes in code over time</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">To make code run faster</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">To automatically debug code</div>
+        <div class="option" onclick="checkAnswer(1, 'd')">To create backups of your computer</div>
+      </div>
+      <div id="result1" class="result"></div>
+      <div class="visual-example" id="visual1">
+        <p>Version control systems like Git help developers:</p>
+        <ul>
+          <li>Track history of changes</li>
+          <li>Collaborate with others</li>
+          <li>Revert to previous versions</li>
+          <li>Manage different versions of a project</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q2: Git Init -->
+    <div class="question">
+      <h3>2. What command initializes a new Git repository?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(2, 'a')">git start</div>
+        <div class="option" onclick="checkAnswer(2, 'b')">git new</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">git init</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">git create</div>
+      </div>
+      <div id="result2" class="result"></div>
+      <div class="visual-example" id="visual2">
+        <div class="terminal">
+          $ git init<br>
+          Initialized empty Git repository in /path/to/your/project/.git/
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3: GitHub Remote -->
+    <div class="question">
+      <h3>3. How do you connect a local Git repository to GitHub?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(3, 'a')">git link origin</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">git remote add origin [URL]</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">git connect github</div>
+        <div class="option" onclick="checkAnswer(3, 'd')">git hub attach</div>
+      </div>
+      <div id="result3" class="result"></div>
+      <div class="visual-example" id="visual3">
+        <div class="terminal">
+          $ git remote add origin https://github.com/username/repo.git<br>
+          $ git push -u origin main
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4: Git Commit -->
+    <div class="question">
+      <h3>4. What is the correct sequence to save changes to Git?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(4, 'a')">commit → add → push</div>
+        <div class="option" onclick="checkAnswer(4, 'b')">add → commit → push</div>
+        <div class="option" onclick="checkAnswer(4, 'c')">push → add → commit</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">add → push → commit</div>
+      </div>
+      <div id="result4" class="result"></div>
+      <div class="visual-example" id="visual4">
+        <div class="terminal">
+          $ git add .<br>
+          $ git commit -m "Descriptive message"<br>
+          $ git push
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5: GitHub Clone -->
+    <div class="question">
+      <h3>5. How do you download a repository from GitHub to your computer?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(5, 'a')">git copy</div>
+        <div class="option" onclick="checkAnswer(5, 'b')">git download</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">git clone</div>
+        <div class="option" onclick="checkAnswer(5, 'd')">git pull</div>
+      </div>
+      <div id="result5" class="result"></div>
+      <div class="visual-example" id="visual5">
+        <div class="terminal">
+          $ git clone https://github.com/username/repository.git<br>
+          Cloning into 'repository'...
+        </div>
+      </div>
+    </div>
+
+    <!-- Q6: Debugging -->
+    <div class="question">
+      <h3>6. What is the first step in debugging code?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(6, 'a')">Identify the problem</div>
+        <div class="option" onclick="checkAnswer(6, 'b')">Ask for help immediately</div>
+        <div class="option" onclick="checkAnswer(6, 'c')">Start rewriting the code</div>
+        <div class="option" onclick="checkAnswer(6, 'd')">Check the documentation</div>
+      </div>
+      <div id="result6" class="result"></div>
+      <div class="visual-example" id="visual6">
+        <p>Effective debugging process:</p>
+        <ol>
+          <li>Reproduce the issue</li>
+          <li>Check error messages</li>
+          <li>Isolate the problem area</li>
+          <li>Test potential fixes</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Q7: Console Log -->
+    <div class="question">
+      <h3>7. What is a common JavaScript debugging technique?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(7, 'a')">Using console.log()</div>
+        <div class="option" onclick="checkAnswer(7, 'b')">Changing file names</div>
+        <div class="option" onclick="checkAnswer(7, 'c')">Restarting the computer</div>
+        <div class="option" onclick="checkAnswer(7, 'd')">Deleting node_modules</div>
+      </div>
+      <div id="result7" class="result"></div>
+      <div class="visual-example" id="visual7">
+        <div class="code">
+          function calculateTotal(price, quantity) {<br>
+          &nbsp;&nbsp;console.log('Price:', price, 'Quantity:', quantity); // Debugging<br>
+          &nbsp;&nbsp;return price * quantity;<br>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Q8: Deployment -->
+    <div class="question">
+      <h3>8. What does deployment mean in web development?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(8, 'a')">Making code available to users</div>
+        <div class="option" onclick="checkAnswer(8, 'b')">Writing documentation</div>
+        <div class="option" onclick="checkAnswer(8, 'c')">Testing code locally</div>
+        <div class="option" onclick="checkAnswer(8, 'd')">Creating a GitHub repository</div>
+      </div>
+      <div id="result8" class="result"></div>
+      <div class="visual-example" id="visual8">
+        <p>Common deployment platforms:</p>
+        <ul>
+          <li>Netlify</li>
+          <li>Vercel</li>
+          <li>GitHub Pages</li>
+          <li>Heroku</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q9: GitHub Pages -->
+    <div class="question">
+      <h3>9. How can you deploy a simple website for free using GitHub?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(9, 'a')">GitHub Pages</div>
+        <div class="option" onclick="checkAnswer(9, 'b')">GitHub Cloud</div>
+        <div class="option" onclick="checkAnswer(9, 'c')">GitHub Host</div>
+        <div class="option" onclick="checkAnswer(9, 'd')">GitHub Web</div>
+      </div>
+      <div id="result9" class="result"></div>
+      <div class="visual-example" id="visual9">
+        <p>Steps to use GitHub Pages:</p>
+        <ol>
+          <li>Create a repository named username.github.io</li>
+          <li>Add your HTML/CSS/JS files</li>
+          <li>Enable GitHub Pages in repository settings</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Q10: Pull Request -->
+    <div class="question">
+      <h3>10. What is a pull request in GitHub?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(10, 'a')">A request to download code</div>
+        <div class="option" onclick="checkAnswer(10, 'b')">A proposal to merge changes</div>
+        <div class="option" onclick="checkAnswer(10, 'c')">A way to delete repositories</div>
+        <div class="option" onclick="checkAnswer(10, 'd')">A method to backup code</div>
+      </div>
+      <div id="result10" class="result"></div>
+      <div class="visual-example" id="visual10">
+        <p>Pull requests are used to:</p>
+        <ul>
+          <li>Propose changes to a codebase</li>
+          <li>Initiate code review</li>
+          <li>Discuss modifications before merging</li>
+          <li>Contribute to open source projects</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const correctAnswers = {
+      1: 'a',
+      2: 'c',
+      3: 'b',
+      4: 'b',
+      5: 'c',
+      6: 'a',
+      7: 'a',
+      8: 'a',
+      9: 'a',
+      10: 'b'
+    };
+
+    function checkAnswer(questionNum, selectedOption) {
+      const result = document.getElementById(`result${questionNum}`);
+      const visual = document.getElementById(`visual${questionNum}`);
+
+      document.querySelectorAll('.visual-example').forEach(el => el.style.display = 'none');
+      result.style.display = 'block';
+
+      if (selectedOption === correctAnswers[questionNum]) {
+        result.textContent = '✅ Correct!';
+        result.className = 'result correct';
+        visual.style.display = 'block';
+      } else {
+        result.textContent = '❌ Incorrect. Try again!';
+        result.className = 'result incorrect';
+      }
+    }
+  </script>
+</body>
+</html>

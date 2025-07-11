@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch Programming Course Schedule</title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --primary-light: #6d8cc2;
+            --secondary: #ff9f1c;
+            --light: #f8f9fa;
+            --light-blue: #e3f2fd;
+            --medium-blue: #bbdefb;
+            --dark: #212529;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        h2 {
+            color: var(--primary);
+            text-align: center;
+            margin: 30px 0 20px;
+            font-weight: 500;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .schedule-table th {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .schedule-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+        }
+
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .schedule-table tr:nth-child(even) {
+            background-color: var(--light);
+        }
+
+        .module-cell {
+            font-weight: bold;
+            background-color: var(--light-blue);
+        }
+
+        .day-cell {
+            font-weight: bold;
+            background-color: var(--medium-blue);
+        }
+
+        .project-list {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .project-list li {
+            margin-bottom: 8px;
+        }
+
+        .project-link {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: linear-gradient(to right, var(--primary-light), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .schedule-table {
+                display: block;
+                overflow-x: auto;
+                border-radius: 0;
+            }
+
+            .schedule-table th, 
+            .schedule-table td {
+                padding: 8px 10px;
+                min-width: 120px;
+                font-size: 0.9rem;
+            }
+            
+            .project-link {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .schedule-table th, 
+            .schedule-table td {
+                padding: 6px 8px;
+                font-size: 0.85rem;
+            }
+            
+            .project-link {
+                padding: 4px 8px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Scratch Programming Course Schedule</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>16-Day Course Plan</h2>
+
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th width="8%">Day</th>
+                    <th width="12%">Module</th>
+                    <th width="25%">Topic</th>
+                    <th width="40%">Projects</th>
+                    <th width="15%">Home Activity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Day 1 -->
+                <tr>
+                    <td class="day-cell">Day 1</td>
+                    <td class="module-cell">Module 1</td>
+                    <td>Scratch Installation & Interface, Motion Blocks, Looks and Sound Blocks</td>
+                    <td>
+                        <ul class="project-list">
+                            <li><a href="./ppt_module_1.html" class="project-link">Hello World</a></li>
+                            <li><a href="./ppt_module_1.html" class="project-link">Sprite Walks Across the Screen</a></li>
+                            <li><a href="./ppt_module_1.html" class="project-link">Dancing Sprite</a></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <!-- Day 2 -->
+                <tr>
+                    <td class="day-cell">Day 2</td>
+                    <td class="module-cell">Module 2</td>
+                    <td>Events and Sequencing</td>
+                    <td>
+                        <ul class="project-list">
+                            <li><a href="./ppt_module_2.html" class="project-link">Sprite Reacts to Mouse Clicks</a></li>
+                            <li><a href="./ppt_module_2.html" class="project-link">Dance Routine</a></li>
+                            <li><a href="./ppt_module_2.html" class="project-link">Animate a Bouncing Ball</a></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <!-- Day 3 -->
+                <tr>
+                    <td class="day-cell">Day 3</td>
+                    <td class="module-cell">Module 3</td>
+                    <td>Animations and Storytelling</td>
+                    <td>
+                        <ul class="project-list">
+                            <li><a href="./ppt_module_3.html" class="project-link">Create a School Story Scene</a></li>
+                            <li><a href="./ppt_module_3.html" class="project-link">Broadcast Message</a></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <!-- Day 4 -->
+                <tr>
+                    <td class="day-cell">Day 4</td>
+                    <td class="module-cell">Module 4</td>
+                    <td>Variables and Conditions</td>
+                    <td>
+                        <ul class="project-list">
+                            <li><a href="./ppt_module_4.html" class="project-link">Number Count</a></li>
+                            <li><a href="./ppt_module_4.html" class="project-link">Even or Odd Checker/Multiplication Table</a></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <!-- Day 5 -->
+                <tr>
+                    <td class="day-cell">Day 5</td>
+                    <td class="module-cell">Module 5</td>
+                    <td>Decision Making and Game Design</td>
+                    <td>
+                        <ul class="project-list">
+                            <li><a href="./ppt_grade_system.html" class="project-link">Student Grade System</a></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <!-- Day 6 -->
+                <tr>
+                    <td class="day-cell">Day 6</td>
+                    <td class="module-cell">Module 5</td>
+                    <td>Decision Making and Game Design</td>
+                    <td>
+                        <ul class="project-list">
+                            <li><a href="./ppt_catch_game.html" class="project-link">Catching Game</a></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <!-- Day 7 -->
+                <tr>
+                    <td class="day-cell">Day 7</td>
+                    <td class="module-cell">Module 5</td>
+                    <td>Decision Making and Game Design</td>
+                    <td>
+                        <ul class="project-list">
+                            <li><a href="./ppt_maze_game.html" class="project-link">Maze Master</a></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <!-- Day 8 -->
+                <tr>
+                    <td class="day-cell">Day 8</td>
+                    <td class="module-cell">Module 6</td>
+                    <td>Variables, Lists & Data</td>
+                    <td>
+                        <ul class="project-list">
+                            <li><a href="./ppt_quiz.html" class="project-link">Quiz Game</a></li>
+                            <li><a href="./ppt_temperature_converter.html" class="project-link">Temperature Converter</a></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <!-- Day 9 -->
+                <tr>
+                    <td class="day-cell">Day 9</td>
+                    <td class="module-cell">Module 6</td>
+                    <td>Variables, Lists & Data</td>
+                    <td>
+                        <ul class="project-list">
+                            <li><a href="./ppt_calculator.html" class="project-link">Calculator App</a></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <!-- Day 10 -->
+                <tr>
+                    <td class="day-cell">Day 10</td>
+                    <td class="module-cell">Module 6</td>
+                    <td>Variables, Lists & Data</td>
+                    <td>
+                        <ul class="project-list">
+                            <li><a href="./ppt_calculator.html" class="project-link">Calculator App</a></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <!-- Day 11 -->
+                <tr>
+                    <td class="day-cell">Day 11</td>
+                    <td class="module-cell">Module 7</td>
+                    <td>Advanced Concepts</td>
+                    <td>
+                        <ul class="project-list">
+                            <li><a href="./ppt_electrical_circuit.html" class="project-link">Electrical Circuit</a></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <!-- Day 12 -->
+                <tr>
+                    <td class="day-cell">Day 12</td>
+                    <td class="module-cell">Module 7</td>
+                    <td>Advanced Concepts</td>
+                    <td>
+                        <ul class="project-list">
+                            <li><a href="./ppt_typing_practice_game.html" class="project-link">Typing Game</a></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <!-- Day 13 -->
+                <tr>
+                    <td class="day-cell">Day 13</td>
+                    <td class="module-cell">Module 7</td>
+                    <td>Advanced Concepts</td>
+                    <td>
+                        <ul class="project-list">
+                            <li><a href="./ppt_to_do_list.html" class="project-link">To-Do List</a></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <!-- Day 14 -->
+                <tr>
+                    <td class="day-cell">Day 14</td>
+                    <td class="module-cell">Module 7</td>
+                    <td>Advanced Concepts</td>
+                    <td>
+                        <ul class="project-list">
+                            <li><a href="./ppt_translator.html" class="project-link">Language Translator</a></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <!-- Day 15 -->
+                <tr>
+                    <td class="day-cell">Day 15</td>
+                    <td class="module-cell">Module 8</td>
+                    <td>Final Project</td>
+                    <td>
+                        <ul class="project-list">
+                            <li><a href="#" class="project-link">Scratch OS</a></li>
+                            <li><a href="#" class="project-link">Jump Quest</a></li>
+                            <li><a href="#" class="project-link">Chess Game</a></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <!-- Day 16 -->
+                <tr>
+                    <td class="day-cell">Day 16</td>
+                    <td class="module-cell">Module 8</td>
+                    <td>Final Project</td>
+                    <td>
+                        <ul class="project-list">
+                            <li><a href="#" class="project-link">Scratch OS</a></li>
+                            <li><a href="#" class="project-link">Jump Quest</a></li>
+                            <li><a href="#" class="project-link">Chess Game</a></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

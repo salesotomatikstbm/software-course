@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming Course Schedule</title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --primary-light: #6d8cc2;
+            --secondary: #ff9f1c;
+            --light: #f8f9fa;
+            --light-blue: #e3f2fd;
+            --medium-blue: #bbdefb;
+            --dark: #212529;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        h2 {
+            color: var(--primary);
+            text-align: center;
+            margin: 30px 0 20px;
+            font-weight: 500;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .schedule-table th {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .schedule-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+        }
+
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .schedule-table tr:nth-child(even) {
+            background-color: var(--light);
+        }
+
+        .module-cell {
+            font-weight: bold;
+            background-color: var(--light-blue);
+        }
+
+        .day-cell {
+            font-weight: bold;
+            background-color: var(--medium-blue);
+        }
+
+        .project-list {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .project-list li {
+            margin-bottom: 8px;
+        }
+
+        .project-link {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: linear-gradient(to right, var(--primary-light), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .schedule-table {
+                display: block;
+                overflow-x: auto;
+                border-radius: 0;
+            }
+
+            .schedule-table th, 
+            .schedule-table td {
+                padding: 8px 10px;
+                min-width: 120px;
+                font-size: 0.9rem;
+            }
+            
+            .project-link {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .schedule-table th, 
+            .schedule-table td {
+                padding: 6px 8px;
+                font-size: 0.85rem;
+            }
+            
+            .project-link {
+                padding: 4px 8px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Python Programming Course Schedule</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>16-Day Course Plan</h2>
+
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th width="8%">Day</th>
+                    <th width="12%">Module</th>
+                    <th width="25%">Topic</th>
+                    <th width="40%">Projects</th>
+                    <th width="15%">Home Activity</th>
+                </tr>
+            </thead>
+         
+        </table>
+    </div>
+</body>
+</html>

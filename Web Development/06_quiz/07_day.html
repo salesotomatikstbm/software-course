@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Design Quiz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      line-height: 1.6;
+    }
+    .quiz-container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #3D52A0;
+    }
+    .question {
+      margin-bottom: 25px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .option {
+      background: #e1f5fe;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .option:hover {
+      background: #b3e5fc;
+    }
+    .visual-example {
+      display: none;
+      background: #f9f9f9;
+      padding: 15px;
+      border-left: 4px solid #3D52A0;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+    .code {
+      font-family: 'Courier New', monospace;
+      background: #263238;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .result {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .correct {
+      background: #e8f5e9;
+      color: #2e7d32;
+      display: block !important;
+    }
+    .incorrect {
+      background: #ffebee;
+      color: #c62828;
+      display: block !important;
+    }
+    .responsive-demo {
+      width: 100%;
+      height: 100px;
+      background-color: #3D52A0;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Responsive Design: Media Queries & Viewport Units</h1>
+
+    <!-- Q1: Media Query Purpose -->
+    <div class="question">
+      <h3>1. What is the primary purpose of CSS media queries?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(1, 'a')">To apply styles based on device characteristics</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">To add multimedia content to web pages</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">To optimize images for different devices</div>
+        <div class="option" onclick="checkAnswer(1, 'd')">To create animations in CSS</div>
+      </div>
+      <div id="result1" class="result"></div>
+      <div class="visual-example" id="visual1">
+        <p>Media queries allow you to create responsive designs:</p>
+        <div class="code">
+          @media (max-width: 768px) {<br>
+          &nbsp;&nbsp;/* Styles for mobile devices */<br>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2: Viewport Units -->
+    <div class="question">
+      <h3>2. Which of these is NOT a viewport unit?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(2, 'a')">vh</div>
+        <div class="option" onclick="checkAnswer(2, 'b')">vw</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">vmin</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">vpx</div>
+      </div>
+      <div id="result2" class="result"></div>
+      <div class="visual-example" id="visual2">
+        <p>Viewport units:</p>
+        <ul>
+          <li><strong>vw</strong> - 1% of viewport width</li>
+          <li><strong>vh</strong> - 1% of viewport height</li>
+          <li><strong>vmin</strong> - 1% of viewport's smaller dimension</li>
+          <li><strong>vmax</strong> - 1% of viewport's larger dimension</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q3: Breakpoint -->
+    <div class="question">
+      <h3>3. What is a "breakpoint" in responsive design?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(3, 'a')">A point where the website layout changes</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">A debugging tool in browsers</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">A CSS property for line breaks</div>
+        <div class="option" onclick="checkAnswer(3, 'd')">A JavaScript error</div>
+      </div>
+      <div id="result3" class="result"></div>
+      <div class="visual-example" id="visual3">
+        <p>Common breakpoints:</p>
+        <div class="code">
+          /* Mobile */<br>
+          @media (max-width: 767px) {...}<br><br>
+          
+          /* Tablet */<br>
+          @media (min-width: 768px) and (max-width: 1023px) {...}<br><br>
+          
+          /* Desktop */<br>
+          @media (min-width: 1024px) {...}
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4: Mobile-first -->
+    <div class="question">
+      <h3>4. What does "mobile-first" design approach mean?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(4, 'a')">Designing for mobile first, then enhancing for larger screens</div>
+        <div class="option" onclick="checkAnswer(4, 'b')">Creating separate websites for mobile and desktop</div>
+        <div class="option" onclick="checkAnswer(4, 'c')">Using only mobile devices for development</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">Making all websites look the same on every device</div>
+      </div>
+      <div id="result4" class="result"></div>
+      <div class="visual-example" id="visual4">
+        <p>Mobile-first CSS structure:</p>
+        <div class="code">
+          /* Base styles (mobile) */<br>
+          body { font-size: 14px; }<br><br>
+          
+          /* Tablet */<br>
+          @media (min-width: 768px) {<br>
+          &nbsp;&nbsp;body { font-size: 16px; }<br>
+          }<br><br>
+          
+          /* Desktop */<br>
+          @media (min-width: 1024px) {<br>
+          &nbsp;&nbsp;body { font-size: 18px; }<br>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5: VH Unit -->
+    <div class="question">
+      <h3>5. What does 100vh represent?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(5, 'a')">100% of the viewport height</div>
+        <div class="option" onclick="checkAnswer(5, 'b')">100% of the element's parent height</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">100 pixels in height</div>
+        <div class="option" onclick="checkAnswer(5, 'd')">100% of the document height</div>
+      </div>
+      <div id="result5" class="result"></div>
+      <div class="visual-example" id="visual5">
+        <div class="responsive-demo" style="height: 50vh;">
+          This box is 50vh tall (50% of viewport height)
+        </div>
+        <p>Viewport units are relative to the browser window size, not the document or parent element.</p>
+      </div>
+    </div>
+
+    <!-- Q6: Media Query Syntax -->
+    <div class="question">
+      <h3>6. What is the correct syntax for a media query targeting screens between 600px and 900px wide?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(6, 'a')">@media (width >= 600px) and (width <= 900px)</div>
+        <div class="option" onclick="checkAnswer(6, 'b')">@media (min-width: 600px) and (max-width: 900px)</div>
+        <div class="option" onclick="checkAnswer(6, 'c')">@media screen (600px to 900px)</div>
+        <div class="option" onclick="checkAnswer(6, 'd')">@media width(600-900px)</div>
+      </div>
+      <div id="result6" class="result"></div>
+      <div class="visual-example" id="visual6">
+        <div class="code">
+          @media (min-width: 600px) and (max-width: 900px) {<br>
+          &nbsp;&nbsp;/* Styles for screens between 600px and 900px */<br>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Q7: VW Unit -->
+    <div class="question">
+      <h3>7. An element with width: 50vw will be how wide on a 1200px wide viewport?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(7, 'a')">600px</div>
+        <div class="option" onclick="checkAnswer(7, 'b')">50px</div>
+        <div class="option" onclick="checkAnswer(7, 'c')">1200px</div>
+        <div class="option" onclick="checkAnswer(7, 'd')">2400px</div>
+      </div>
+      <div id="result7" class="result"></div>
+      <div class="visual-example" id="visual7">
+        <div class="responsive-demo" style="width: 50vw; margin: 0 auto;">
+          This box is 50vw wide
+        </div>
+        <p>1vw = 1% of viewport width, so 50vw = 50% of viewport width (600px on a 1200px viewport)</p>
+      </div>
+    </div>
+
+    <!-- Q8: Orientation -->
+    <div class="question">
+      <h3>8. How would you target landscape orientation in a media query?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(8, 'a')">@media (orientation: landscape)</div>
+        <div class="option" onclick="checkAnswer(8, 'b')">@media (landscape)</div>
+        <div class="option" onclick="checkAnswer(8, 'c')">@media (rotate: 90deg)</div>
+        <div class="option" onclick="checkAnswer(8, 'd')">@media (display: landscape)</div>
+      </div>
+      <div id="result8" class="result"></div>
+      <div class="visual-example" id="visual8">
+        <div class="code">
+          @media (orientation: landscape) {<br>
+          &nbsp;&nbsp;/* Styles for landscape orientation */<br>
+          }
+        </div>
+        <p>This is useful for adjusting layouts when a device is rotated.</p>
+      </div>
+    </div>
+
+    <!-- Q9: Vmin -->
+    <div class="question">
+      <h3>9. What does 10vmin represent on a viewport that's 1000px wide and 800px tall?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(9, 'a')">80px (10% of the height)</div>
+        <div class="option" onclick="checkAnswer(9, 'b')">100px (10% of the width)</div>
+        <div class="option" onclick="checkAnswer(9, 'c')">180px (10% of width + height)</div>
+        <div class="option" onclick="checkAnswer(9, 'd')">10px (fixed size)</div>
+      </div>
+      <div id="result9" class="result"></div>
+      <div class="visual-example" id="visual9">
+        <p>vmin is 1% of the viewport's smaller dimension:</p>
+        <ul>
+          <li>Viewport: 1000px × 800px</li>
+          <li>Smaller dimension: 800px (height)</li>
+          <li>10vmin = 10% of 800px = 80px</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q10: Media Features -->
+    <div class="question">
+      <h3>10. Which media feature would you use to detect a touchscreen device?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(10, 'a')">@media (hover: none)</div>
+        <div class="option" onclick="checkAnswer(10, 'b')">@media (touch-enabled: true)</div>
+        <div class="option" onclick="checkAnswer(10, 'c')">@media (pointer: coarse)</div>
+        <div class="option" onclick="checkAnswer(10, 'd')">@media (screen: touch)</div>
+      </div>
+      <div id="result10" class="result"></div>
+      <div class="visual-example" id="visual10">
+        <p>Modern approaches to detect touch devices:</p>
+        <div class="code">
+          /* Device has coarse pointer (like a finger) */<br>
+          @media (pointer: coarse) {<br>
+          &nbsp;&nbsp;/* Touch device styles */<br>
+          }<br><br>
+          
+          /* Device cannot hover (likely touch) */<br>
+          @media (hover: none) {<br>
+          &nbsp;&nbsp;/* Touch device styles */<br>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const correctAnswers = {
+      1: 'a',
+      2: 'd',
+      3: 'a',
+      4: 'a',
+      5: 'a',
+      6: 'b',
+      7: 'a',
+      8: 'a',
+      9: 'a',
+      10: 'c'
+    };
+
+    function checkAnswer(questionNum, selectedOption) {
+      const result = document.getElementById(`result${questionNum}`);
+      const visual = document.getElementById(`visual${questionNum}`);
+
+      document.querySelectorAll('.visual-example').forEach(el => el.style.display = 'none');
+      result.style.display = 'block';
+
+      if (selectedOption === correctAnswers[questionNum]) {
+        result.textContent = '✅ Correct!';
+        result.className = 'result correct';
+        visual.style.display = 'block';
+      } else {
+        result.textContent = '❌ Incorrect. Try again!';
+        result.className = 'result incorrect';
+      }
+    }
+  </script>
+</body>
+</html>

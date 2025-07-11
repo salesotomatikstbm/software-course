@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Document Object Model</title>
+</head>
+<body>
+
+  <h2>DOM</h2>
+
+  <form id="registrationForm" onsubmit="submitForm(event)">
+    <label for="fname">First Name:</label>
+    <input type="text" id="fname" name="fname" placeholder="Enter your first name" required>
+    <br><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function submitForm(event) {
+      event.preventDefault(); // Prevent form from submitting
+
+      // Get input value
+      let fname = document.getElementById("fname").value;
+
+      // Show alert
+      alert("First Name: " + fname);
+
+      // Reset the form
+      document.getElementById("registrationForm").reset();
+    }
+  </script>
+
+</body>
+</html>

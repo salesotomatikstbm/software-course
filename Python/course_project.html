@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Projects List</title>
+    <style>
+        :root {
+            --primary: #3776ab;  /* Python blue */
+            --primary-light: #5a9bd5;
+            --white: #ffffff;
+            --light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-title {
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Python Programming Projects</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="projects-grid">
+            <div class="project-card">
+                <p class="project-title">Simple Arithmetic App</p>
+            </div>
+            
+            <div class="project-card">
+                <p class="project-title">Grading System App</p>
+            </div>
+            
+            <div class="project-card">
+                <p class="project-title">Contact Book</p>
+            </div>
+            
+            <div class="project-card">
+                <p class="project-title">Calculator</p>
+            </div>
+            
+            <div class="project-card">
+                <p class="project-title">Unit Converter</p>
+            </div>
+            
+            <div class="project-card">
+                <p class="project-title">Student Management System</p>
+            </div>
+            
+            <div class="project-card">
+                <p class="project-title">To-Do List App</p>
+            </div>
+            
+            <div class="project-card">
+                <p class="project-title">Bill Calculator</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTML Basics Quiz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      line-height: 1.6;
+    }
+    .quiz-container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #3D52A0;
+    }
+    .question {
+      margin-bottom: 25px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .option {
+      background: #e1f5fe;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .option:hover {
+      background: #b3e5fc;
+    }
+    .visual-example {
+      display: none;
+      background: #f9f9f9;
+      padding: 15px;
+      border-left: 4px solid #3D52A0;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+    .code {
+      font-family: 'Courier New', monospace;
+      background: #263238;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .result {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .correct {
+      background: #e8f5e9;
+      color: #2e7d32;
+      display: block !important;
+    }
+    .incorrect {
+      background: #ffebee;
+      color: #c62828;
+      display: block !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>HTML Basics Quiz</h1>
+
+    <!-- Q1: HTML Comment -->
+    <div class="question">
+      <h3>1. Which syntax is used for an HTML comment?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(1, 'a')">&lt;!-- comment --&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">&lt;comment&gt;...&lt;/comment&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">// comment</div>
+        <div class="option" onclick="checkAnswer(1, 'd')"># comment</div>
+      </div>
+      <div id="result1" class="result"></div>
+      <div class="visual-example" id="visual1">
+        <div class="code">&lt;!-- This is a comment --&gt;</div>
+      </div>
+    </div>
+
+    <!-- Q2: Paragraph tag -->
+    <div class="question">
+      <h3>2. Which tag is used to define a paragraph in HTML?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(2, 'a')">&lt;p&gt;</div>
+        <div class="option" onclick="checkAnswer(2, 'b')">&lt;para&gt;</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">&lt;text&gt;</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">&lt;paragraph&gt;</div>
+      </div>
+      <div id="result2" class="result"></div>
+      <div class="visual-example" id="visual2">
+        <div class="code">&lt;p&gt;This is a paragraph.&lt;/p&gt;</div>
+        <p>This is a paragraph.</p>
+      </div>
+    </div>
+
+    <!-- Q3: Image tag -->
+    <div class="question">
+      <h3>3. Which tag is used to display an image?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(3, 'a')">&lt;image&gt;</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">&lt;img&gt;</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">&lt;pic&gt;</div>
+        <div class="option" onclick="checkAnswer(3, 'd')">&lt;photo&gt;</div>
+      </div>
+      <div id="result3" class="result"></div>
+      <div class="visual-example" id="visual3">
+        <div class="code">&lt;img src="https://placekitten.com/100/100" alt="Kitten"&gt;</div>
+        <img src="https://placekitten.com/100/100" alt="Kitten" style="border-radius: 5px;">
+      </div>
+    </div>
+
+    <!-- Q4: alt attribute -->
+    <div class="question">
+      <h3>4. What does the <code>alt</code> attribute in the &lt;img&gt; tag do?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(4, 'a')">Links the image</div>
+        <div class="option" onclick="checkAnswer(4, 'b')">Adds animation</div>
+        <div class="option" onclick="checkAnswer(4, 'c')">Describes image text for accessibility</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">Increases image size</div>
+      </div>
+      <div id="result4" class="result"></div>
+      <div class="visual-example" id="visual4">
+        <div class="code">&lt;img src="dog.jpg" alt="A smiling dog"&gt;</div>
+        <p>If image fails, text shown: "A smiling dog"</p>
+      </div>
+    </div>
+
+    <!-- Q5: Link tag -->
+    <div class="question">
+      <h3>5. Which tag is used to create a hyperlink?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(5, 'a')">&lt;link&gt;</div>
+        <div class="option" onclick="checkAnswer(5, 'b')">&lt;href&gt;</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">&lt;a&gt;</div>
+        <div class="option" onclick="checkAnswer(5, 'd')">&lt;url&gt;</div>
+      </div>
+      <div id="result5" class="result"></div>
+      <div class="visual-example" id="visual5">
+        <div class="code">&lt;a href="https://example.com"&gt;Visit&lt;/a&gt;</div>
+        <a href="https://example.com" target="_blank">Visit</a>
+      </div>
+    </div>
+
+    <!-- Q6: Unordered list -->
+    <div class="question">
+      <h3>6. Which tag creates a bulleted list?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(6, 'a')">&lt;ul&gt;</div>
+        <div class="option" onclick="checkAnswer(6, 'b')">&lt;ol&gt;</div>
+        <div class="option" onclick="checkAnswer(6, 'c')">&lt;li&gt;</div>
+        <div class="option" onclick="checkAnswer(6, 'd')">&lt;list&gt;</div>
+      </div>
+      <div id="result6" class="result"></div>
+      <div class="visual-example" id="visual6">
+        <div class="code">
+          &lt;ul&gt;<br>&nbsp;&nbsp;&lt;li&gt;Apple&lt;/li&gt;<br>&nbsp;&nbsp;&lt;li&gt;Orange&lt;/li&gt;<br>&lt;/ul&gt;
+        </div>
+        <ul><li>Apple</li><li>Orange</li></ul>
+      </div>
+    </div>
+  </div>
+<!-- Q7: Doctype declaration -->
+<div class="question">
+  <h3>7. What is the purpose of <code>&lt;!DOCTYPE html&gt;</code> in HTML?</h3>
+  <div class="options">
+    <div class="option" onclick="checkAnswer(7, 'a')">Defines a comment</div>
+    <div class="option" onclick="checkAnswer(7, 'b')">Links CSS to HTML</div>
+    <div class="option" onclick="checkAnswer(7, 'c')">Defines HTML version</div>
+    <div class="option" onclick="checkAnswer(7, 'd')">Inserts a JavaScript file</div>
+  </div>
+  <div id="result7" class="result"></div>
+  <div class="visual-example" id="visual7">
+    <div class="code">&lt;!DOCTYPE html&gt;</div>
+    <p>This tells the browser to use HTML5.</p>
+  </div>
+</div>
+
+<!-- Q8: Head vs Body -->
+<div class="question">
+  <h3>8. Where should the page metadata like title and links to stylesheets be placed?</h3>
+  <div class="options">
+    <div class="option" onclick="checkAnswer(8, 'a')">In the &lt;footer&gt;</div>
+    <div class="option" onclick="checkAnswer(8, 'b')">In the &lt;body&gt;</div>
+    <div class="option" onclick="checkAnswer(8, 'c')">In the &lt;head&gt;</div>
+    <div class="option" onclick="checkAnswer(8, 'd')">Anywhere</div>
+  </div>
+  <div id="result8" class="result"></div>
+  <div class="visual-example" id="visual8">
+    <div class="code">
+      &lt;head&gt;<br>
+      &nbsp;&nbsp;&lt;title&gt;My Site&lt;/title&gt;<br>
+      &nbsp;&nbsp;&lt;link rel="stylesheet" href="style.css"&gt;<br>
+      &lt;/head&gt;
+    </div>
+  </div>
+</div>
+
+<!-- Q9: Line Break tag -->
+<div class="question">
+  <h3>9. Which tag is used to insert a line break?</h3>
+  <div class="options">
+    <div class="option" onclick="checkAnswer(9, 'a')">&lt;br&gt;</div>
+    <div class="option" onclick="checkAnswer(9, 'b')">&lt;lb&gt;</div>
+    <div class="option" onclick="checkAnswer(9, 'c')">&lt;break&gt;</div>
+    <div class="option" onclick="checkAnswer(9, 'd')">&lt;n&gt;</div>
+  </div>
+  <div id="result9" class="result"></div>
+  <div class="visual-example" id="visual9">
+    <div class="code">
+      Hello&lt;br&gt;World
+    </div>
+    <p>Hello<br>World</p>
+  </div>
+</div>
+
+<!-- Q10: Bold text -->
+<div class="question">
+  <h3>10. Which HTML tag is used to make text bold?</h3>
+  <div class="options">
+    <div class="option" onclick="checkAnswer(10, 'a')">&lt;b&gt;</div>
+    <div class="option" onclick="checkAnswer(10, 'b')">&lt;strong&gt;</div>
+    <div class="option" onclick="checkAnswer(10, 'c')">Both A and B</div>
+    <div class="option" onclick="checkAnswer(10, 'd')">&lt;font weight="bold"&gt;</div>
+  </div>
+  <div id="result10" class="result"></div>
+  <div class="visual-example" id="visual10">
+    <div class="code">
+      &lt;strong&gt;Important!&lt;/strong&gt;
+    </div>
+    <p><strong>Important!</strong></p>
+  </div>
+</div>
+
+  <script>
+    const correctAnswers = {
+  1: 'a',
+  2: 'a',
+  3: 'b',
+  4: 'c',
+  5: 'c',
+  6: 'a',
+  7: 'c',
+  8: 'c',
+  9: 'a',
+  10: 'c'
+};
+
+
+    function checkAnswer(questionNum, selectedOption) {
+      const result = document.getElementById(`result${questionNum}`);
+      const visual = document.getElementById(`visual${questionNum}`);
+
+      document.querySelectorAll('.visual-example').forEach(el => el.style.display = 'none');
+      result.style.display = 'block';
+
+      if (selectedOption === correctAnswers[questionNum]) {
+        result.textContent = '✅ Correct!';
+        result.className = 'result correct';
+        visual.style.display = 'block';
+      } else {
+        result.textContent = '❌ Incorrect. Try again!';
+        result.className = 'result incorrect';
+      }
+    }
+  </script>
+</body>
+</html>

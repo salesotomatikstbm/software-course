@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otomatiks - Coding Courses for Kids</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="logo-container">
+            <img src="./otomatiks logo.png" alt="Otomatiks Logo" class="logo">
+            <div class="header-text">
+                <p class="tagline">Coding Courses for Young Innovators</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="nav">
+        <div class="nav-container">
+            <ul id="mainMenu">
+                <li><a href="#courses">Our Courses</a></li>
+                <li><a href="#about">Why Choose Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="container">
+        <section id="welcome">
+            <h2>Welcome Young Coders!</h2>
+            <p style="font-size: 1.1em;">Embark on an exciting journey into the world of programming with our fun and interactive courses designed especially for kids. Whether you want to create games, build websites, or make cool animations, we have the perfect course for you!</p>
+        </section>
+        
+        <section id="courses">
+            <h2>Featured Courses</h2>
+            <div class="course-grid">
+                <!-- Python Course -->
+                <div class="course-card">
+                    <div class="course-icon python">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="course-content">
+                        <h2>Python for Kids</h2>
+                        <p>Learn the basics of Python programming through fun projects, games, and animations! Perfect for beginners.</p>
+                        <a href="./Python/index.html" class="btn">Start Learning</a>
+                    </div>
+                </div>
+                
+                <!-- Web Development Course -->
+                <div class="course-card">
+                    <div class="course-icon web">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="course-content">
+                        <h2>Web Development</h2>
+                        <p>Create your own websites with HTML, CSS, and JavaScript in this exciting course! Build 5 projects.</p>
+                        <a href="./Web Development/index.html" class="btn">Start Learning</a>
+                    </div>
+                </div>
+                
+                <!-- Scratch Course -->
+                <div class="course-card">
+                    <div class="course-icon scratch">
+                        <i class="fas fa-cat"></i>
+                    </div>
+                    <div class="course-content">
+                        <h2>Scratch Programming</h2>
+                        <p>Drag and drop your way to creating amazing games and stories with Scratch! Ideal for ages 6+.</p>
+                        <a href="./Scratch/index.html" class="btn">Start Learning</a>
+                    </div>
+                </div>
+                
+                <!-- Java Course -->
+                <div class="course-card">
+                    <div class="course-icon java">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <div class="course-content">
+                        <h2>Java for Kids</h2>
+                        <p>Discover the world of Java programming through fun, interactive lessons! Complete with mini-games.</p>
+                        <a href="./Java/index.html" class="btn">Start Learning</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="about" style="margin-top: 70px;">
+            <h2>Why Learn With Otomatiks?</h2>
+            <p>Our courses are specially designed for kids aged 6+ years. We make learning to code fun, interactive, and rewarding:</p>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Project-Based Curriculum</h3>
+                    <p>Learn by building real projects that kids love, from games to interactive stories.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Structured Lessons</h3>
+                    <p>Step-by-step lesson plans that make complex concepts easy to understand.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Hands-On Projects</h3>
+                    <p>Each course includes 5 mini-projects and 1 final showcase project.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <i class="fas fa-award"></i>
+                    <h3>Certification</h3>
+                    <p>Earn a certificate upon completion to celebrate your achievements.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer id="contact">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="margin-bottom: 20px; color: var(--accent);">Got Questions?</h3>
+            <p>We'd love to hear from you! Reach out to our team for more information about our courses.</p>
+            <p style="margin: 20px 0;">
+                <a href="mailto:coo@otomatiks.in" style="color: var(--accent); font-weight: 600; text-decoration: none;">
+                    <i class="fas fa-envelope"></i> coo@otomatiks.in
+                </a>
+            </p>
+            <p>© 2025 Otomatiks. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainMenu = document.getElementById('mainMenu');
+            const overlay = document.getElementById('overlay');
+            const navLinks = document.querySelectorAll('.nav a');
+            
+            // Toggle mobile menu
+            function toggleMenu() {
+                const isOpen = mainMenu.classList.contains('active');
+                if (isOpen) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            }
+            
+            function openMenu() {
+                mainMenu.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+            }
+            
+            function closeMenu() {
+                mainMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+            
+            // Event listeners
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            overlay.addEventListener('click', closeMenu);
+            
+            // Close menu when a nav link is clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId !== '#') {
+                        document.querySelector(targetId).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Update mobile menu button icon based on screen size
+            function updateMenuButton() {
+                if (window.innerWidth <= 768) {
+                    mobileMenuBtn.style.display = 'block';
+                    if (mainMenu.classList.contains('active')) {
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                    } else {
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                } else {
+                    mobileMenuBtn.style.display = 'none';
+                    closeMenu();
+                }
+            }
+            
+            // Initialize and update on resize
+            updateMenuButton();
+            window.addEventListener('resize', updateMenuButton);
+        });
+    </script>
+</body>
+</html>

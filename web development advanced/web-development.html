@@ -261,34 +261,33 @@
     </div>
   </div>
 
-  <script>
+ <script>
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('passwordModal');
       const input = document.getElementById('passwordInput');
       const button = document.getElementById('submitPassword');
-      const valid = ["cWJlZWFjYWRlbXk="];
+      const valid = ["cWJlZWFjYWRlbXk="]; // Base64 encoded password
 
-      if (sessionStorage.getItem('pythonVerified') === 'true') {
-        modal.style.display = 'none';
-      } else {
-        modal.style.display = 'flex';
-      }
+      // Always show the modal (removed the sessionStorage check)
+      modal.style.display = 'flex';
 
       button.addEventListener('click', function() {
         const value = btoa(input.value);
         if (valid.includes(value)) {
-          sessionStorage.setItem('pythonVerified', 'true');
           modal.style.display = 'none';
         } else {
           alert("Incorrect password. Please try again.");
-          input.value = ''; input.focus();
+          input.value = ''; 
+          input.focus();
         }
       });
 
       input.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') { button.click(); }
+        if (e.key === 'Enter') { 
+          button.click(); 
+        }
       });
     });
-  </script>
+</script>
 </body>
 </html>

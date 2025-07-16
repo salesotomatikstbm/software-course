@@ -350,41 +350,33 @@
         </div>
     </div>
 
-   <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const passwordModal = document.getElementById('passwordModal');
-    const passwordInput = document.getElementById('passwordInput');
-    const submitBtn = document.getElementById('submitPassword');
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('passwordModal');
+      const input = document.getElementById('passwordInput');
+      const button = document.getElementById('submitPassword');
+      const valid = ["cWJlZWFjYWRlbXk="]; // Base64 encoded password
 
-    // ✅ Check sessionStorage flag
-    if (sessionStorage.getItem('passwordVerified') === 'true') {
-      passwordModal.style.display = 'none';
-    } else {
-      passwordModal.style.display = 'flex';
-    }
+      // Always show the modal (removed the sessionStorage check)
+      modal.style.display = 'flex';
 
-    submitBtn.addEventListener('click', function() {
-      const encodedPasswords = ["cWJlZWFjYWRlbXk="];
-      const input = passwordInput.value;
-      const encodedInput = btoa(input);
+      button.addEventListener('click', function() {
+        const value = btoa(input.value);
+        if (valid.includes(value)) {
+          modal.style.display = 'none';
+        } else {
+          alert("Incorrect password. Please try again.");
+          input.value = ''; 
+          input.focus();
+        }
+      });
 
-      if (encodedPasswords.includes(encodedInput)) {
-        // ✅ Save flag for this session
-        sessionStorage.setItem('passwordVerified', 'true');
-        passwordModal.style.display = 'none';
-      } else {
-        alert("Incorrect password. Please try again.");
-        passwordInput.value = '';
-        passwordInput.focus();
-      }
+      input.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') { 
+          button.click(); 
+        }
+      });
     });
-
-    passwordInput.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        submitBtn.click();
-      }
-    });
-  });
 </script>
 
 </body>

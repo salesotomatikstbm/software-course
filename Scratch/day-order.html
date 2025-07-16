@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scratch Programming Course Schedule</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
             --primary: #4a6fa5;
@@ -14,6 +15,7 @@
             --medium-blue: #bbdefb;
             --dark: #212529;
             --white: #ffffff;
+            --success: #28a745;
         }
 
         body {
@@ -103,6 +105,9 @@
 
         .project-list li {
             margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .project-link {
@@ -114,12 +119,65 @@
             text-decoration: none;
             font-size: 0.9rem;
             transition: all 0.3s ease;
+            flex-grow: 1;
+            margin-right: 8px;
         }
 
         .project-link:hover {
             background: linear-gradient(to right, var(--primary-light), var(--primary));
             transform: translateY(-2px);
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--success);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            min-width: 80px;
+        }
+
+        .download-btn:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .download-btn i {
+            margin-right: 5px;
+        }
+
+        .source-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .source-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--secondary);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .source-link:hover {
+            background-color: #e68a00;
+            transform: translateY(-2px);
+        }
+
+        .source-link i {
+            margin-right: 5px;
         }
 
         @media (max-width: 768px) {
@@ -148,6 +206,17 @@
                 padding: 5px 10px;
                 font-size: 0.8rem;
             }
+
+            .download-btn {
+                padding: 5px 8px;
+                font-size: 0.7rem;
+                min-width: 70px;
+            }
+
+            .source-link {
+                padding: 5px 8px;
+                font-size: 0.7rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -160,6 +229,17 @@
             .project-link {
                 padding: 4px 8px;
                 font-size: 0.75rem;
+            }
+
+            .download-btn {
+                padding: 4px 6px;
+                font-size: 0.65rem;
+                min-width: 60px;
+            }
+
+            .source-link {
+                padding: 4px 6px;
+                font-size: 0.65rem;
             }
         }
     </style>
@@ -181,7 +261,7 @@
                     <th width="12%">Module</th>
                     <th width="25%">Topic</th>
                     <th width="40%">Projects</th>
-                    <th width="15%">Home Activity</th>
+             
                 </tr>
             </thead>
             <tbody>
@@ -192,12 +272,27 @@
                     <td>Scratch Installation & Interface, Motion Blocks, Looks and Sound Blocks</td>
                     <td>
                         <ul class="project-list">
-                            <li><a href="./ppt_module_1.html" class="project-link">Hello World</a></li>
-                            <li><a href="./ppt_module_1.html" class="project-link">Sprite Walks Across the Screen</a></li>
-                            <li><a href="./ppt_module_1.html" class="project-link">Dancing Sprite</a></li>
+                            <li>
+                                <a href="./ppt_module_1.html" class="project-link">Hello World</a>
+                                <a href="https://drive.google.com/file/d/1JK9WTA3JsrQ5YWNosgcxzmZicjQ4qFYE/view?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./ppt_module_1.html" class="project-link">Sprite Walks Across the Screen</a>
+                                <a href="https://drive.google.com/file/d/1sP6KmZEXjAphvmZsJLDglutCeSzTe4ah/view?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./ppt_module_1.html" class="project-link">Dancing Sprite</a>
+                                <a href="https://drive.google.com/file/d/1xnHSD2kAFYq_j_-40mfxUExGml1QqGkY/view?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
                         </ul>
                     </td>
-                    <td></td>
+                    
                 </tr>
 
                 <!-- Day 2 -->
@@ -207,12 +302,27 @@
                     <td>Events and Sequencing</td>
                     <td>
                         <ul class="project-list">
-                            <li><a href="./ppt_module_2.html" class="project-link">Sprite Reacts to Mouse Clicks</a></li>
-                            <li><a href="./ppt_module_2.html" class="project-link">Dance Routine</a></li>
-                            <li><a href="./ppt_module_2.html" class="project-link">Animate a Bouncing Ball</a></li>
+                            <li>
+                                <a href="./ppt_module_2.html" class="project-link">Sprite Reacts to Mouse Clicks</a>
+                                <a href="https://drive.google.com/file/d/1ERZvN33RyL8EpD8pdkDUwJ2ct6UiW9nc/view?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./ppt_module_2.html" class="project-link">Dance Routine</a>
+                                <a href="https://drive.google.com/file/d/1ch9LVLE4sNFIHkx8MmUCc1uZZBlkKEeC/view?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./ppt_module_2.html" class="project-link">Animate a Bouncing Ball</a>
+                                <a href="https://drive.google.com/file/d/1UCV3Kq5EZ1hOUD2OoVcieRZLuiF9m1ot/view?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
                         </ul>
                     </td>
-                    <td></td>
+                   
                 </tr>
 
                 <!-- Day 3 -->
@@ -222,11 +332,21 @@
                     <td>Animations and Storytelling</td>
                     <td>
                         <ul class="project-list">
-                            <li><a href="./ppt_module_3.html" class="project-link">Create a School Story Scene</a></li>
-                            <li><a href="./ppt_module_3.html" class="project-link">Broadcast Message</a></li>
+                            <li>
+                                <a href="./ppt_module_3.html" class="project-link">Create a School Story Scene</a>
+                                <a href="https://drive.google.com/file/d/1W-0sgeCZaQCk2cKk7mfIxybtZ2ijwZhA/view?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./ppt_module_3.html" class="project-link">Broadcast Message</a>
+                                <a href="https://drive.google.com/drive/folders/18Fr9_PHoXIYl6MWR6UU7WrgfKIK3u8nT?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
                         </ul>
                     </td>
-                    <td></td>
+                    
                 </tr>
 
                 <!-- Day 4 -->
@@ -236,11 +356,21 @@
                     <td>Variables and Conditions</td>
                     <td>
                         <ul class="project-list">
-                            <li><a href="./ppt_module_4.html" class="project-link">Number Count</a></li>
-                            <li><a href="./ppt_module_4.html" class="project-link">Even or Odd Checker/Multiplication Table</a></li>
+                            <li>
+                                <a href="./ppt_module_4.html" class="project-link">Number Count</a>
+                                <a href="https://drive.google.com/file/d/1SkIHN0nJO9hXb9NeaDRbI4WSnEDptoFD/view?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./ppt_module_4.html" class="project-link">Even or Odd Checker/Multiplication Table</a>
+                                <a href="https://drive.google.com/drive/folders/1x9jtdrTMf4lmD4h5sk9y6L-8DcP_h5Sj?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
                         </ul>
                     </td>
-                    <td></td>
+                   
                 </tr>
 
                 <!-- Day 5 -->
@@ -250,10 +380,15 @@
                     <td>Decision Making and Game Design</td>
                     <td>
                         <ul class="project-list">
-                            <li><a href="./ppt_grade_system.html" class="project-link">Student Grade System</a></li>
+                            <li>
+                                <a href="./ppt_grade_system.html" class="project-link">Student Grade System</a>
+                                <a href="https://drive.google.com/drive/folders/10e5DHlDRuA80xA2kW39lmEFQtm5qYir_?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
                         </ul>
                     </td>
-                    <td></td>
+                    
                 </tr>
 
                 <!-- Day 6 -->
@@ -263,10 +398,15 @@
                     <td>Decision Making and Game Design</td>
                     <td>
                         <ul class="project-list">
-                            <li><a href="./ppt_catch_game.html" class="project-link">Catching Game</a></li>
+                            <li>
+                                <a href="./ppt_catch_game.html" class="project-link">Catching Game</a>
+                                <a href="https://drive.google.com/drive/folders/1XfZzVwJMCSTD1-QDqI1mtRdyutRVaHaf?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
                         </ul>
                     </td>
-                    <td></td>
+                    
                 </tr>
 
                 <!-- Day 7 -->
@@ -276,10 +416,15 @@
                     <td>Decision Making and Game Design</td>
                     <td>
                         <ul class="project-list">
-                            <li><a href="./ppt_maze_game.html" class="project-link">Maze Master</a></li>
+                            <li>
+                                <a href="./ppt_maze_game.html" class="project-link">Maze Master</a>
+                                <a href="https://drive.google.com/drive/folders/17qYH6mUKl6zUQ2Kj4dsfp1UkKbtJ1Odr?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
                         </ul>
                     </td>
-                    <td></td>
+                    
                 </tr>
 
                 <!-- Day 8 -->
@@ -289,11 +434,21 @@
                     <td>Variables, Lists & Data</td>
                     <td>
                         <ul class="project-list">
-                            <li><a href="./ppt_quiz.html" class="project-link">Quiz Game</a></li>
-                            <li><a href="./ppt_temperature_converter.html" class="project-link">Temperature Converter</a></li>
+                            <li>
+                                <a href="./ppt_quiz.html" class="project-link">Quiz Game</a>
+                                <a href="https://drive.google.com/drive/folders/11TovvsosSUhZTIrHgQITnZJ5uX21rrqQ?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./ppt_temperature_converter.html" class="project-link">Temperature Converter</a>
+                                <a href="https://drive.google.com/drive/folders/18REYVWF8ATFLWO2ut_gtoV4_kY8PDukr?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
                         </ul>
                     </td>
-                    <td></td>
+                  
                 </tr>
 
                 <!-- Day 9 -->
@@ -303,10 +458,15 @@
                     <td>Variables, Lists & Data</td>
                     <td>
                         <ul class="project-list">
-                            <li><a href="./ppt_calculator.html" class="project-link">Calculator App</a></li>
+                            <li>
+                                <a href="./ppt_calculator.html" class="project-link">Calculator App</a>
+                                <a href="https://drive.google.com/drive/folders/1jMfBfqeTB5upAibQ-ziDwaIMUszB0PFE?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
                         </ul>
                     </td>
-                    <td></td>
+                   
                 </tr>
 
                 <!-- Day 10 -->
@@ -316,10 +476,15 @@
                     <td>Variables, Lists & Data</td>
                     <td>
                         <ul class="project-list">
-                            <li><a href="./ppt_calculator.html" class="project-link">Calculator App</a></li>
+                            <li>
+                                <a href="./ppt_calculator.html" class="project-link">Calculator App</a>
+                                <a href="https://drive.google.com/drive/folders/1jMfBfqeTB5upAibQ-ziDwaIMUszB0PFE?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
                         </ul>
                     </td>
-                    <td></td>
+                    
                 </tr>
 
                 <!-- Day 11 -->
@@ -329,10 +494,15 @@
                     <td>Advanced Concepts</td>
                     <td>
                         <ul class="project-list">
-                            <li><a href="./ppt_electrical_circuit.html" class="project-link">Electrical Circuit</a></li>
+                            <li>
+                                <a href="./ppt_electrical_circuit.html" class="project-link">Electrical Circuit</a>
+                                <a href="https://drive.google.com/drive/folders/1yED3k9jZZpgB-D2KfjS9IL0Bru7fIU1p?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
                         </ul>
                     </td>
-                    <td></td>
+                   
                 </tr>
 
                 <!-- Day 12 -->
@@ -342,10 +512,15 @@
                     <td>Advanced Concepts</td>
                     <td>
                         <ul class="project-list">
-                            <li><a href="./ppt_typing_practice_game.html" class="project-link">Typing Game</a></li>
+                            <li>
+                                <a href="./ppt_typing_practice_game.html" class="project-link">Typing Game</a>
+                                <a href="https://drive.google.com/drive/folders/1ou28hYECtnh-EX9bvZGMHjjJN-hFDU81?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
                         </ul>
                     </td>
-                    <td></td>
+                  
                 </tr>
 
                 <!-- Day 13 -->
@@ -355,10 +530,15 @@
                     <td>Advanced Concepts</td>
                     <td>
                         <ul class="project-list">
-                            <li><a href="./ppt_to_do_list.html" class="project-link">To-Do List</a></li>
+                            <li>
+                                <a href="./ppt_to_do_list.html" class="project-link">To-Do List</a>
+                                <a href="https://drive.google.com/drive/folders/1OcK_T6m0tJck0UkBq9zdztJ2xOtvOP2E?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
                         </ul>
                     </td>
-                    <td></td>
+                   
                 </tr>
 
                 <!-- Day 14 -->
@@ -368,10 +548,15 @@
                     <td>Advanced Concepts</td>
                     <td>
                         <ul class="project-list">
-                            <li><a href="./ppt_translator.html" class="project-link">Language Translator</a></li>
+                            <li>
+                                <a href="./ppt_translator.html" class="project-link">Language Translator</a>
+                                <a href="https://drive.google.com/drive/folders/1__KsIU3D0GEvxessZCJNhRJY6jA8fo0J?usp=drive_link" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
                         </ul>
                     </td>
-                    <td></td>
+                    
                 </tr>
 
                 <!-- Day 15 -->
@@ -381,12 +566,27 @@
                     <td>Final Project</td>
                     <td>
                         <ul class="project-list">
-                            <li><a href="#" class="project-link">Scratch OS</a></li>
-                            <li><a href="#" class="project-link">Jump Quest</a></li>
-                            <li><a href="#" class="project-link">Chess Game</a></li>
+                            <li>
+                                <a href="#" class="project-link">Scratch OS</a>
+                                <a href="./sources/scratch_os.sb3" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="project-link">Jump Quest</a>
+                                <a href="./sources/jump_quest.sb3" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="project-link">Chess Game</a>
+                                <a href="./sources/chess_game.sb3" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </li>
                         </ul>
                     </td>
-                    <td></td>
+                 
                 </tr>
 
                 <!-- Day 16 -->
@@ -396,12 +596,18 @@
                     <td>Final Project</td>
                     <td>
                         <ul class="project-list">
-                            <li><a href="#" class="project-link">Scratch OS</a></li>
-                            <li><a href="#" class="project-link">Jump Quest</a></li>
-                            <li><a href="#" class="project-link">Chess Game</a></li>
+                            <li>
+                               
+                            </li>
+                            <li>
+                             
+                            </li>
+                            <li>
+                              
+                            </li>
                         </ul>
                     </td>
-                    <td></td>
+                   
                 </tr>
             </tbody>
         </table>

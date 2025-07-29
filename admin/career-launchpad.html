@@ -40,6 +40,166 @@
             background-color: var(--white);
             box-shadow: 0 0 30px rgba(0,0,0,0.1);
             overflow: hidden;
+            position: relative;
+            top: 70px; /* To account for fixed nav */
+        }
+        
+        /* Popup Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .modal-content {
+        background-color: var(--white);
+        padding: 15px;
+        border-radius: 8px;
+        max-width: 80%;
+        max-height: 80vh;
+        overflow: auto;
+        position: relative;
+        width: 600px; /* Fixed width */
+    }
+    
+    .close-modal {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        font-size: 28px;
+        cursor: pointer;
+        color: var(--accent);
+        background: rgba(255,255,255,0.8);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        z-index: 2;
+    }
+    
+    .modal-poster {
+        max-width: 100%;
+        max-height: 75vh;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+        .modal-content {
+            width: 90%;
+            max-height: 90vh;
+            padding: 10px;
+        }
+        
+        .close-modal {
+            top: 2px;
+            right: 5px;
+            font-size: 24px;
+            width: 25px;
+            height: 25px;
+        }
+        
+        .modal-poster {
+            max-height: 85vh;
+        }
+    }
+        /* Navigation Styles */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--primary);
+            padding: 15px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+        }
+        
+        .mobile-menu li {
+            margin-bottom: 10px;
+        }
+        
+        .mobile-menu a {
+            color: var(--white);
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
         }
         
         /* Header Styles */
@@ -101,6 +261,7 @@
         /* Section Styles - Alternating Patterns */
         .section {
             padding: 40px;
+            scroll-margin-top: 70px; /* To account for fixed nav */
         }
         
         /* Pattern 1: Solid White with Bottom Border */
@@ -313,23 +474,18 @@
             opacity: 0.8;
         }
         
-
-  .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px; 
-      z-index: 1000;
-      cursor: pointer;
-     
-      transition: transform 0.3s;
-    }
-
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-    }
-
-
-
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px; 
+            z-index: 1000;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
         
         /* Responsive Styles */
         @media (max-width: 768px) {
@@ -352,25 +508,69 @@
             .phase-card {
                 flex: 1 1 100%;
             }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .brochure {
+                top: 60px;
+            }
+            
+            .section {
+                scroll-margin-top: 60px;
+            }
         }
     </style>
-    <script>
-          function openWhatsApp() {
-
-    const phoneNumber = "916383791772"; 
-    const message = "Hi, I Need More Details About Career LaunchPad Program"; 
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-  }
-    </script>
 </head>
 <body>
-
+   <!-- Popup Modal -->
+<div class="modal" id="posterModal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <img src="../img/launchpad.jpg" alt="Program Poster" class="modal-poster">
+    </div>
+</div>
+    <!-- Navigation -->
+    <div class="nav-container">
+        <div class="nav-wrapper">
+             <a href="#" class="logo">Career Launchpad</a>
+            <ul class="nav-links">
+                <li><a href="#program-objective">Objective</a></li>
+                <li><a href="#who-can-apply">Who_Can_Enroll</a></li>
+                 <li><a href="#prerequisites">Prerequisites</a></li>
+                
+                <li><a href="#program-duration">Duration</a></li>
+                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#how-it-works">Program_Phase</a></li>
+                <li><a href="#course-brief">Course_Brief</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="mobile-menu" id="mobileMenu">
+                <ul>
+                 <li><a href="#program-objective">Objective</a></li>
+                <li><a href="#who-can-apply">Who_Can_Enroll</a></li>
+                 <li><a href="#prerequisites">Prerequisites</a></li>
+                
+                <li><a href="#program-duration">Duration</a></li>
+                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#how-it-works">Program_Phase</a></li>
+                <li><a href="#course-brief">Course_Brief</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <!-- WhatsApp floating button -->
-<div class="whatsapp-float" onclick="openWhatsApp()">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="50">
-</div>
+    <div class="whatsapp-float" onclick="openWhatsApp()">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="50">
+    </div>
 
     <div class="brochure">
         <!-- Header Section -->
@@ -381,7 +581,7 @@
         </div>
         
         <!-- Program Objective (Pattern 1) -->
-        <div class="section section-pattern-1">
+        <div class="section section-pattern-1" id="program-objective">
             <h2 class="section-title">Program Objective</h2>
             <div class="section-content">
                 <p>Many graduates struggle to find IT jobs even after completing their degree. The main challenges are:</p>
@@ -404,7 +604,7 @@
         </div>
         
         <!-- Who Can Apply? (Pattern 2) -->
-        <div class="section section-pattern-6">
+        <div class="section section-pattern-6" id="who-can-apply">
             <h2 class="section-title">Who Can Apply?</h2>
             <div class="two-column">
                 <div>
@@ -412,15 +612,13 @@
                         <li>Final year (4th year) college students</li>
                         <li>Recent graduates</li>
                         <li>Job seekers with 0-2 years post-graduation</li>
-                       
                     </ul>
                 </div>
-              
             </div>
         </div>
 
         <!-- Prerequisites (Pattern 3) -->
-        <div class="section section-pattern-2">
+        <div class="section section-pattern-2" id="prerequisites">
             <h2 class="section-title">Prerequisites</h2>
             <div class="section-content">
                 <div class="info-grid">
@@ -446,7 +644,7 @@
         </div>
 
         <!-- Program Duration (Pattern 4) -->
-        <div class="section section-pattern-4">
+        <div class="section section-pattern-4" id="program-duration">
             <h2 class="section-title">Program Duration</h2>
             <div class="section-content">
                 <div class="phase-container">
@@ -493,23 +691,18 @@
                         <ul class="feature-list">
                             <li>Tambaram</li>
                             <li>Anna Nagar</li>
-                            
                         </ul>
                     </div>
-                 
                 </div>
             </div>
         </div>
 
         <!-- Projects Covered (Pattern 6) -->
-        <div class="section section-pattern-6">
+        <div class="section section-pattern-6" id="projects">
             <h2 class="section-title">Projects Covered</h2>
             <div class="section-content">
                 <div class="phase-container">
-
-
                     <div class="phase-card">
-                       
                         <h3 class="phase-title">Complete Web Application Development</h3>
                         <div class="phase-content">
                             <ul class="feature-list">
@@ -520,7 +713,6 @@
                         </div>
                     </div>
                     <div class="phase-card">
-                    
                         <h3 class="phase-title">Real Client Projects</h3>
                         <div class="phase-content">
                             <ul class="feature-list">
@@ -531,7 +723,6 @@
                         </div>
                     </div>
                     <div class="phase-card">
-                      
                         <h3 class="phase-title">Portfolio-Worthy Deliverables</h3>
                         <div class="phase-content">
                             <ul class="feature-list">
@@ -541,16 +732,13 @@
                             </ul>
                         </div>
                     </div>
-
-
-                    
                 </div>
             </div>
         </div>
 
         <!-- How This Program Works (Pattern 1) -->
-        <div class="section section-pattern-1">
-            <h2 class="section-title">How This Program Works</h2>
+        <div class="section section-pattern-1" id="how-it-works">
+            <h2 class="section-title">Program Phase</h2>
             <div class="section-content">
                 <p>Our program is structured into four key phases to ensure both skill development and real-world experience:</p>
                 
@@ -611,7 +799,7 @@
         </div>
 
         <!-- Course Brief (Pattern 2) -->
-        <div class="section section-pattern-2">
+        <div class="section section-pattern-2" id="course-brief">
             <h2 class="section-title">Course Brief</h2>
             <div class="info-grid">
                 <div class="info-card">
@@ -620,7 +808,6 @@
                         <li>Job placement assistance </li>
                         <li>Intensive interview preparation sessions</li>
                         <li>Career guidance and mentorship</li>
-                      
                     </ul>
                 </div>
                 
@@ -629,7 +816,6 @@
                     <ul class="feature-list">
                         <li>Provided:Work experience (Course Completion) certificate</li>
                         <li>Project completion certificates</li>
-                       
                     </ul>
                 </div>
                 
@@ -638,7 +824,6 @@
                     <ul class="feature-list">
                         <li>Provided: Course materials, project resources</li>
                         <li>Access to development tools and software</li>
-                       
                     </ul>
                 </div>
 
@@ -646,7 +831,6 @@
                     <h3 class="info-title">Fees Structure</h3>
                     <ul class="feature-list">
                         <li>Rs. 25,000 to Rs. 75,000 (depending on skill level, duration, and specialization)</li>
-                        
                     </ul>
                 </div>
             </div>
@@ -657,12 +841,76 @@
             <h3>Ready to Launch Your IT Career?</h3>
             <p>Contact us today to enroll in Career LaunchPad</p>
             <div class="contact-info">
-                <a href="tel:+916383791772"><i class="fas fa-phone"></i> +91 6383791772</a>
-                <a href="mailto:otomatikstambaram@gmail.com"><i class="fas fa-envelope"></i> otomatikstambaram@gmail.com</a>
-                <a href="#"><i class="fas fa-map-marker-alt"></i> Visit Our Centers</a>
+                   <a href="tel:+916382547078"><i class="fas fa-phone"></i> +91 6382547078</a>
+                    <a href="mailto:otomatikstambaram@gmail.com"><i class="fas fa-envelope"></i> otomatikstambaram@gmail.com</a>
+            
+                <a href="https://www.otomatiks.com" target="_blank"><i class="fas fa-globe"></i> www.otomatiks.com</a>
             </div>
             <p style="margin-top: 20px; font-size: 0.9rem;">© 2025 Career LaunchPad. All Rights Reserved.</p>
         </div>
     </div>
+
+    <script>
+        // WhatsApp function
+        function openWhatsApp() {
+            const phoneNumber = "916382547078"; 
+            const message = "Hi, I Need More Details About Career LaunchPad Program"; 
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        // Modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('posterModal');
+            const closeModal = document.getElementById('closeModal');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            // Show modal on page load
+            modal.style.display = 'flex';
+            
+            // Close modal when X is clicked
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside content
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+            });
+            
+            // Close mobile menu when a link is clicked
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70, // Account for fixed nav
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -22,6 +22,7 @@
     <div class="nav">
         <div class="nav-container">
             <ul id="mainMenu">
+                 <li><a href="./admin/admin.html">Admin Console</a></li>
                 <li><a href="#courses">Our Courses</a></li>
                 <li><a href="#about">Why Choose Us</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -68,10 +69,26 @@
             </div>
         </section> -->
         
-        <section id="courses" class="courses-section">
+       
+
+
+
+               <section id="courses" class="courses-section">
             <h2 class="section-title">School Students Courses</h2>
             <p class="section-subtitle">Perfect for young learners aged 6-18</p>
             <div class="course-grid">
+                <!-- Scratch Course -->
+                <div class="course-card">
+                    <div class="course-icon scratch">
+                        <i class="fas fa-cat"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Scratch Programming</h3>
+                        <p>Drag-and-drop coding for beginners! Create animations, stories, and games while learning computational thinking. Ideal for young learners aged 6+.</p>
+                        <a href="./Scratch/scratch.html" class="btn">Start Learning</a>
+                    </div>
+                </div>
+                
                 <!-- Python Course -->
                 <div class="course-card">
                     <div class="course-icon python">
@@ -84,6 +101,18 @@
                     </div>
                 </div>
                 
+                <!-- Java for Kids -->
+                <div class="course-card">
+                    <div class="course-icon java">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Java for Kids</h3>
+                        <p>Learn Java fundamentals through fun, interactive projects. Great for students who want to start with object-oriented programming concepts.</p>
+                        <a href="./Java/java-kids.html" class="btn">Start Learning</a>
+                    </div>
+                </div>
+                
                 <!-- Web Development Course -->
                 <div class="course-card">
                     <div class="course-icon web">
@@ -93,18 +122,6 @@
                         <h3>Web Development</h3>
                         <p>Build your own websites from scratch! Learn HTML, CSS, and JavaScript to create interactive web pages and simple web apps. Designed for students aged 12+.</p>
                         <a href="./Web Development/web-development.html" class="btn">Start Learning</a>
-                    </div>
-                </div>
-                
-                <!-- Scratch Course -->
-                <div class="course-card">
-                    <div class="course-icon scratch">
-                        <i class="fas fa-cat"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>Scratch Programming</h3>
-                        <p>Drag-and-drop coding for beginners! Create animations, stories, and games while learning computational thinking. Ideal for young learners aged 6+.</p>
-                        <a href="./Scratch/scratch.html" class="btn">Start Learning</a>
                     </div>
                 </div>
                 
@@ -126,15 +143,15 @@
             <h2 class="section-title">College Students & Professionals</h2>
             <p class="section-subtitle">Advance your career with in-demand tech skills</p>
             <div class="course-grid">
-                <!-- Full Stack Course -->
+                <!-- Career LaunchPad -->
                 <div class="course-card">
-                    <div class="course-icon fullstack">
-                        <i class="fas fa-layer-group"></i>
+                    <div class="course-icon career" style="background-color: #6f42c1;">
+                        <i class="fas fa-user-graduate"></i>
                     </div>
                     <div class="course-content">
-                        <h3>Full Stack Development</h3>
-                        <p>Master both front-end and back-end development. Learn React, Node.js, Express, and MongoDB to build complete web applications with portfolio-ready projects.</p>
-                        <a href="./Fullstack/fullstack.html" class="btn">Start Learning</a>
+                        <h3>Career LaunchPad</h3>
+                        <p>Become job-ready with practical training and real project experience. Master essential skills for today's IT job market.</p>
+                        <a href="./Career/careerlaunchpad.html" class="btn">Start Learning</a>
                     </div>
                 </div>
                 
@@ -146,35 +163,87 @@
                     <div class="course-content">
                         <h3>System Design</h3>
                         <p>Learn to design scalable systems and architectures. Master concepts like load balancing, caching, and database design through real-world case studies.</p>
-                        <a href="./careerlaunchpad.html" class="btn">Start Learning</a>
+                        <a href="./System/system-design.html" class="btn">Start Learning</a>
                     </div>
                 </div>
                 
-                <!-- Data Science Course -->
+                <!-- Full Stack Course -->
                 <div class="course-card">
-                    <div class="course-icon data">
-                        <i class="fas fa-chart-line"></i>
+                    <div class="course-icon fullstack">
+                        <i class="fas fa-layer-group"></i>
                     </div>
                     <div class="course-content">
-                        <h3>Data Science with Python</h3>
-                        <p>Learn data analysis, visualization, and machine learning fundamentals using Python's powerful data science libraries with real datasets and practical applications.</p>
-                        <a href="./Data/data.html" class="btn">Start Learning</a>
+                        <h3>Full Stack Development</h3>
+                        <p>Master both front-end and back-end development. Learn React, Node.js, Express, and MongoDB to build complete web applications.</p>
+                        <a href="./Fullstack/fullstack.html" class="btn">Start Learning</a>
                     </div>
                 </div>
                 
-                <!-- Advanced Java Course -->
+                <!-- Frontend Development -->
+                <div class="course-card">
+                    <div class="course-icon frontend" style="background-color: #61dafb;">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Frontend Development (React)</h3>
+                        <p>Master modern frontend development with React.js. Learn component-based architecture, state management, and building responsive UIs.</p>
+                        <a href="./Frontend/react.html" class="btn">Start Learning</a>
+                    </div>
+                </div>
+                
+                <!-- Python Programming -->
+                <div class="course-card">
+                    <div class="course-icon python">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Python Programming</h3>
+                        <p>Master Python for professional development. Learn advanced concepts, web frameworks, and automation scripting for real-world applications.</p>
+                        <a href="./Python/python-pro.html" class="btn">Start Learning</a>
+                    </div>
+                </div>
+                
+                <!-- Java Programming -->
                 <div class="course-card">
                     <div class="course-icon java">
                         <i class="fab fa-java"></i>
                     </div>
                     <div class="course-content">
-                        <h3>Advanced Java</h3>
-                        <p>Master Java programming with advanced concepts like multithreading, collections framework, and Spring Boot fundamentals for enterprise applications.</p>
+                        <h3>Java Programming</h3>
+                        <p>Master Java programming with advanced concepts like multithreading, collections framework, and Spring Boot for enterprise applications.</p>
                         <a href="./Java/java.html" class="btn">Start Learning</a>
+                    </div>
+                </div>
+                
+                <!-- Web Development -->
+                <div class="course-card">
+                    <div class="course-icon web">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Web Development</h3>
+                        <p>Comprehensive web development course covering modern frameworks, responsive design, and backend integration for professional projects.</p>
+                        <a href="./Web/web-pro.html" class="btn">Start Learning</a>
+                    </div>
+                </div>
+                
+                <!-- Databases (SQL) -->
+                <div class="course-card">
+                    <div class="course-icon database" style="background-color: #00758f;">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Databases (SQL)</h3>
+                        <p>Master database design, SQL queries, optimization, and administration. Learn to work with relational databases for application development.</p>
+                        <a href="./Database/sql.html" class="btn">Start Learning</a>
                     </div>
                 </div>
             </div>
         </section>
+
+
+
+
 
         <section id="about" class="about-section">
             <h2 class="section-title">Why Choose Otomatiks?</h2>
@@ -197,13 +266,7 @@
                     <p>Learn from industry professionals with years of teaching experience and real-world expertise.</p>
                 </div>
                 
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3>Community Support</h3>
-                    <p>Join our vibrant community of learners, get help when you're stuck, and collaborate on projects.</p>
-                </div>
+                
                 
                 <div class="feature-item">
                     <div class="feature-icon">
@@ -216,15 +279,7 @@
         </section>
     </div>
     
-    <section id="cta" class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Start Your Coding Journey?</h2>
-                <p>Join thousands of students who've unlocked their potential with Otomatiks</p>
-                <a href="#contact" class="btn btn-large">Get Started Today</a>
-            </div>
-        </div>
-    </section>
+    
     
     <footer id="contact">
         <div class="container">
@@ -253,19 +308,27 @@
                     <h3>Contact Us</h3>
                     <ul class="contact-info">
                         <li><i class="fas fa-envelope"></i> coo@otomatiks.in</li>
-                        <li><i class="fas fa-phone"></i> +91 9876543210</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Bangalore, India</li>
+                        <li><i class="fas fa-phone"></i> +91 6383791772</li>
+                        <li><i class="fas fa-map-marker-alt"></i>Chennai</li>
                     </ul>
                 </div>
                 
-                <div class="footer-col">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe for updates and course announcements</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your Email">
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
+              <div class="footer-col">
+    <h3>Our Location</h3>
+    <p>Find us at our training center or drop by anytime!</p>
+    <div class="map-container" style="width: 100%; height: 200px;">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.6688248680116!2d80.10034907373108!3d12.928994215813661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525fecbc8ca403%3A0x29acb81c7736863f!2sOtomatiks%20Tambaram!5e0!3m2!1sen!2sin!4v1753787900903!5m2!1sen!2sin" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</div>
+
             </div>
             
             <div class="footer-bottom">

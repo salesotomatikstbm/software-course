@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Design Course - Otomatiks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #34495e;
+            --white: #ffffff;
+            --gray: #95a5a6;
+            --light-blue: #eaf2f8;
+            --light-red: #fdedec;
+            --light-green: #e8f8f5;
+            --light-yellow: #fef9e7;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .brochure {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--white);
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+            top: 70px; /* To account for fixed nav */
+        }
+        
+        /* Popup Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .modal-content {
+        background-color: var(--white);
+        padding: 15px;
+        border-radius: 8px;
+        max-width: 80%;
+        max-height: 80vh;
+        overflow: auto;
+        position: relative;
+        width: 600px; /* Fixed width */
+    }
+    
+    .close-modal {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        font-size: 28px;
+        cursor: pointer;
+        color: var(--accent);
+        background: rgba(255,255,255,0.8);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        z-index: 2;
+    }
+    
+    .modal-poster {
+        max-width: 100%;
+        max-height: 75vh;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+        .modal-content {
+            width: 90%;
+            max-height: 90vh;
+            padding: 10px;
+        }
+        
+        .close-modal {
+            top: 2px;
+            right: 5px;
+            font-size: 24px;
+            width: 25px;
+            height: 25px;
+        }
+        
+        .modal-poster {
+            max-height: 85vh;
+        }
+    }
+        
+        /* Navigation Styles */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--primary);
+            padding: 15px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+        }
+        
+        .mobile-menu li {
+            margin-bottom: 10px;
+        }
+        
+        .mobile-menu a {
+            color: var(--white);
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+        }
+        
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .program-title {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .program-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .program-tagline {
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Section Styles - Alternating Patterns */
+        .section {
+            padding: 40px;
+            scroll-margin-top: 70px; /* To account for fixed nav */
+        }
+        
+        /* Pattern 1: Solid White with Bottom Border */
+        .section-pattern-1 {
+            background-color: var(--white);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        /* Pattern 2: Light Blue Gradient */
+        .section-pattern-2 {
+            background: linear-gradient(to right, var(--light-blue), var(--white));
+        }
+        
+        /* Pattern 3: Diagonal Stripe Effect */
+        .section-pattern-3 {
+            background-color: var(--white);
+            background-image: repeating-linear-gradient(
+                45deg,
+                var(--light),
+                var(--light) 10px,
+                var(--white) 10px,
+                var(--white) 20px
+            );
+        }
+        
+        /* Pattern 4: Light Red with Left Border */
+        .section-pattern-4 {
+            background-color: var(--light-red);
+            border-left: 5px solid var(--accent);
+        }
+        
+        /* Pattern 5: Light Green with Dots */
+        .section-pattern-5 {
+            background-color: var(--light-green);
+            background-image: radial-gradient(var(--gray) 1px, transparent 1px);
+            background-size: 15px 15px;
+        }
+        
+        /* Pattern 6: Light Yellow with Top Border */
+        .section-pattern-6 {
+            background-color: var(--light-yellow);
+            border-top: 3px solid var(--secondary);
+        }
+        
+        .section-title {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .section-content {
+            font-size: 1.1rem;
+        }
+        
+        .highlight-box {
+            background-color: var(--light);
+            border-left: 4px solid var(--secondary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        /* Card Styles */
+        .phase-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .phase-card {
+            flex: 1 1 300px;
+            background-color: var(--white);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .phase-title {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .phase-duration {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .phase-content {
+            font-size: 1rem;
+        }
+        
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        /* Feature List Styles */
+        .feature-list {
+            list-style-type: none;
+        }
+        
+        .feature-list li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .feature-list li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+        
+        /* Info Grid Styles */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .info-card {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .info-title {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .contact-info {
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-info a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: opacity 0.3s;
+        }
+        
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px; 
+            z-index: 1000;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Comparison Table Styles */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table th {
+            background-color: var(--light-blue);
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: rgba(0,0,0,0.02);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .header, .section {
+                padding: 30px 20px;
+            }
+            
+            .program-title {
+                font-size: 2.2rem;
+            }
+            
+            .program-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .phase-card {
+                flex: 1 1 100%;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .brochure {
+                top: 60px;
+            }
+            
+            .section {
+                scroll-margin-top: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+   <!-- Popup Modal -->
+<div class="modal" id="posterModal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <img src="../img/systemdesign.jpg" alt="Program Poster" class="modal-poster">
+    </div>
+</div>
+
+    <!-- Navigation -->
+    <div class="nav-container">
+        <div class="nav-wrapper">
+            <a href="#" class="logo">System Design</a>
+            <ul class="nav-links">
+                 <li><a href="#course-overview">Objective</a></li>    
+                     <li><a href="#who-should-enroll">Who_Can_Enroll</a></li>
+                      <li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#program-duration">Duration</a></li>
+                    
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#course-structure">Curriculum</a></li>
+                    <li><a href="#course-brief">Course Brief</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="mobile-menu" id="mobileMenu">
+                <ul>
+                     <li><a href="#course-overview">Objective</a></li>    
+                     <li><a href="#who-should-enroll">Who_Can_Enroll</a></li>
+                      <li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#program-duration">Duration</a></li>
+                    
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#course-structure">Curriculum</a></li>
+                    <li><a href="#course-brief">Course Brief</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp floating button -->
+    <div class="whatsapp-float" onclick="openWhatsApp()">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="50">
+    </div>
+
+    <div class="brochure">
+        <!-- Header Section -->
+        <div class="header">
+            <h1 class="program-title">SYSTEM DESIGN COURSE</h1>
+            <h2 class="program-subtitle">Mastering Modern System Design</h2>
+            <p class="program-tagline">"From MVPs to cloud microservices - build scalable software architecture"</p>
+        </div>
+        
+        <!-- Course Overview (Pattern 1) -->
+        <div class="section section-pattern-1" id="course-overview">
+            <h2 class="section-title">Course Objective</h2>
+            <div class="section-content">
+                <p>A practical course teaching scalable software architecture - from MVPs to cloud microservices. Ideal for aspiring software engineers and architects.</p>
+                <div class="highlight-box">
+                    <h3>Why Learn System Design?</h3>
+                    <ul class="feature-list">
+                        <li>Bridges coding & real-world applications</li>
+                        <li>Solves complex problems</li>
+                        <li>Highly valued by companies</li>
+                        <li>Career growth opportunities</li>
+                        <li>Handles real-world demands</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Who Should Enroll? (Pattern 2) -->
+        <div class="section section-pattern-6" id="who-should-enroll">
+            <h2 class="section-title">Who Should Enroll?</h2>
+            <div class="two-column">
+                <div>
+                    <ul class="feature-list">
+                        <li>CS/IT students</li>
+                        <li>Final-year students</li>
+                        <li>Aspiring engineers</li>
+                        <li>CRUD/framework developers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+<!-- Prerequisites (Pattern 3) -->
+        <div class="section section-pattern-2" id="prerequisites">
+            <h2 class="section-title">Prerequisites</h2>
+            <div class="section-content">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3 class="info-title">Technical Requirements</h3>
+                        <ul class="feature-list">
+                            <li>Hands-on experience with Java (or similar OOP language)</li>
+                            <li>Basic understanding of databases and SQL</li>
+                            <li>Familiarity with HTML/CSS fundamentals</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Schedule & Duration (Pattern 3) -->
+        <div class="section section-pattern-4" id="program-duration">
+            <h2 class="section-title">Program Duration</h2>
+            <div class="section-content">
+                <div class="highlight-box">
+                    <h3>Duration:</h3>
+                    <ul class="feature-list">
+                        <li>24 weeks (200 hours total)</li>
+                        <li>Level 1 - 10 weeks</li>
+                        <li>Level 2 - 14 weeks</li>
+                    </ul>
+                    <h3>Delivery Mode:</h3>
+                    <ul class="feature-list">
+                        <li>Live online classes with interactive discussions</li>
+                        <li>Mentor support throughout the course</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <!-- How This Differs from Full Stack (Pattern 4) -->
+        <div class="section section-pattern-4">
+            <h2 class="section-title">How This Differs from Full Stack Development</h2>
+            <div class="section-content">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>ASPECT</th>
+                            <th>SYSTEM DESIGN</th>
+                            <th>FULL STACK</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Builds Backend</td>
+                            <td>Microservices</td>
+                            <td>Basic</td>
+                        </tr>
+                        <tr>
+                            <td>Database Optimization</td>
+                            <td>Advanced</td>
+                            <td>Basic</td>
+                        </tr>
+                        <tr>
+                            <td>Cloud Deployment</td>
+                            <td>Advanced</td>
+                            <td>Basic</td>
+                        </tr>
+                        <tr>
+                            <td>Caching Strategies</td>
+                            <td>Advanced</td>
+                            <td>Basic</td>
+                        </tr>
+                        <tr>
+                            <td>Auth (Basic vs. Distributed)</td>
+                            <td>Advanced</td>
+                            <td>Basic</td>
+                        </tr>
+                        <tr>
+                            <td>Fault Tolerance</td>
+                            <td>Advanced</td>
+                            <td>Basic</td>
+                        </tr>
+                        <tr>
+                            <td>Multi-Region Deployment</td>
+                            <td>Advanced</td>
+                            <td>Basic</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Projects & Hands-on Experience (Pattern 6) -->
+        <div class="section section-pattern-6" id="projects">
+            <h2 class="section-title">Projects & Hands-on Experience</h2>
+            <div class="section-content">
+                <div class="phase-container">
+                    <div class="phase-card">
+                        <h3 class="phase-title">Real-World Application Development</h3>
+                        <div class="phase-content">
+                            <ul class="feature-list">
+                                <li>Design and build a real-world application</li>
+                                <li>Implement authentication, auditing, logging, and dashboards</li>
+                                <li>Transition your project from monolith to microservices</li>
+                                <li>Deploy and manage services using Docker, basic Kubernetes, and cloud tools</li>
+                                <li>Develop test suites, CI/CD pipelines, and real monitoring tools</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Structure (Pattern 5) -->
+        <div class="section section-pattern-2" id="course-structure">
+            <h2 class="section-title">Course Structure & Curriculum</h2>
+            <div class="section-content">
+                <div class="phase-container">
+                    <div class="phase-card">
+                        <h3 class="phase-title">LEVEL 1: Essential System Design</h3>
+                        <div class="phase-duration">10 weeks</div>
+                        <div class="phase-content">
+                            <p><strong>Theme:</strong> Build a core system from scratch with real-world practices!</p>
+                            <h4>Objective:</h4>
+                            <ul class="feature-list">
+                                <li>Master fundamental system design and development workflows</li>
+                                <li>Build a functional MVP comprising authentication, logging, and auditing</li>
+                                <li>Establish modern Git workflows, unit testing, and set up CI/CD</li>
+                            </ul>
+                            <h4>Modules:</h4>
+                            <ul class="feature-list">
+                                <li>Introduction & System Design Basics</li>
+                                <li>Git Workflows & Project Setup</li>
+                                <li>Requirements & Architecture Design</li>
+                                <li>Database Design</li>
+                                <li>Core Application Features (CRUD, validation)</li>
+                                <li>User Authentication (JWT, secure flows)</li>
+                                <li>Logging & Auditing</li>
+                                <li>Unit Testing & CI/CD (with GitHub Actions)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="phase-card">
+                        <h3 class="phase-title">LEVEL 2: Advanced Microservices & Cloud</h3>
+                        <div class="phase-duration">14 weeks</div>
+                        <div class="phase-content">
+                            <p><strong>Theme:</strong> Move beyond monoliths—embrace microservices, cloud platforms</p>
+                            <h4>Objective:</h4>
+                            <ul class="feature-list">
+                                <li>Transition from monolithic to microservices architecture</li>
+                                <li>Understand cloud deployment using containers</li>
+                                <li>Implement rate limiting, caching, API versioning, and user plans</li>
+                                <li>Master distributed communication and orchestration basics</li>
+                            </ul>
+                            <h4>Modules:</h4>
+                            <ul class="feature-list">
+                                <li>Microservices Fundamentals</li>
+                                <li>Service-to-Service Communication</li>
+                                <li>API Design & Versioning</li>
+                                <li>Rate Limiting & Throttling</li>
+                                <li>Cloud Platforms Overview (AWS/GCP, Docker)</li>
+                                <li>Caching with Redis</li>
+                                <li>User Plans & Editions</li>
+                                <li>Enhanced User Management (RBAC, teams)</li>
+                                <li>Kubernetes & Container Orchestration Basics</li>
+                                <li>Monitoring & Analytics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learning Outcomes (Pattern 1) -->
+        <div class="section section-pattern-1">
+            <h2 class="section-title">Learning Outcomes</h2>
+            <div class="section-content">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <ul class="feature-list">
+                            <li>Architect scalable and maintainable software systems</li>
+                            <li>Apply professional workflows (Git, branching, CI/CD, testing)</li>
+                            <li>Implement robust authentication, auditing, and user management</li>
+                            <li>Break down systems into microservices using industry-standard patterns</li>
+                            <li>Deploy your code on real cloud platforms with modern tools</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Development Tools & Technologies (Pattern 2) -->
+        <div class="section section-pattern-2">
+            <h2 class="section-title">Development Tools & Technologies</h2>
+            <div class="section-content">
+                <div class="two-column">
+                    <div>
+                        <h3 class="info-title">Languages:</h3>
+                        <ul class="feature-list">
+                            <li>Java, SQL</li>
+                        </ul>
+                        
+                        <h3 class="info-title">Databases:</h3>
+                        <ul class="feature-list">
+                            <li>SQL-based DBMS</li>
+                        </ul>
+                        
+                        <h3 class="info-title">Source Control:</h3>
+                        <ul class="feature-list">
+                            <li>Git, GitHub</li>
+                        </ul>
+                        
+                        <h3 class="info-title">Testing:</h3>
+                        <ul class="feature-list">
+                            <li>JUnit (or similar)</li>
+                        </ul>
+
+                         <h3 class="info-title">Caching:</h3>
+                        <ul class="feature-list">
+                            <li>Redis</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="info-title">CI/CD:</h3>
+                        <ul class="feature-list">
+                            <li>GitHub Actions</li>
+                        </ul>
+                        
+                        <h3 class="info-title">Containerization:</h3>
+                        <ul class="feature-list">
+                            <li>Docker</li>
+                        </ul>
+                        
+                        <h3 class="info-title">Cloud Platforms:</h3>
+                        <ul class="feature-list">
+                            <li>AWS/GCP (basics)</li>
+                        </ul>
+                        
+                        <h3 class="info-title">Orchestration:</h3>
+                        <ul class="feature-list">
+                            <li>Kubernetes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Brief (Pattern 4) -->
+        <div class="section section-pattern-4" id="course-brief">
+            <h2 class="section-title">Course Brief</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3 class="info-title">What's Next After the Course?</h3>
+                    <ul class="feature-list">
+                        <li>Job placement assistance</li>
+                        <li>Intensive interview preparation sessions</li>
+                        <li>Career guidance and mentorship</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3 class="info-title">Certification</h3>
+                    <ul class="feature-list">
+                        <li>Provided: Course Completion certificate</li>
+                        <li>Project completion certificates</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3 class="info-title">Resources & Materials</h3>
+                    <ul class="feature-list">
+                        <li>Provided: Course materials, project resources</li>
+                        <li>Access to development tools and software</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3 class="info-title">Fees Structure</h3>
+                    <ul class="feature-list">
+                        <li>Rs. 25,000 to Rs. 75,000 (depending on skill level, duration, and specialization)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <h3>Ready to Master System Design?</h3>
+            <p>Contact us today to enroll in our System Design Course</p>
+            <div class="contact-info">
+                <a href="tel:+916382547078"><i class="fas fa-phone"></i> +91 6382547078</a>
+                <a href="mailto:otomatikstambaram@gmail.com"><i class="fas fa-envelope"></i> otomatikstambaram@gmail.com</a>
+                <a href="https://www.otomatiks.com" target="_blank"><i class="fas fa-globe"></i> www.otomatiks.com</a>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9rem;">© 2025 Otomatiks. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // WhatsApp function
+        function openWhatsApp() {
+            const phoneNumber = "916382547078"; 
+            const message = "Hi, I Need More Details About System Design Course"; 
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        // Modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('posterModal');
+            const closeModal = document.getElementById('closeModal');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            // Show modal on page load
+            modal.style.display = 'flex';
+            
+            // Close modal when X is clicked
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside content
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+            });
+            
+            // Close mobile menu when a link is clicked
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70, // Account for fixed nav
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

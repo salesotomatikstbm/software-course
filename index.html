@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Otomatiks - Coding Courses for Kids</title>
+    <title>Otomatiks - Coding Courses for Kids & Professionals</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -14,9 +15,7 @@
         </button>
         <div class="logo-container">
             <img src="./otomatiks logo.png" alt="Otomatiks Logo" class="logo">
-            <div class="header-text">
-                <p class="tagline">Coding Courses for Young Innovators</p>
-            </div>
+            
         </div>
     </header>
     
@@ -31,14 +30,47 @@
     </div>
     <div class="overlay" id="overlay"></div>
     
+    <div class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Learn Coding The Fun Way!</h1>
+                <p>From young learners to professionals, we have the perfect course to launch your tech journey. Interactive, project-based learning that makes coding exciting.</p>
+                <div class="hero-buttons">
+                    <a href="#courses" class="btn btn-primary">Explore Courses</a>
+                    <a href="#contact" class="btn btn-secondary">Get Started</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="./hero.png" alt="Coding Illustration">
+            </div>
+        </div>
+    </div>
+    
     <div class="container">
-        <section id="welcome">
-            <h2>Welcome Young Coders!</h2>
-            <p style="font-size: 1.1em;">Embark on an exciting journey into the world of programming with our fun and interactive courses designed especially for kids. Whether you want to create games, build websites, or make cool animations, we have the perfect course for you!</p>
-        </section>
+        <!-- <section id="welcome" class="welcome-section">
+            <div class="welcome-card">
+                <h2>Welcome to Otomatiks!</h2>
+                <p>Whether you're a young learner taking your first steps in coding or a professional looking to upskill, our interactive courses are designed to make learning engaging and effective. We believe in learning by doing, with real projects that excite and challenge you.</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-label">Students</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Satisfaction</span>
+                    </div>
+                </div>
+            </div>
+        </section> -->
         
-        <section id="courses">
-            <h2>Featured Courses</h2>
+        <section id="courses" class="courses-section">
+            <h2 class="section-title">School Students Courses</h2>
+            <p class="section-subtitle">Perfect for young learners aged 6-18</p>
             <div class="course-grid">
                 <!-- Python Course -->
                 <div class="course-card">
@@ -46,8 +78,8 @@
                         <i class="fab fa-python"></i>
                     </div>
                     <div class="course-content">
-                        <h2>Python for Kids</h2>
-                        <p>Learn the basics of Python programming through fun projects, games, and animations! Perfect for beginners.</p>
+                        <h3>Python for Kids</h3>
+                        <p>Start your coding journey with Python! Create games, solve puzzles, and build fun projects while learning fundamental programming concepts. Perfect for beginners aged 10+.</p>
                         <a href="./Python/python.html" class="btn">Start Learning</a>
                     </div>
                 </div>
@@ -58,8 +90,8 @@
                         <i class="fas fa-code"></i>
                     </div>
                     <div class="course-content">
-                        <h2>Web Development Foundation</h2>
-                        <p>Create your own websites with HTML, CSS, and JavaScript in this exciting course! Build 5 projects.</p>
+                        <h3>Web Development</h3>
+                        <p>Build your own websites from scratch! Learn HTML, CSS, and JavaScript to create interactive web pages and simple web apps. Designed for students aged 12+.</p>
                         <a href="./Web Development/web-development.html" class="btn">Start Learning</a>
                     </div>
                 </div>
@@ -70,80 +102,175 @@
                         <i class="fas fa-cat"></i>
                     </div>
                     <div class="course-content">
-                        <h2>Scratch Programming</h2>
-                        <p>Drag and drop your way to creating amazing games and stories with Scratch! Ideal for ages 6+.</p>
+                        <h3>Scratch Programming</h3>
+                        <p>Drag-and-drop coding for beginners! Create animations, stories, and games while learning computational thinking. Ideal for young learners aged 6+.</p>
                         <a href="./Scratch/scratch.html" class="btn">Start Learning</a>
                     </div>
                 </div>
                 
-                <!-- Java Course -->
+                <!-- App Development Course -->
                 <div class="course-card">
-                    <div class="course-icon java">
-                        <i class="fab fa-java"></i>
+                    <div class="course-icon app">
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
                     <div class="course-content">
-                        <h2>Java for Kids</h2>
-                        <p>Discover the world of Java programming through fun, interactive lessons! Complete with mini-games.</p>
-                        <a href="./Java/java.html" class="btn">Start Learning</a>
-                    </div>
-                </div>
-
-                   <!-- Web Development Course -->
-                <div class="course-card">
-                    <div class="course-icon web">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="course-content">
-                        <h2>Web Development Advanced</h2>
-                        <p>Create your own websites with HTML, CSS, and JavaScript in this exciting course! Build 5 projects.</p>
-                        <a href="./web development advanced/web-development.html" class="btn">Start Learning</a>
+                        <h3>App Development</h3>
+                        <p>Create your own mobile apps! Learn the basics of app design and development with simple drag-and-drop tools. Perfect for students aged 12+.</p>
+                        <a href="./App/app.html" class="btn">Start Learning</a>
                     </div>
                 </div>
             </div>
         </section>
         
-        <section id="about" style="margin-top: 70px;">
-            <h2>Why Learn With Otomatiks?</h2>
-            <p>Our courses are specially designed for kids aged 6+ years. We make learning to code fun, interactive, and rewarding:</p>
+        <section id="professional-courses" class="courses-section">
+            <h2 class="section-title">College Students & Professionals</h2>
+            <p class="section-subtitle">Advance your career with in-demand tech skills</p>
+            <div class="course-grid">
+                <!-- Full Stack Course -->
+                <div class="course-card">
+                    <div class="course-icon fullstack">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Full Stack Development</h3>
+                        <p>Master both front-end and back-end development. Learn React, Node.js, Express, and MongoDB to build complete web applications with portfolio-ready projects.</p>
+                        <a href="./Fullstack/fullstack.html" class="btn">Start Learning</a>
+                    </div>
+                </div>
+                
+                <!-- System Design Course -->
+                <div class="course-card">
+                    <div class="course-icon system">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>System Design</h3>
+                        <p>Learn to design scalable systems and architectures. Master concepts like load balancing, caching, and database design through real-world case studies.</p>
+                        <a href="./careerlaunchpad.html" class="btn">Start Learning</a>
+                    </div>
+                </div>
+                
+                <!-- Data Science Course -->
+                <div class="course-card">
+                    <div class="course-icon data">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Data Science with Python</h3>
+                        <p>Learn data analysis, visualization, and machine learning fundamentals using Python's powerful data science libraries with real datasets and practical applications.</p>
+                        <a href="./Data/data.html" class="btn">Start Learning</a>
+                    </div>
+                </div>
+                
+                <!-- Advanced Java Course -->
+                <div class="course-card">
+                    <div class="course-icon java">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Advanced Java</h3>
+                        <p>Master Java programming with advanced concepts like multithreading, collections framework, and Spring Boot fundamentals for enterprise applications.</p>
+                        <a href="./Java/java.html" class="btn">Start Learning</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <h2 class="section-title">Why Choose Otomatiks?</h2>
+            <p class="section-subtitle">Our unique approach to tech education</p>
             
             <div class="feature-list">
                 <div class="feature-item">
-                    <i class="fas fa-project-diagram"></i>
-                    <h3>Project-Based Curriculum</h3>
-                    <p>Learn by building real projects that kids love, from games to interactive stories.</p>
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Project-Based Learning</h3>
+                    <p>Learn by building real applications from day one. Our curriculum focuses on practical skills you can use immediately.</p>
                 </div>
                 
                 <div class="feature-item">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h3>Structured Lessons</h3>
-                    <p>Step-by-step lesson plans that make complex concepts easy to understand.</p>
+                    <div class="feature-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from industry professionals with years of teaching experience and real-world expertise.</p>
                 </div>
                 
                 <div class="feature-item">
-                    <i class="fas fa-laptop-code"></i>
-                    <h3>Hands-On Projects</h3>
-                    <p>Each course includes 5 mini-projects and 1 final showcase project.</p>
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Community Support</h3>
+                    <p>Join our vibrant community of learners, get help when you're stuck, and collaborate on projects.</p>
                 </div>
                 
                 <div class="feature-item">
-                    <i class="fas fa-award"></i>
-                    <h3>Certification</h3>
-                    <p>Earn a certificate upon completion to celebrate your achievements.</p>
+                    <div class="feature-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Career Guidance</h3>
+                    <p>For our professional courses, get resume reviews, interview prep, and job search strategies.</p>
                 </div>
             </div>
         </section>
     </div>
     
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Coding Journey?</h2>
+                <p>Join thousands of students who've unlocked their potential with Otomatiks</p>
+                <a href="#contact" class="btn btn-large">Get Started Today</a>
+            </div>
+        </div>
+    </section>
+    
     <footer id="contact">
-        <div style="max-width: 600px; margin: 0 auto;">
-            <h3 style="margin-bottom: 20px; color: var(--accent);">Got Questions?</h3>
-            <p>We'd love to hear from you! Reach out to our team for more information about our courses.</p>
-            <p style="margin: 20px 0;">
-                <a href="mailto:coo@otomatiks.in" style="color: var(--accent); font-weight: 600; text-decoration: none;">
-                    <i class="fas fa-envelope"></i> coo@otomatiks.in
-                </a>
-            </p>
-            <p>© 2025 Otomatiks. All rights reserved.</p>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Otomatiks</h3>
+                    <p>Making coding education accessible, engaging, and effective for all ages.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> coo@otomatiks.in</li>
+                        <li><i class="fas fa-phone"></i> +91 9876543210</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Bangalore, India</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe for updates and course announcements</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Otomatiks. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
@@ -220,6 +347,23 @@
             // Initialize and update on resize
             updateMenuButton();
             window.addEventListener('resize', updateMenuButton);
+            
+            // Add animation to course cards on scroll
+            const observerOptions = {
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.course-card, .feature-item').forEach(card => {
+                observer.observe(card);
+            });
         });
     </script>
 </body>

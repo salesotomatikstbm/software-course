@@ -1,383 +1,604 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scratch Programming Course Curriculum</title>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #4D96FF; /* Scratch blue */
-            --secondary: #FF9F1C; /* Scratch orange */
-            --accent: #FF6B6B;
-            --light: #F7F9FC;
-            --dark: #2B2D42;
-            --success: #4CC9F0;
-            --card-bg: #FFFFFF;
-        }
-        
-        body {
-            font-family: 'Baloo 2', cursive;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            background-image: radial-gradient(circle at 10% 20%, rgba(77, 150, 255, 0.1) 0%, rgba(77, 150, 255, 0.05) 90%);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-            margin-bottom: 40px;
-            border-radius: 0 0 20px 20px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        header::before {
-            content: "";
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-        }
-        
-        header::after {
-            content: "";
-            position: absolute;
-            bottom: -80px;
-            left: -80px;
-            width: 300px;
-            height: 300px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-        }
-        
-        h1 {
-            margin: 0;
-            font-size: 3rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .subtitle {
-            font-size: 1.3rem;
-            margin-top: 15px;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .button-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-            padding: 0 20px;
-        }
-        
-        .nav-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--card-bg);
-            color: var(--dark);
-            padding: 30px 20px;
-            border-radius: 15px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border: 3px solid transparent;
-            position: relative;
-            overflow: hidden;
-            min-height: 180px;
-        }
-        
-        .nav-btn:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
-            border-color: var(--primary);
-        }
-        
-        .nav-btn i {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-            transition: all 0.3s;
-        }
-        
-        .nav-btn:hover i {
-            transform: scale(1.1);
-            color: var(--secondary);
-        }
-        
-        .nav-btn::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-        }
-        
-        .character {
-            position: absolute;
-            width: 150px;
-            opacity: 0.1;
-            z-index: 0;
-        }
-        
-        .character-1 {
-            top: 20px;
-            left: 5%;
-        }
-        
-        .character-2 {
-            bottom: 10px;
-            right: 5%;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            .subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .button-container {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .nav-btn {
-                min-height: 140px;
-                padding: 25px 15px;
-            }
-            
-            .nav-btn i {
-                font-size: 2.5rem;
-                margin-bottom: 15px;
-            }
-            
-            header::before, header::after {
-                display: none;
-            }
-        }
-        
-        /* Animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .floating {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        /* Improved Password Modal */
-.password-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(43, 45, 66, 0.8);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-    animation: fadeIn 0.5s ease forwards;
-}
-
-.password-box {
-    background: var(--card-bg);
-    padding: 40px 30px;
-    border-radius: 20px;
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-    position: relative;
-    overflow: hidden;
-}
-
-.password-box::before {
-    content: "";
-    position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 150px;
-    height: 150px;
-    background: var(--primary);
-    opacity: 0.1;
-    border-radius: 50%;
-}
-
-.password-box::after {
-    content: "";
-    position: absolute;
-    bottom: -50px;
-    left: -50px;
-    width: 200px;
-    height: 200px;
-    background: var(--secondary);
-    opacity: 0.1;
-    border-radius: 50%;
-}
-
-.password-box h2 {
-    color: var(--primary);
-    margin: 0 0 10px 0;
-    font-size: 1.8rem;
-}
-
-.password-box p {
-    color: var(--dark);
-    font-size: 1rem;
-    opacity: 0.8;
-    margin-bottom: 25px;
-}
-
-.password-input {
-    width: 80%;    /* Reduced from 100% to 80% */
-    max-width: 250px; /* Optional: limits maximum width */
-    padding: 14px 16px;
-    margin-bottom: 20px;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: border 0.3s, box-shadow 0.3s;
-}
-
-
-.password-input:focus {
-    border-color: var(--primary);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(77, 150, 255, 0.2);
-}
-
-.submit-btn {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    border: none;
-    padding: 14px 35px;
-    border-radius: 50px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.submit-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* Smooth fade-in animation for modal */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-    </style>
+  <meta charset="utf-8">
+  <meta name="keywords" content="Edupls - Education & Online Course HTML Template">
+  <meta name="description" content="Edupls - Education & Online Course HTML Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="assets/img/logo/fav-icon.svg">
+  <title>Scratch</title>
+  <link rel="stylesheet" href="../assets/css/all.min.css">
+  <link rel="stylesheet" href="../assets/fonts/style.css">
+  <link rel="stylesheet" href="../assets/css/magnific-popup.min.css">
+  <link rel="stylesheet" href="../assets/css/aos.css">
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="../assets/css/animate.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body>
-    <header>
-        <div class="container">
-            <img src="https://scratch.mit.edu/images/scratch-og.png" alt="Scratch Cat" class="character character-1 floating" style="width: 120px;">
-            <h1>Scratch Programming Adventure</h1>
-            <p class="subtitle">A fun, interactive journey into creative coding for young innovators</p>
-            <img src="https://scratch.mit.edu/images/scratch-og.png" alt="Scratch Cat" class="character character-2 floating" style="width: 120px;">
-        </div>
-    </header>
-    
+  <section class="breadcum">
     <div class="container">
-        <div class="button-container">
-            <a href="course-overview.html" class="nav-btn">
-                <i class="fas fa-map"></i>
-                Course Overview
-            </a>
-            <a href="course-module.html" class="nav-btn">
-                <i class="fas fa-book-open"></i>
-                Course Modules
-            </a>
-            <a href="day-order.html" class="nav-btn">
-                <i class="fas fa-calendar-alt"></i>
-           Day Order
-            </a>
-            <a href="course_project.html" class="nav-btn">
-                <i class="fas fa-laptop-code"></i>
-                Creative Projects
-            </a>
-        </div>
+      <div class="breadcum-content">
+        <h2 class="title">Scratch Programming</h2>
+        <h4 class="para"><a href="../index.html">Home</a> / Scratch Courses Details</h4>
+      </div>
     </div>
+  </section>
 
-    <div class="password-modal" id="passwordModal">
-        <div class="password-box">
-            <h2><i class="fas fa-lock"></i> Enter Password</h2>
-            <p>Please enter the password to access the curriculum</p>
-            <input type="password" class="password-input" id="passwordInput" placeholder="Enter password">
-            <button class="submit-btn" id="submitPassword">Submit</button>
+  <section class="my-120">
+    <div class="container-lg">
+      <div class="row">
+        <div class="col-lg-8 col-md-12">
+          <div class="courses-details-left-content">
+            <div class="top-content">
+              <div class="courses-img">
+                <img src="../assets/img/courses-details/courses-img.jpg" alt="courses-img" class="img-fluid" />
+              </div>
+              <h3 class="title">Scratch Programming</h3>
+              <ul class="instructor-info" style="list-style: none;">
+                <li>
+                  <div class="instractor-data">
+                    <h5 class="title">Created By</h5>
+                    <p class="para">Arun</p>
+                  </div>
+                </li>
+                <li>
+                  <h5 class="title">Launch Date</h5>
+                  <p class="para">10 March, 2024</p>
+                </li>
+                <li>
+                  <h5 class="title">Corrected Version</h5>
+                  <div class="rating">
+                    <p class="para">3</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="middle-content">
+              <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <button class="nav-link active" id="nav-overview-tab" data-bs-toggle="tab"
+                    data-bs-target="#nav-overview" type="button" role="tab" aria-controls="nav-overview"
+                    aria-selected="true">
+                    Overview
+                  </button>
+                  <button class="nav-link" id="nav-curriculum-tab" data-bs-toggle="tab" data-bs-target="#nav-curriculum"
+                    type="button" role="tab" aria-controls="nav-curriculum" aria-selected="false" tabindex="-1">
+                    Curriculum
+                  </button>
+                  <button class="nav-link" id="nav-instructor-tab" data-bs-toggle="tab" data-bs-target="#nav-instructor"
+                    type="button" role="tab" aria-controls="nav-instructor" aria-selected="false" tabindex="-1">
+                    Module
+                  </button>
+                  <button class="nav-link" id="nav-reviews-tab" data-bs-toggle="tab" data-bs-target="#nav-reviews"
+                    type="button" role="tab" aria-controls="nav-reviews" aria-selected="false" tabindex="-1">
+                    Day Order
+                  </button>
+                  <button class="nav-link" id="nav-project-tab" data-bs-toggle="tab" data-bs-target="#nav-project"
+                    type="button" role="tab" aria-controls="nav-reviews" aria-selected="false" tabindex="-1">
+                    Projects
+                  </button>
+                </div>
+              </nav>
+
+              <div class="tab-content" id="nav-tabContent">
+                <!-- Overview Tab -->
+                <div class="tab-pane fade show active" id="nav-overview" role="tabpanel"
+                  aria-labelledby="nav-overview-tab">
+                  <div class="overview-content">
+                    <h3 class="title">Course Objective</h3>
+                    <p class="text-justify">
+                      This course introduces young learners to the fundamentals of programming through Scratch, a visual
+                      programming language developed by MIT. Students will learn computational thinking, problem-solving
+                      skills, and creative expression through interactive projects.
+                    </p>
+
+                    <br>
+                    <h4 class="mini-title">Key Learning Outcomes:</h4>
+                    <ul class="list-unstyled">
+                      <li><i class="my-icon icon-check">1.</i> Understand basic programming concepts</li>
+                      <li><i class="my-icon icon-check">2.</i> Develop logical thinking and problem-solving skills</li>
+                      <li><i class="my-icon icon-check">3.</i> Create interactive stories, games, and animations</li>
+                      <li><i class="my-icon icon-check">4.</i> Learn to collaborate and share projects</li>
+                      <li><i class="my-icon icon-check">5.</i> Build confidence in using technology creatively</li>
+                    </ul>
+
+                    <br>
+
+                    <h4 class="mini-title">Who Can Join?</h4>
+                    <p class="text-justify">
+                      This course is specially designed for young learners between 8+ years of age.
+                    </p>
+
+                    <br>
+
+                    <h4 class="mini-title">Prerequisites</h4>
+                    <p class="text-justify">
+                      No prior experience needed! This course is designed for absolute beginners.
+
+                    </p>
+                    <br>
+                    <h4 class="mini-title">What's Next After the Course?</h4>
+                    <p class="text-justify">
+                    <ul class="list-unstyled">
+                      <li>Continue exploring advanced Scratch projects</li>
+                      <li>Transition to text-based programming (Python, JavaScript)</li>
+                    </ul>
+                    </p>
+
+
+                  </div>
+                </div>
+
+                <!-- Curriculum Tab -->
+                <div class="tab-pane fade" id="nav-curriculum" role="tabpanel" aria-labelledby="nav-curriculum-tab">
+                  <div class="">
+                    <h4 class="title">Course Curriculum</h4>
+                    <br>
+                    <ul>
+                      <li>Introduction to Scratch</li>
+                      <li>Events and Sequencing</li>
+                      <li>Animations and Storytelling</li>
+                      <li>Variables and Conditions</li>
+                      <li>Decision Making and Game Design</li>
+                      <li>Variables, Lists & Data</li>
+                      <li>Advanced Concepts</li>
+                      <li>Final Project</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Module Tab -->
+                <div class="tab-pane fade" id="nav-instructor" role="tabpanel" aria-labelledby="nav-instructor-tab">
+                  <div class="">
+                    <h4 class="title">Course Modules</h4>
+                    <br>
+
+                    <!-- Table for Modules -->
+                    <div class="table-responsive">
+                      <table class="table table-bordered table-striped">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Module Title</th>
+                            <th>Topics Covered</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- Module 1 -->
+                          <tr>
+                            <td>1</td>
+                            <td>Introduction to Scratch</td>
+                            <td>
+                              <ul>
+                                <li><a href="https://example.com/module1/1" target="_blank">Motion Blocks</a></li>
+                                <li><a href="https://example.com/module1/2" target="_blank">Looks and Sound Blocks</a>
+                                </li>
+                              </ul>
+                            </td>
+                          </tr>
+
+                          <!-- Module 2 -->
+                          <tr>
+                            <td>2</td>
+                            <td>Events and Sequencing</td>
+                            <td>
+                              <ul>
+                                <li><a href="https://example.com/module2/1" target="_blank">Using Events</a></li>
+                                <li><a href="https://example.com/module2/2" target="_blank">Sequencing Actions</a></li>
+                                <li><a href="https://example.com/module2/3" target="_blank">Introducing Loops</a></li>
+                              </ul>
+                            </td>
+                          </tr>
+                          <!-- Module 3 -->
+                          <tr>
+                            <td>3</td>
+                            <td>Animations and Storytelling</td>
+                            <td>
+                              <ul>
+                                <li><a href="https://example.com/module3/1" target="_blank">Simple Animations</a></li>
+                                <li><a href="https://example.com/module3/2" target="_blank">Broadcast Messages</a></li>
+                              </ul>
+                            </td>
+                          </tr>
+                          <!-- Module 4 -->
+                          <tr>
+                            <td>4</td>
+                            <td>Variables and Conditions</td>
+                            <td>
+                              <ul>
+                                <li><a href="https://example.com/module4/1" target="_blank">Introduction to
+                                    Variables</a></li>
+                                <li><a href="https://example.com/module4/2" target="_blank">Introduction to
+                                    Conditions</a></li>
+                                <li><a href="https://example.com/module4/3" target="_blank">Operators</a></li>
+                              </ul>
+                            </td>
+                          </tr>
+
+                          <!-- Module 5 -->
+                          <tr>
+                            <td>5</td>
+                            <td>Decision Making and Game Design</td>
+                            <td>
+                              <ul>
+                                <li><a href="https://example.com/module5/1" target="_blank">Advanced Conditions</a></li>
+                                <li><a href="https://example.com/module5/2" target="_blank">Game Mechanics</a></li>
+                                <li><a href="https://example.com/module5/3" target="_blank">Multi-Level Games</a></li>
+                              </ul>
+                            </td>
+                          </tr>
+
+                          <!-- Module 6 -->
+                          <tr>
+                            <td>6</td>
+                            <td>Variables, Lists & Data</td>
+                            <td>
+                              <ul>
+                                <li><a href="https://example.com/module6/1" target="_blank">Working with Lists</a></li>
+                                <li><a href="https://example.com/module6/2" target="_blank">Unit Converter</a></li>
+                                <li><a href="https://example.com/module6/3" target="_blank">Variables and Logics</a>
+                                </li>
+                              </ul>
+                            </td>
+                          </tr>
+
+                          <!-- Module 7 -->
+                          <tr>
+                            <td>7</td>
+                            <td>Advanced Concepts</td>
+                            <td>
+                              <ul>
+                                <li><a href="https://example.com/module7/1" target="_blank">Custom Blocks</a></li>
+                                <li><a href="https://example.com/module7/2" target="_blank">Keyboard Access</a></li>
+                                <li><a href="https://example.com/module7/3" target="_blank">Add & Remove Blocks</a></li>
+                                <li><a href="https://example.com/module7/4" target="_blank">Extension</a></li>
+                              </ul>
+                            </td>
+                          </tr>
+
+                          <!-- Module 8 -->
+                          <tr>
+                            <td>8</td>
+                            <td>Final Project</td>
+                            <td>
+                              <ul>
+                                <li><a href="https://example.com/module8/1" target="_blank">Desktop UI</a></li>
+                                <li><a href="https://example.com/module8/2" target="_blank">2D Platformer Engine</a>
+                                </li>
+                                <li><a href="https://example.com/module8/3" target="_blank">Artificial Intelligence</a>
+                                </li>
+                              </ul>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Day order Tab -->
+                <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">
+                  <h4 class="title">Course Day Order</h4>
+                  <br>
+
+                  <!-- Table for Course Schedule -->
+                  <div class="table-responsive">
+                    <!-- Table for Course Schedule -->
+                    <table class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th width="8%">Day</th>
+                          <th width="12%">Module</th>
+                          <th width="25%">Topic</th>
+                          <th width="40%">Projects</th>
+                        </tr>
+                      </thead>
+                      <tbody> <!-- Day 1 -->
+                        <tr>
+                          <td class="day-cell">Day 1</td>
+                          <td class="module-cell">Module 1</td>
+                          <td>Scratch Installation & Interface, Motion Blocks, Looks and Sound Blocks</td>
+                          <td>
+                            <ul class="project-list">
+                              <li><a href="./ppt_module_1.html" class="project-link">Hello World</a></li>
+                              <li><a href="./ppt_module_1.html" class="project-link">Sprite Walks Across the Screen</a>
+                              </li>
+                              <li><a href="./ppt_module_1.html" class="project-link">Dancing Sprite</a></li>
+                            </ul>
+                          </td>
+                        </tr> <!-- Day 2 -->
+                        <tr>
+                          <td class="day-cell">Day 2</td>
+                          <td class="module-cell">Module 2</td>
+                          <td>Events and Sequencing</td>
+                          <td>
+                            <ul class="project-list">
+                              <li><a href="./ppt_module_2.html" class="project-link">Sprite Reacts to Mouse Clicks</a>
+                              </li>
+                              <li><a href="./ppt_module_2.html" class="project-link">Dance Routine</a></li>
+                              <li><a href="./ppt_module_2.html" class="project-link">Animate a Bouncing Ball</a></li>
+                            </ul>
+                          </td>
+                        </tr> <!-- Day 3 -->
+                        <tr>
+                          <td class="day-cell">Day 3</td>
+                          <td class="module-cell">Module 3</td>
+                          <td>Animations and Storytelling</td>
+                          <td>
+                            <ul class="project-list">
+                              <li><a href="./ppt_module_3.html" class="project-link">Create a School Story Scene</a>
+                              </li>
+                              <li><a href="./ppt_module_3.html" class="project-link">Broadcast Message</a></li>
+                            </ul>
+                          </td>
+                        </tr> <!-- Day 4 -->
+                        <tr>
+                          <td class="day-cell">Day 4</td>
+                          <td class="module-cell">Module 4</td>
+                          <td>Variables and Conditions</td>
+                          <td>
+                            <ul class="project-list">
+                              <li><a href="./ppt_module_4.html" class="project-link">Number Count</a></li>
+                              <li><a href="./ppt_module_4.html" class="project-link">Even or Odd Checker/Multiplication
+                                  Table</a></li>
+                            </ul>
+                          </td>
+                        </tr> <!-- Day 5 -->
+                        <tr>
+                          <td class="day-cell">Day 5</td>
+                          <td class="module-cell">Module 5</td>
+                          <td>Decision Making and Game Design</td>
+                          <td>
+                            <ul class="project-list">
+                              <li><a href="./ppt_grade_system.html" class="project-link">Student Grade System</a></li>
+                            </ul>
+                          </td>
+                        </tr> <!-- Day 6 -->
+                        <tr>
+                          <td class="day-cell">Day 6</td>
+                          <td class="module-cell">Module 5</td>
+                          <td>Decision Making and Game Design</td>
+                          <td>
+                            <ul class="project-list">
+                              <li><a href="./ppt_catch_game.html" class="project-link">Catching Game</a></li>
+                            </ul>
+                          </td>
+                        </tr> <!-- Day 7 -->
+                        <tr>
+                          <td class="day-cell">Day 7</td>
+                          <td class="module-cell">Module 5</td>
+                          <td>Decision Making and Game Design</td>
+                          <td>
+                            <ul class="project-list">
+                              <li><a href="./ppt_maze_game.html" class="project-link">Maze Master</a></li>
+                            </ul>
+                          </td>
+                        </tr> <!-- Day 8 -->
+                        <tr>
+                          <td class="day-cell">Day 8</td>
+                          <td class="module-cell">Module 6</td>
+                          <td>Variables, Lists & Data</td>
+                          <td>
+                            <ul class="project-list">
+                              <li><a href="./ppt_quiz.html" class="project-link">Quiz Game</a></li>
+                              <li><a href="./ppt_temperature_converter.html" class="project-link">Temperature
+                                  Converter</a></li>
+                            </ul>
+                          </td>
+                        </tr> <!-- Day 9 -->
+                        <tr>
+                          <td class="day-cell">Day 9</td>
+                          <td class="module-cell">Module 6</td>
+                          <td>Variables, Lists & Data</td>
+                          <td>
+                            <ul class="project-list">
+                              <li><a href="./ppt_calculator.html" class="project-link">Calculator App</a></li>
+                            </ul>
+                          </td>
+                        </tr> <!-- Day 10 -->
+                        <tr>
+                          <td class="day-cell">Day 10</td>
+                          <td class="module-cell">Module 6</td>
+                          <td>Variables, Lists & Data</td>
+                          <td>
+                            <ul class="project-list">
+                              <li><a href="./ppt_calculator.html" class="project-link">Calculator App</a></li>
+                            </ul>
+                          </td>
+                        </tr> <!-- Day 11 -->
+                        <tr>
+                          <td class="day-cell">Day 11</td>
+                          <td class="module-cell">Module 7</td>
+                          <td>Advanced Concepts</td>
+                          <td>
+                            <ul class="project-list">
+                              <li><a href="./ppt_electrical_circuit.html" class="project-link">Electrical Circuit</a>
+                              </li>
+                            </ul>
+                          </td>
+                        </tr> <!-- Day 12 -->
+                        <tr>
+                          <td class="day-cell">Day 12</td>
+                          <td class="module-cell">Module 7</td>
+                          <td>Advanced Concepts</td>
+                          <td>
+                            <ul class="project-list">
+                              <li><a href="./ppt_typing_practice_game.html" class="project-link">Typing Game</a></li>
+                            </ul>
+                          </td>
+                        </tr> <!-- Day 13 -->
+                        <tr>
+                          <td class="day-cell">Day 13</td>
+                          <td class="module-cell">Module 7</td>
+                          <td>Advanced Concepts</td>
+                          <td>
+                            <ul class="project-list">
+                              <li><a href="./ppt_to_do_list.html" class="project-link">To-Do List</a></li>
+                            </ul>
+                          </td>
+                        </tr> <!-- Day 14 -->
+                        <tr>
+                          <td class="day-cell">Day 14</td>
+                          <td class="module-cell">Module 7</td>
+                          <td>Advanced Concepts</td>
+                          <td>
+                            <ul class="project-list">
+                              <li><a href="./ppt_translator.html" class="project-link">Language Translator</a></li>
+                            </ul>
+                          </td>
+                        </tr> <!-- Day 15 -->
+                        <tr>
+                          <td class="day-cell">Day 15</td>
+                          <td class="module-cell">Module 8</td>
+                          <td>Final Project</td>
+                          <td>
+                            <ul class="project-list">
+                              <li><a href="#" class="project-link">Scratch OS</a></li>
+                              <li><a href="#" class="project-link">Jump Quest</a></li>
+                              <li><a href="#" class="project-link">Chess Game</a></li>
+                            </ul>
+                          </td>
+                        </tr> <!-- Day 16 -->
+                        <tr>
+                          <td class="day-cell">Day 16</td>
+                          <td class="module-cell">Module 8</td>
+                          <td>Final Project</td>
+                          <td>
+                            <ul class="project-list">
+                              <li><a href="#" class="project-link">Final Review</a></li>
+                            </ul>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- Project Tab -->
+                <div class="tab-pane fade" id="nav-project" role="tabpanel" aria-labelledby="nav-project-tab">
+                  <h4 class="title">Course Projects</h4>
+                  <br>
+                  <ul>
+                    <li><a href="./ppt_module_1.html" class="project-link">Hello World</a></li>
+                    <li><a href="./ppt_module_1.html" class="project-link">Sprite Walks Across the Screen</a></li>
+                    <li><a href="./ppt_module_1.html" class="project-link">Dancing Sprite</a></li>
+                    <li><a href="./ppt_module_2.html" class="project-link">Sprite Reacts to Mouse Clicks</a></li>
+                    <li><a href="./ppt_module_2.html" class="project-link">Dance Routine</a></li>
+                    <li><a href="./ppt_module_2.html" class="project-link">Animate a Bouncing Ball</a></li>
+                    <li><a href="./ppt_module_3.html" class="project-link">Create a School Story Scene</a></li>
+                    <li><a href="./ppt_module_3.html" class="project-link">Broadcast Message</a></li>
+                    <li><a href="./ppt_module_4.html" class="project-link">Number Count</a></li>
+                    <li><a href="./ppt_module_4.html" class="project-link">Even or Odd Checker</a></li>
+                    <li><a href="./ppt_grade_system.html" class="project-link">Student Grade System</a></li>
+                    <li><a href="./ppt_catch_game.html" class="project-link">Catching Game</a></li>
+                    <li><a href="./ppt_maze_game.html" class="project-link">Maze Master</a></li>
+                    <li><a href="./ppt_quiz.html" class="project-link">Quiz Game</a></li>
+                    <li><a href="./ppt_temperature_converter.html" class="project-link">Temperature Converter</a></li>
+                    <li><a href="./ppt_calculator.html" class="project-link">Calculator App</a></li>
+                    <li><a href="./ppt_electrical_circuit.html" class="project-link">Electrical Circuit</a></li>
+                    <li><a href="./ppt_typing_practice_game.html" class="project-link">Typing Game</a></li>
+                    <li><a href="./ppt_to_do_list.html" class="project-link">To-Do List</a></li>
+                    <li><a href="./ppt_translator.html" class="project-link">Language Translator</a></li>
+                    <li><a href="#" class="project-link">Scratch OS</a></li>
+                    <li><a href="#" class="project-link">Jump Quest</a></li>
+                    <li><a href="#" class="project-link">Chess Game</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div class="col-lg-4 col-md-12">
+          <div class="courses-details-right-content">
+            <div class="side-bar-top-content">
+              <h3 class="courses-features">Course Features:</h3>
+              <ul class="courses-details-list">
+                <li>
+                  <div class="list-left-content">
+                    <div class="list-icon">
+                      <i class="my-icon icon-time-hour"></i>
+                    </div>
+                    <p class="para">Duration</p>
+                  </div>
+                  <p class="para">30 hours</p>
+                </li>
+                <li>
+                  <div class="list-left-content">
+                    <div class="list-icon">
+                      <i class="my-icon icon-user"></i>
+                    </div>
+                    <p class="para">Mode</p>
+                  </div>
+                  <p class="para">Offline/Online</p>
+                </li>
+                <li>
+                  <div class="list-left-content">
+                    <div class="list-icon">
+                      <i class="my-icon icon-lesson"></i>
+                    </div>
+                    <p class="para">Modules</p>
+                  </div>
+                  <p class="para">08</p>
+                </li>
+                <li>
+                  <div class="list-left-content">
+                    <div class="list-icon">
+                      <i class="my-icon icon-global"></i>
+                    </div>
+                    <p class="para">Age</p>
+                  </div>
+                  <p class="para">08 +</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="side-bar-bottom-content">
+              <h3 class="title">Available Batch Time</h3>
+              <ul class="working-hours">
+                <li><i class="fa-regular fa-clock"></i>
+                  <p class="para">Monday - Friday 5.00 - 6:30 pm</p>
+                </li>
+                <li><i class="fa-regular fa-clock"></i>
+                  <p class="para">Saturday 4.00 - 05:30 pm</p>
+                </li>
+                <li><i class="fa-regular fa-clock"></i>
+                  <p class="para">Sunday closed</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
+  </section>
 
-  <!-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const modal = document.getElementById('passwordModal');
-      const input = document.getElementById('passwordInput');
-      const button = document.getElementById('submitPassword');
-      const valid = ["cWJlZWFjYWRlbXk="]; 
-
-   
-      modal.style.display = 'flex';
-
-      button.addEventListener('click', function() {
-        const value = btoa(input.value);
-        if (valid.includes(value)) {
-          modal.style.display = 'none';
-        } else {
-          alert("Incorrect password. Please try again.");
-          input.value = ''; 
-          input.focus();
-        }
-      });
-
-      input.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') { 
-          button.click(); 
-        }
-      });
-    });
-</script> -->
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/anime.min.js"></script>
+  <script src="../assets/js/swiper-bundle.min.js"></script>
+  <script src="../assets/js/gsap.min.js"></script>
+  <script src="../assets/js/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/jquery.counterup.min.js"></script>
+  <script src="../assets/js/jquery.waypoints.min.js"></script>
+  <script src="../assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="../assets/js/jquery.countdown.min.js"></script>
+  <script src="../assets/js/aos.js"></script>
+  <script src="../assets/js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
 
 </body>
+
 </html>

@@ -1,294 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Web Development Advanced Course Curriculum</title>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    :root {
-      --primary: #4D96FF;
-      --secondary: #FF9F1C;
-      --dark: #212529;
-      --light: #F7F9FC;
-      --card-bg: #FFFFFF;
-    }
-
-    body {
-      font-family: 'Baloo 2', cursive;
-      background-color: var(--light);
-      color: var(--dark);
-      margin: 0;
-      text-align: center;
-      background-image: radial-gradient(circle at 10% 20%, rgba(77, 150, 255, 0.1) 0%, rgba(77, 150, 255, 0.05) 90%);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 40px 0;
-      margin-bottom: 40px;
-      border-radius: 0 0 20px 20px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    header::before,
-    header::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    header::before {
-      top: -50px;
-      right: -50px;
-      width: 200px;
-      height: 200px;
-    }
-
-    header::after {
-      bottom: -80px;
-      left: -80px;
-      width: 300px;
-      height: 300px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 3rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-      position: relative;
-      z-index: 1;
-    }
-
-    p.subtitle {
-      font-size: 1.3rem;
-      margin-top: 15px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      opacity: 0.9;
-      position: relative;
-      z-index: 1;
-    }
-
-    .coming-soon {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-top: 80px;
-      font-weight: bold;
-    }
-
-    .button-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-      margin-top: 40px;
-      padding: 0 20px;
-    }
-
-    .nav-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background-color: var(--card-bg);
-      color: var(--dark);
-      padding: 30px 20px;
-      border-radius: 15px;
-      text-decoration: none;
-      font-size: 1.2rem;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      cursor: pointer;
-      border: 3px solid transparent;
-      min-height: 150px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .nav-btn i {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      color: var(--primary);
-      transition: all 0.3s ease;
-    }
-
-    .nav-btn:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
-      border-color: var(--primary);
-    }
-
-    .nav-btn:hover i {
-      color: var(--secondary);
-      transform: scale(1.1);
-    }
-
-    .nav-btn::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 5px;
-      width: 100%;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-    }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
-      p.subtitle { font-size: 1rem; }
-      .nav-btn { min-height: 120px; padding: 20px 15px; }
-      .nav-btn i { font-size: 2rem; }
-      .coming-soon { font-size: 1.5rem; }
-    }
-
-    /* Password Modal */
-    .password-modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(33, 37, 41, 0.8);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-      animation: fadeIn 0.5s ease forwards;
-    }
-
-    .password-box {
-      background: var(--card-bg);
-      padding: 40px 30px;
-      border-radius: 20px;
-      text-align: center;
-      max-width: 400px;
-      width: 90%;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .password-box::before,
-    .password-box::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.1;
-    }
-
-    .password-box::before {
-      top: -50px; right: -50px; width: 150px; height: 150px; background: var(--primary);
-    }
-
-    .password-box::after {
-      bottom: -50px; left: -50px; width: 200px; height: 200px; background: var(--secondary);
-    }
-
-    .password-box h2 {
-      margin: 0 0 10px 0;
-      color: var(--primary);
-      font-size: 1.8rem;
-    }
-
-    .password-box p {
-      margin-bottom: 25px; opacity: 0.8;
-    }
-
-    .password-input {
-      width: 80%; max-width: 250px; padding: 14px 16px;
-      border: 2px solid #ddd; border-radius: 10px; font-size: 1rem;
-      transition: border 0.3s, box-shadow 0.3s; margin-bottom: 20px;
-    }
-
-    .password-input:focus {
-      border-color: var(--primary);
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(77, 150, 255, 0.2);
-    }
-
-    .submit-btn {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white; border: none; padding: 14px 35px;
-      border-radius: 50px; font-size: 1rem; cursor: pointer;
-      transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .submit-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  </style>
+  <meta charset="utf-8">
+  <meta name="keywords" content="Edupls - Education & Online Course HTML Template">
+  <meta name="description" content="Edupls - Education & Online Course HTML Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="assets/img/logo/fav-icon.svg">
+  <title>Java Programming</title>
+  <link rel="stylesheet" href="../assets/css/all.min.css">
+  <link rel="stylesheet" href="../assets/fonts/style.css">
+  <link rel="stylesheet" href="../assets/css/magnific-popup.min.css">
+  <link rel="stylesheet" href="../assets/css/aos.css">
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="../assets/css/animate.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-  <header>
+  <section class="breadcum">
     <div class="container">
-      <h1>Java For Kids</h1>
-      <p class="subtitle">Discover the world of Java programming through fun, interactive lessons! Complete with mini-games.</p>
+      <div class="breadcum-content">
+        <h2 class="title">Java Programming</h2>
+        <h4 class="para"><a href="../index.html">Home</a> / Java Programming< Courses Details</h4>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <div class="container">
-    <p class="coming-soon">🚧 This section is under preparation.<br/>Course content coming soon!</p>
+  <section class="my-120">
+    <div class="container-lg">
+      <div class="row">
+        <div class="col-lg-8 col-md-12">
+          <div class="courses-details-left-content">
+            <div class="top-content">
+              <div class="courses-img">
+                <img src="../assets/img/courses-details/courses-img.jpg" alt="courses-img" class="img-fluid" />
+              </div>
+              <h3 class="title">Java Programming</h3>
+              <ul class="instructor-info" style="list-style: none;">
+                <li>
+                  <div class="instractor-data">
+                    <h5 class="title">Created By</h5>
+                    <p class="para">Arun</p>
+                  </div>
+                </li>
+                <li>
+                  <h5 class="title">Launch Date</h5>
+                  <p class="para">10 March, 2024</p>
+                </li>
+                <li>
+                  <h5 class="title">Corrected Version</h5>
+                  <div class="rating">
+                    <p class="para">1</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
 
-    <div class="button-container">
-      <a href="#" class="nav-btn"><i class="fas fa-map"></i> Course Overview</a>
-            <a href="#" class="nav-btn"><i class="fas fa-laptop-code"></i> Course Module</a>
-      <a href="#" class="nav-btn"><i class="fas fa-book-open"></i> Day Order</a>
-      
-      <a href="#" class="nav-btn"><i class="fas fa-laptop-code"></i> Projects</a>
-     
+            <div class="middle-content">
+              <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <button class="nav-link active" id="nav-overview-tab" data-bs-toggle="tab"
+                    data-bs-target="#nav-overview" type="button" role="tab" aria-controls="nav-overview"
+                    aria-selected="true">
+                    Overview
+                  </button>
+                  <button class="nav-link" id="nav-curriculum-tab" data-bs-toggle="tab" data-bs-target="#nav-curriculum"
+                    type="button" role="tab" aria-controls="nav-curriculum" aria-selected="false" tabindex="-1">
+                    Curriculum
+                  </button>
+                  <button class="nav-link" id="nav-instructor-tab" data-bs-toggle="tab" data-bs-target="#nav-instructor"
+                    type="button" role="tab" aria-controls="nav-instructor" aria-selected="false" tabindex="-1">
+                    Module
+                  </button>
+                  <button class="nav-link" id="nav-reviews-tab" data-bs-toggle="tab" data-bs-target="#nav-reviews"
+                    type="button" role="tab" aria-controls="nav-reviews" aria-selected="false" tabindex="-1">
+                    Day Order
+                  </button>
+                  <button class="nav-link" id="nav-project-tab" data-bs-toggle="tab" data-bs-target="#nav-project"
+                    type="button" role="tab" aria-controls="nav-reviews" aria-selected="false" tabindex="-1">
+                    Projects
+                  </button>
+                </div>
+              </nav>
+
+              <div class="tab-content" id="nav-tabContent">
+                <!-- Overview Tab -->
+                <div class="tab-pane fade show active" id="nav-overview" role="tabpanel"
+                  aria-labelledby="nav-overview-tab">
+                  <div class="overview-content">
+                    <h3 class="title">Course Objective</h3>
+                    <p class="text-justify">
+                      This course introduces young learners to the fundamentals of programming through Scratch, a visual
+                      programming language developed by MIT. Students will learn computational thinking, problem-solving
+                      skills, and creative expression through interactive projects.
+                    </p>
+
+                    <br>
+                    <h4 class="mini-title">Key Learning Outcomes:</h4>
+                    <ul class="list-unstyled">
+                      <li><i class="my-icon icon-check">1.</i></li>
+                      <li><i class="my-icon icon-check">2.</i> </li>
+                      <li><i class="my-icon icon-check">3.</i> </li>
+                      <li><i class="my-icon icon-check">4.</i> </li>
+                      <li><i class="my-icon icon-check">5.</i> </li>
+                    </ul>
+
+                    <br>
+
+                    <h4 class="mini-title">Who Can Join?</h4>
+                    <p class="text-justify">
+                      This course is specially designed for young learners between 8+ years of age.
+                    </p>
+
+                    <br>
+
+                    <h4 class="mini-title">Prerequisites</h4>
+                    <p class="text-justify">
+                      No prior experience needed! This course is designed for absolute beginners.
+
+                    </p>
+                    <br>
+                    <h4 class="mini-title">What's Next After the Course?</h4>
+                    <p class="text-justify">
+                    <ul class="list-unstyled">
+                      <li>Continue exploring advanced Scratch projects</li>
+                      <li>Transition to text-based programming (Python, JavaScript)</li>
+                    </ul>
+                    </p>
+
+
+                  </div>
+                </div>
+
+                <!-- Curriculum Tab -->
+                <div class="tab-pane fade" id="nav-curriculum" role="tabpanel" aria-labelledby="nav-curriculum-tab">
+                  <div class="">
+                    <h4 class="title">Course Curriculum</h4>
+                    <br>
+                    <ul>
+
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Module Tab -->
+                <div class="tab-pane fade" id="nav-instructor" role="tabpanel" aria-labelledby="nav-instructor-tab">
+                  <div class="">
+                    <h4 class="title">Course Modules</h4>
+                    <br>
+
+                    <!-- Table for Modules -->
+                    <div class="table-responsive">
+
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Day order Tab -->
+                <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">
+                  <h4 class="title">Course Day Order</h4>
+                  <br>
+
+                  <!-- Table for Course Schedule -->
+                  <div class="table-responsive">
+                    <!-- Table for Course Schedule -->
+
+                  </div>
+                </div>
+
+                <!-- Project Tab -->
+                <div class="tab-pane fade" id="nav-project" role="tabpanel" aria-labelledby="nav-project-tab">
+                  <h4 class="title">Course Projects</h4>
+                  <br>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12">
+          <div class="courses-details-right-content">
+            <div class="side-bar-top-content">
+              <h3 class="courses-features">Course Features:</h3>
+              <ul class="courses-details-list">
+                <li>
+                  <div class="list-left-content">
+                    <div class="list-icon">
+                      <i class="my-icon icon-time-hour"></i>
+                    </div>
+                    <p class="para">Duration</p>
+                  </div>
+                  <p class="para">30 hours</p>
+                </li>
+                <li>
+                  <div class="list-left-content">
+                    <div class="list-icon">
+                      <i class="my-icon icon-user"></i>
+                    </div>
+                    <p class="para">Mode</p>
+                  </div>
+                  <p class="para">Offline/Online</p>
+                </li>
+                <li>
+                  <div class="list-left-content">
+                    <div class="list-icon">
+                      <i class="my-icon icon-lesson"></i>
+                    </div>
+                    <p class="para">Modules</p>
+                  </div>
+                  <p class="para">08</p>
+                </li>
+                <li>
+                  <div class="list-left-content">
+                    <div class="list-icon">
+                      <i class="my-icon icon-global"></i>
+                    </div>
+                    <p class="para">Age</p>
+                  </div>
+                  <p class="para">08 +</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="side-bar-bottom-content">
+              <h3 class="title">Available Batch Time</h3>
+              <ul class="working-hours">
+                <li><i class="fa-regular fa-clock"></i>
+                  <p class="para">Monday - Friday 5.00 - 6:30 pm</p>
+                </li>
+                <li><i class="fa-regular fa-clock"></i>
+                  <p class="para">Saturday 4.00 - 05:30 pm</p>
+                </li>
+                <li><i class="fa-regular fa-clock"></i>
+                  <p class="para">Sunday closed</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Password Modal -->
-  <div class="password-modal" id="passwordModal">
-    <div class="password-box">
-      <h2><i class="fas fa-lock"></i> Enter Password</h2>
-      <p>Please enter the password to access this page</p>
-      <input type="password" class="password-input" id="passwordInput" placeholder="Enter password">
-      <button class="submit-btn" id="submitPassword">Submit</button>
-    </div>
-  </div>
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/anime.min.js"></script>
+  <script src="../assets/js/swiper-bundle.min.js"></script>
+  <script src="../assets/js/gsap.min.js"></script>
+  <script src="../assets/js/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/jquery.counterup.min.js"></script>
+  <script src="../assets/js/jquery.waypoints.min.js"></script>
+  <script src="../assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="../assets/js/jquery.countdown.min.js"></script>
+  <script src="../assets/js/aos.js"></script>
+  <script src="../assets/js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
 
-  <!-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const modal = document.getElementById('passwordModal');
-      const input = document.getElementById('passwordInput');
-      const button = document.getElementById('submitPassword');
-      const valid = ["cWJlZWFjYWRlbXk="]; 
-
-      
-      modal.style.display = 'flex';
-
-      button.addEventListener('click', function() {
-        const value = btoa(input.value);
-        if (valid.includes(value)) {
-          modal.style.display = 'none';
-        } else {
-          alert("Incorrect password. Please try again.");
-          input.value = ''; 
-          input.focus();
-        }
-      });
-
-      input.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') { 
-          button.click(); 
-        }
-      });
-    });
-</script> -->
 </body>
+
 </html>

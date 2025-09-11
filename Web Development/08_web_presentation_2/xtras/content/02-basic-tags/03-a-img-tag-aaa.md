@@ -1,1 +1,0 @@
-# Images in HTML Page

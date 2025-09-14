@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming Class Overview</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern CSS Variables */
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --accent: #4B8BBE;
+            --light: #f7f7f7;
+            --dark: #333;
+            --success: #28a745;
+            --code-bg: #282c34;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--secondary);
+        }
+
+        p, ul, ol {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 12px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        li:before {
+            content: "▶";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        /* Content Section Styling */
+        .content-section {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: var(--primary);
+            background-color: rgba(255, 212, 59, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Styling for code blocks */
+        pre {
+            background-color: var(--code-bg);
+            color: #F8F8F2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 1rem;
+            overflow-x: auto;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            margin: 20px 0;
+            line-height: 1.5;
+            position: relative;
+            border-left: 4px solid var(--secondary);
+        }
+
+        pre::before {
+            content: "Python";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 0 0 0 8px;
+        }
+
+        /* Code elements inside pre */
+        code {
+            background-color: transparent;
+            color: #F8F8F2;
+            padding: 0;
+        }
+
+        pre code {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .toc-item:hover {
+            background-color: rgba(48, 105, 152, 0.1);
+        }
+
+        .toc-item i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        /* Notification style */
+        .notification {
+            background-color: rgba(255, 212, 59, 0.2);
+            border-left: 4px solid var(--secondary);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            pre {
+                font-size: 0.9rem;
+                padding: 15px;
+            }
+            
+            header {
+                padding: 20px 15px;
+            }
+            
+            .toc {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .content-section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            
+            pre {
+                border-left: 2px solid #999;
+                page-break-inside: avoid;
+            }
+            
+            a {
+                color: black;
+                text-decoration: underline;
+            }
+            
+            .toc {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-python"></i> Day 01 Python Class Script</h1>
+                   <p class="subtitle"></p>
+            <p class="subtitle">Complete overview of the first class session and learning materials</p>
+        </header>
+
+        <div class="toc">
+            <a href="#student-onboarding" class="toc-item"><i class="fas fa-user-graduate"></i> Student Onboarding</a>
+            <a href="#introduction-to-python-programming" class="toc-item"><i class="fas fa-code"></i> Introduction to Python</a>
+            <a href="#environment-setup" class="toc-item"><i class="fas fa-cogs"></i> Environment Setup</a>
+            <a href="#testing-the-installation" class="toc-item"><i class="fas fa-check-circle"></i> Testing the Installation</a>
+            <a href="#maintaining-engagement" class="toc-item"><i class="fas fa-users"></i> Maintaining Engagement</a>
+            <a href="#self-introduction-code-as-communication" class="toc-item"><i class="fas fa-comments"></i> Self-Introduction</a>
+            <a href="#setting-up-visual-studio-code-vs-code" class="toc-item"><i class="fas fa-desktop"></i> Setting Up VS Code</a>
+            <a href="#introducing-variables" class="toc-item"><i class="fas fa-code"></i> Introducing Variables</a>
+            <a href="#review-and-reflection" class="toc-item"><i class="fas fa-brain"></i> Review and Reflection</a>
+            <a href="#developing-coding-skills" class="toc-item"><i class="fas fa-laptop-code"></i> Developing Coding Skills</a>
+            <a href="#homework-and-ongoing-support" class="toc-item"><i class="fas fa-book"></i> Homework and Support</a>
+            <a href="#next-steps" class="toc-item"><i class="fas fa-forward"></i> Next Steps</a>
+        </div>
+
+        <div class="content-section" id="student-onboarding">
+            <h2><i class="fas fa-user-graduate"></i> Student Onboarding</h2>
+            <p><strong>Highlights</strong></p>
+            <ul>
+                <li>Asking for Student Information</li>
+                <li>Understanding Student Motivation and Background</li>
+            </ul>
+            <p>As each student arrived, I asked for their name, class, school, place of residence, and whether they had any prior knowledge of Python. I also asked them why they chose to join this class.</p>
+        </div>
+
+        <div class="content-section" id="introduction-to-python-programming">
+            <h2><i class="fas fa-code"></i> Introduction to Python Programming</h2>
+            <p><strong>Highlights</strong></p>
+            <ul>
+                <li>Explaining Software Requirements</li>
+                <li><span class="highlight">Importance of Authentic Software Sources</span> (Focus: Download Python only from the official website)</li>
+            </ul>
+            <p>At the beginning of the class, I explained the two essential pieces of software needed: Python and an IDE (Integrated Development Environment). I emphasized only downloading and installing Python from the official website.</p>
+        </div>
+
+        <div class="content-section" id="environment-setup">
+            <h2><i class="fas fa-cogs"></i> Environment Setup</h2>
+            <p><strong>Highlights</strong></p>
+            <ul>
+                <li>Guided Installation of Python</li>
+                <li>Creating the Project Folder Structure</li>
+                <li><span class="highlight">Enabling File Extensions</span> (Focus: Why showing file extensions matters)</li>
+            </ul>
+            <p>We began by installing Python. I asked students to search for "Python download for Windows" and guided them through selecting the official Python website. I personally handled each installation to avoid risks. I created a folder at:</p>
+            <pre>C:\Users\Public\Documents\Python\Day01</pre>
+            <p>Within this folder, I created a file named <code>hello.py</code> with this code:</p>
+            <pre><code>print("Hello")</code></pre>
+            <p>I also enabled file name extensions in Windows to ensure students could easily identify their Python files.</p>
+        </div>
+
+        <div class="content-section" id="testing-the-installation">
+            <h2><i class="fas fa-check-circle"></i> Testing the Installation</h2>
+            <p><strong>Highlights</strong></p>
+            <ul>
+                <li>Running a Simple Python Program</li>
+                <li>Verifying Installation via Command Prompt</li>
+                <li>Introduction to Notepad for Coding</li>
+            </ul>
+            <p>I opened the Command Prompt to check that Python was installed correctly. Students navigated to the new folder, and I demonstrated editing code using Notepad. This confirmed their installations were functioning.</p>
+        </div>
+
+        <div class="content-section" id="maintaining-engagement">
+            <h2><i class="fas fa-users"></i> Maintaining Engagement</h2>
+            <p><strong>Highlights</strong></p>
+            <ul>
+                <li><span class="highlight">Keeping Students Interested During Setup</span> (Important: Tips for keeping energy high during configuration tasks)</li>
+            </ul>
+            <p>The setup process took about 30 minutes, and it was a bit challenging to maintain the students' enthusiasm. To keep them engaged, I explained each step, checked in on their progress, and encouraged questions as we worked.</p>
+        </div>
+
+        <div class="content-section" id="self-introduction-code-as-communication">
+            <h2><i class="fas fa-comments"></i> Self-Introduction: Code as Communication</h2>
+            <p><strong>Highlights</strong></p>
+            <ul>
+                <li>Introducing Yourself in Python</li>
+                <li><span class="highlight">Encouraging Personalization in Student Code</span> (Focus: Letting students express themselves programmatically)</li>
+            </ul>
+            <p>After setup, I asked everyone to introduce themselves verbally. I shared how developers can do this in code, showing:</p>
+            <pre><code>print("My name is Ashok")</code></pre>
+            <pre><code>print("My age is 35")</code></pre>
+            <pre><code>print("I am a software architect with 15 years of experience")</code></pre>
+            <pre><code>print("I like programming languages")</code></pre>
+            <pre><code>print("I love teaching")</code></pre>
+            <p>I then asked students to create their own versions in <code>hello.py</code>, encouraging self-expression through code.</p>
+        </div>
+
+        <div class="content-section" id="setting-up-visual-studio-code-vs-code">
+            <h2><i class="fas fa-desktop"></i> Setting Up Visual Studio Code (VS Code)</h2>
+            <p><strong>Highlights</strong></p>
+            <ul>
+                <li>Installing VS Code</li>
+                <li>Adding the Python Extension</li>
+                <li>Opening Files and Running Code</li>
+                <li><span class="highlight">Reinforcement Through Repetition</span> (Important: Practicing the setup process more than once)</li>
+            </ul>
+            <p>I assisted each student in downloading and installing <a href="https://code.visualstudio.com/">Visual Studio Code (VS Code)</a>. We installed the Python extension, opened Python files, and practiced running their code in the console. Some students repeated the process multiple times for better understanding.</p>
+        </div>
+
+        <div class="content-section" id="introducing-variables">
+            <h2><i class="fas fa-code"></i> Introducing Variables</h2>
+            <p><strong>Highlights</strong></p>
+            <ul>
+                <li>Using Variables Without Formal Definitions</li>
+                <li><span class="highlight">Hands-on Activity</span> (Focus: Learning by Doing)</li>
+            </ul>
+            <p>I showed how to use variables without a formal explanation. For example:</p>
+            <pre><code>name = "Ashok"</code></pre>
+            <pre><code>school = "ABC School"</code></pre>
+            <pre><code>age = 8</code></pre>
+            <pre><code>student_class = "Grade 3: Section C"</code></pre>
+            <p>Students tried a similar exercise, learning by doing rather than by theory.</p>
+        </div>
+
+        <div class="content-section" id="review-and-reflection">
+            <h2><i class="fas fa-brain"></i> Review and Reflection</h2>
+            <p><strong>Highlights</strong></p>
+            <ul>
+                <li><span class="highlight">Student Recap of the Lesson</span> (Encouraging Peer Learning and Reflection)</li>
+                <li><span class="highlight">Encouraging Questions and Exploration</span> (Focus: Building a Comfort Level With Errors and Curiosity)</li>
+            </ul>
+            <p>After the activity, students took a 5-minute break and then each summarized what they had learned. They also shared any questions, which encouraged a culture of curiosity and peer learning.</p>
+        </div>
+
+        <div class="content-section" id="developing-coding-skills">
+            <h2><i class="fas fa-laptop-code"></i> Developing Coding Skills</h2>
+            <p><strong>Highlights</strong></p>
+            <ul>
+                <li><span class="highlight">Importance of Daily Practice</span> (Stress: Continuous, consistent practice is key)</li>
+                <li>Comfort With Laptop and Typing</li>
+                <li><span class="highlight">Troubleshooting Errors Independently</span> (Focus: Self-reliance and problem-solving mindset)</li>
+            </ul>
+            <p>I explained the keys to coding proficiency:
+                <ol>
+                    <li>Getting familiar with using a laptop</li>
+                    <li>Improving typing skills</li>
+                    <li>Reading and solving errors independently</li>
+                </ol>
+                I stressed the need for daily practice and learning to solve errors on their own.
+            </p>
+        </div>
+
+        <div class="content-section" id="homework-and-ongoing-support">
+            <h2><i class="fas fa-book"></i> Homework and Ongoing Support</h2>
+            <p><strong>Highlights</strong></p>
+            <ul>
+                <li>Assignment Instructions</li>
+                <li>How to Seek Help for Issues</li>
+                <li><span class="highlight">Commitment to Practice Before Next Class</span> (Emphasis: Responsibility and follow-up)</li>
+            </ul>
+            <p>I told students they would receive assignments to complete before next class. If they had trouble opening or running their code, they should message me immediately. I stressed that it is their responsibility to practice both coding and typing before the next session.</p>
+        </div>
+
+        <div class="content-section" id="next-steps">
+            <h2><i class="fas fa-forward"></i> Next Steps</h2>
+            <p><strong>Highlights</strong></p>
+            <ul>
+                <li>Class Recap and Learning Outcomes</li>
+                <li>Sharing Visual Aids (Screenshots)</li>
+                <li>Distribution of This Week's Assignment</li>
+            </ul>
+            <p>Before the next class, I will:
+                <ul>
+                    <li>Send a recap of what was covered</li>
+                    <li>Provide screenshots (opening VS Code, navigating folders, creating a file, running code)</li>
+                    <li>Share this week's assignment</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

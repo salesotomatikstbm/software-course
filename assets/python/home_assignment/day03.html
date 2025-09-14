@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Day 03 Assignment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern CSS Variables */
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --accent: #4B8BBE;
+            --light: #f7f7f7;
+            --dark: #333;
+            --success: #28a745;
+            --code-bg: #282c34;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--secondary);
+        }
+
+        h3 {
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-top: 25px;
+        }
+
+        p, ul, ol {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 12px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        li:before {
+            content: "▶";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        /* Content Section Styling */
+        .content-section {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: var(--primary);
+            background-color: rgba(255, 212, 59, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Styling for code blocks */
+        pre {
+            background-color: var(--code-bg);
+            color: #F8F8F2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 1rem;
+            overflow-x: auto;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            margin: 20px 0;
+            line-height: 1.5;
+            position: relative;
+            border-left: 4px solid var(--secondary);
+        }
+
+        pre::before {
+            content: "Python";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 0 0 0 8px;
+        }
+
+        li code {
+            color: red;
+        }
+
+        /* Code elements inside pre */
+        code {
+            background-color: transparent;
+            color: #F8F8F2;
+            padding: 0;
+        }
+
+        pre code {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Styling for file names */
+        .file-name {
+            font-weight: bold;
+            color: var(--primary);
+            font-family: 'Fira Code', 'Courier New', monospace;
+            background-color: rgba(48, 105, 152, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px dashed var(--primary);
+        }
+
+        /* Help section specific styling */
+        #if-you-need-help {
+            border-left: 4px solid var(--success);
+        }
+
+        #if-you-need-help h2 {
+            color: var(--success);
+            border-bottom: 2px solid rgba(40, 167, 69, 0.3);
+        }
+
+        /* Notification style */
+        .notification {
+            background-color: rgba(255, 212, 59, 0.2);
+            border-left: 4px solid var(--secondary);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        /* Assignment sections */
+        .assignment-section {
+            background-color: rgba(255, 212, 59, 0.1);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .assignment-section h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .content-section {
+                padding: 20px;
+            }
+
+            pre {
+                font-size: 0.9rem;
+                padding: 15px;
+            }
+
+            header {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-python"></i> Day 03 - Python Homework</h1>
+            <p class="subtitle">Arithmetic Operators, User Input, and Conditionals</p>
+        </header>
+
+        <div class="content-section">
+            <p>Practice Python to improve your coding skills. Use VS Code and create the files below. Run each program and check the output.</p>
+            <div class="notification">
+                <i class="fas fa-lightbulb"></i> Remember to save your files with a <span class="file-name">.py</span> extension and run them to see the output!
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment01">
+            <h2><i class="fas fa-apple-alt"></i> Assignment 01: Practicing Arithmetic Operators</h2>
+            <p>We will practice using <strong>arithmetic operators</strong> (`+`, `-`, `*`, `/`, `%`, `//`, `**`) to work with numbers.</p>
+
+            <div class="assignment-section">
+                <h4>Objective:</h4>
+                <p>Learn how arithmetic operators work in Python by applying them to simple fruit-related problems.</p>
+
+                <h3>Tasks:</h3>
+                <ul>
+                    <li>Create two variables: <code>apples = 10</code> and <code>mangoes = 4</code></li>
+                    <li>Use arithmetic operators to:
+                        <ul>
+                            <li>Find the <strong>total fruits</strong> (addition)</li>
+                            <li>Find the <strong>difference</strong> (subtraction)</li>
+                            <li>Find the <strong>double apples</strong> (multiplication)</li>
+                            <li>Find the <strong>apples per basket if divided into 2 baskets</strong> (division)</li>
+                            <li>Try <strong>modulus (%)</strong> to see if fruits divide evenly</li>
+                            <li>Try <strong>power (**) to square a number</strong></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Think About:</h3>
+                <ul>
+                    <li>What happens when you divide and the result is not whole?</li>
+                    <li>When would modulus (%) be useful in real life (e.g., sharing fruits)?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment02">
+            <h2><i class="fas fa-keyboard"></i> Assignment 02: User Input with Operators</h2>
+            <p>Now let’s use <strong>user input</strong> to apply operators.</p>
+
+            <div class="assignment-section">
+                <h4>Objective:</h4>
+                <p>Learn how to take input from the user and apply operators to calculate results.</p>
+
+                <h3>Tasks:</h3>
+                <ul>
+                    <li>Ask the user for <strong>two numbers</strong> (e.g., <code>x</code> and <code>y</code>)</li>
+                    <li>Show the results of:
+                        <ul>
+                            <li>Sum (<code>x + y</code>)</li>
+                            <li>Difference (<code>x - y</code>)</li>
+                            <li>Product (<code>x * y</code>)</li>
+                            <li>Division (<code>x / y</code>)</li>
+                            <li>Compare which is greater (<code>x > y</code>, <code>x < y</code>)</li>
+                            <li>Check if they are equal (<code>x == y</code>)</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Think About:</h3>
+                <ul>
+                    <li>What happens if the user enters 0 for <code>y</code> and you try to divide?</li>
+                    <li>How do integer vs decimal inputs change results?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment03">
+            <h2><i class="fas fa-random"></i> Assignment 03: Even or Odd Checker (If-Else)</h2>
+            <p>Use <strong>if-else</strong> to check if a number is even or odd.</p>
+
+            <div class="assignment-section">
+                <h4>Objective:</h4>
+                <p>Understand how conditions and the <code>%</code> operator work in decision-making.</p>
+
+                <h3>Tasks:</h3>
+                <ul>
+                    <li>Ask the user for a number.</li>
+                    <li>If the number is divisible by 2 → print <code>"Even Number"</code></li>
+                    <li>Otherwise → print <code>"Odd Number"</code></li>
+                </ul>
+
+                <h3>Think About:</h3>
+                <ul>
+                    <li>What happens with negative numbers?</li>
+                    <li>What happens with zero?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment04">
+            <h2><i class="fas fa-graduation-cap"></i> Assignment 04: Grade Classifier (If-Elif-Else)</h2>
+            <p>Use <strong>if-elif-else</strong> to classify a student’s grade.</p>
+
+            <div class="assignment-section">
+                <h4>Objective:</h4>
+                <p>Practice decision-making with multiple conditions.</p>
+
+                <h3>Tasks:</h3>
+                <ul>
+                    <li>Ask the user for marks (0–100).</li>
+                    <li>Use conditions to classify:
+                        <ul>
+                            <li>90 and above → <code>"Grade A"</code></li>
+                            <li>75–89 → <code>"Grade B"</code></li>
+                            <li>50–74 → <code>"Grade C"</code></li>
+                            <li>Below 50 → <code>"Fail"</code></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Think About:</h3>
+                <ul>
+                    <li>What if the user enters more than 100 or less than 0?</li>
+                    <li>How can you add more grades like A+ or D?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment05">
+            <h2><i class="fas fa-thermometer-half"></i> Assignment 05: Temperature Advisor (If-Elif-Else with User Input)</h2>
+            <p>Use <strong>if-elif-else</strong> with user input to give weather advice.</p>
+
+            <div class="assignment-section">
+                <h4>Objective:</h4>
+                <p>Combine user input with decision-making to provide different messages.</p>
+
+                <h3>Tasks:</h3>
+                <ul>
+                    <li>Ask the user to enter the temperature (°C).</li>
+                    <li>Use conditions to give advice:
+                        <ul>
+                            <li>Less than 15 → <code>"It’s Cold! Wear a jacket 🧥"</code></li>
+                            <li>Between 15 and 30 → <code>"Weather is Pleasant 🙂"</code></li>
+                            <li>More than 30 → <code>"It’s Hot! Stay hydrated 💧"</code></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Think About:</h3>
+                <ul>
+                    <li>How would advice change for very extreme temperatures (e.g., 45°C or -5°C)?</li>
+                    <li>Can you extend it to show <code>"Rainy"</code> or <code>"Snowy"</code> with extra inputs?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="if-you-need-help">
+            <h2><i class="fas fa-hands-helping"></i> If you need help</h2>
+            <p>Post in the group with any of these problems:</p>
+            <ul>
+                <li>VS Code not opening</li>
+                <li>Can't create a file</li>
+                <li>My file is not running</li>
+            </ul>
+            <p>Good luck and have fun coding!</p>
+        </div>
+    </div>
+</body>
+</html>

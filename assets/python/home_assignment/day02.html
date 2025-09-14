@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Day 02 Assignment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern CSS Variables */
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --accent: #4B8BBE;
+            --light: #f7f7f7;
+            --dark: #333;
+            --success: #28a745;
+            --code-bg: #282c34;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--secondary);
+        }
+
+        h3 {
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-top: 25px;
+        }
+
+        p, ul, ol {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 12px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        li:before {
+            content: "▶";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        /* Content Section Styling */
+        .content-section {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: var(--primary);
+            background-color: rgba(255, 212, 59, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Styling for code blocks */
+        pre {
+            background-color: var(--code-bg);
+            color: #F8F8F2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 1rem;
+            overflow-x: auto;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            margin: 20px 0;
+            line-height: 1.5;
+            position: relative;
+            border-left: 4px solid var(--secondary);
+        }
+
+        pre::before {
+            content: "Python";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 0 0 0 8px;
+        }
+li code {
+     color: red;
+}
+        /* Code elements inside pre */
+        code {
+            background-color: transparent;
+            color: #F8F8F2;
+            padding: 0;
+        }
+
+        pre code {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Styling for file names */
+        .file-name {
+            font-weight: bold;
+            color: var(--primary);
+            font-family: 'Fira Code', 'Courier New', monospace;
+            background-color: rgba(48, 105, 152, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px dashed var(--primary);
+        }
+
+        /* Help section specific styling */
+        #if-you-need-help {
+            border-left: 4px solid var(--success);
+        }
+
+        #if-you-need-help h2 {
+            color: var(--success);
+            border-bottom: 2px solid rgba(40, 167, 69, 0.3);
+        }
+
+        /* Notification style */
+        .notification {
+            background-color: rgba(255, 212, 59, 0.2);
+            border-left: 4px solid var(--secondary);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        /* Assignment sections */
+        .assignment-section {
+            background-color: rgba(255, 212, 59, 0.1);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .assignment-section h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            pre {
+                font-size: 0.9rem;
+                padding: 15px;
+            }
+            
+            header {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-python"></i> Day 02 - Python Homework</h1>
+            <p class="subtitle">Extended Assignments - Variables and String Formatting</p>
+        </header>
+        
+        <div class="content-section">
+            <p>Practice Python to improve your typing and coding skills. Use VS Code and create the files below. Run each program and check the output.</p>
+            <div class="notification">
+                <i class="fas fa-lightbulb"></i> Remember to save your files with a <span class="file-name">.py</span> extension and run them to see the output!
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment01">
+            <h2><i class="fas fa-apple-alt"></i> Assignment 01: Fruit Description with Variables</h2>
+            <p>Extend the fruit description by adding more variables to describe the fruit in greater detail.</p>
+            
+            <div class="assignment-section">
+                <h4>Think About:</h4>
+                <h3>1. Extra Details About the Fruit</h3>
+                <ul>
+                    <li>Size (e.g., <code>fruit_size = "medium"</code>)</li>
+                    <li>Origin (e.g., <code>origin_country = "India"</code>)</li>
+                    <li>Season (e.g., <code>best_season = "summer"</code>)</li>
+                    <li>Taste (e.g., <code>taste_profile = "sweet and tangy"</code>)</li>
+                    <li>Smell (e.g., <code>aroma = "fragrant"</code>)</li>
+                </ul>
+
+                <h3>2. Nutritional Information</h3>
+                <ul>
+                    <li>Vitamins (e.g., <code>vitamin_c_mg = 28.5</code>)</li>
+                    <li>Calories (e.g., <code>calories_per_100g = 52</code>)</li>
+                    <li>Sugar content (e.g., <code>sugar_g = 12.2</code>)</li>
+                    <li>Fiber content (e.g., <code>fiber_g = 2.4</code>)</li>
+                </ul>
+
+                <h3>3. Other Fun Facts</h3>
+                <ul>
+                    <li>Is it rare? (e.g., <code>is_rare = false</code>)</li>
+                    <li>Popularity (e.g., <code>popularity_rating = 9.5</code>)</li>
+                    <li>Used in festivals? (e.g., <code>used_in_festivals = true</code>)</li>
+                </ul>
+
+                <h3>4. Your Own Ideas — Surprise Me!</h3>
+                <ul>
+                    <li><code>days_since_harvest = 3</code></li>
+                    <li><code>organic_certified = true</code></li>
+                    <li><code>allergy_warning = "None"</code></li>
+                </ul>
+            </div>
+            
+            <p>Be creative and make your fruit description as detailed and interesting as possible!</p>
+        </div>
+
+        <div class="content-section" id="assignment02">
+            <h2><i class="fas fa-apple-alt"></i> Assignment 02: Printing Fruit Descriptions</h2>
+            <p>Display your fruit variables in a structured way using formatted strings (f-strings).</p>
+            
+            <div class="assignment-section">
+                <h4>Requirements:</h4>
+                <ol>
+                    <li><strong>Header Section</strong> - Start with a title and include the fruit's name prominently</li>
+                    <li><strong>Basic Details</strong> - Display color, size, origin, and season</li>
+                    <li><strong>Nutritional Information</strong> - List key nutritional facts with units</li>
+                    <li><strong>Fun Facts Section</strong> - Add creative details like rarity or popularity</li>
+                    <li><strong>Formatting Tips</strong> - Use newlines (<code>\n</code>) to separate sections</li>
+                </ol>
+            </div>
+            
+            <h3>Example Code:</h3>
+            <pre><code># Fruit variables
+fruit_name = "Mango"
+fruit_color = "Golden yellow"
+fruit_size = "Medium"
+origin_country = "India"
+best_season = "Summer"
+calories_per_100g = 60
+vitamin_c_mg = 36
+sugar_g = 14
+fiber_g = 1.6
+popularity_rating = 9.5
+
+# Formatted output
+print(f"Ultimate {fruit_name} Fact Sheet!")
+print("---------------------------------")
+print(f"Basic Info:")
+print(f"- Color: {fruit_color}")
+print(f"- Size: {fruit_size}")
+print(f"- Origin: {origin_country}")
+print(f"- Best Season: {best_season}\n")
+print(f"Nutrition (per 100g):")
+print(f"- Calories: {calories_per_100g}kcal | Sugar: {sugar_g}g")
+print(f"- Vitamin C: {vitamin_c_mg}mg | Fiber: {fiber_g}g\n")
+print(f"Fun Facts:")
+print(f"Popularity: {popularity_rating}/10")
+print("Sweet and tangy, perfect for summer!")
+print("---------------------------------")</code></pre>
+            
+            <div class="notification">
+                <i class="fas fa-star"></i> <strong>Bonus Challenge:</strong> Add a "Did You Know?" section with a surprising fact.
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment03">
+            <h2><i class="fas fa-user-graduate"></i> Assignment 03: Student Bio & Story</h2>
+            <p>Create variables and use f-strings to make a student biography and a short story.</p>
+            
+            <h3>Task 1: Student Bio</h3>
+            <pre><code># Step 1: Create variables
+name = "Alex"
+age = 12
+grade = 7
+favorite_subject = "Science"
+hobby = "playing chess"
+
+# Step 2: Create a formatted string message
+bio = f"My name is {name}. I am {age} years old and in grade {grade}. My favorite subject is {favorite_subject}, and I love {hobby}."
+
+# Step 3: Print both messages
+print("My Bio:")
+print(bio)</code></pre>
+
+            <h3>Task 2: Fairy Tale Short Story</h3>
+            <pre><code># Step 1: Create variables
+character = "dragon"
+place = "enchanted forest"
+magic_item = "golden amulet"
+action = "saved the kingdom"
+
+# Step 2: Create a formatted story
+story = f"Once upon a time, a brave {character} lived in the {place}. One day, it found a {magic_item} and {action}!"
+
+# Step 3: Print both versions
+print("My Story:")
+print(story)</code></pre>
+            
+            <div class="assignment-section">
+                <h4>Your Turn!</h4>
+                <p>Now, try creating your own:</p>
+                <ol>
+                    <li>A short student bio or a fairy tale using variables</li>
+                    <li>Format them into a message using f-strings</li>
+                </ol>
+                <p><strong>Bonus:</strong> Try adding more variables (like friends, favorite food, or a twist in the story).</p>
+            </div>
+        </div>
+
+        <div class="content-section" id="if-you-need-help">
+            <h2><i class="fas fa-hands-helping"></i> If you need help</h2>
+            <p>Post in the group with any of these problems:</p>
+            <ul>
+                <li>VS Code not opening</li>
+                <li>Can't create a file</li>
+                <li>My file is not running</li>
+            </ul>
+            <p>Good luck and have fun coding!</p>
+        </div>
+    </div>
+</body>
+</html>

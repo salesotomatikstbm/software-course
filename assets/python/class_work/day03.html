@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 03 - Class Work</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern CSS Variables */
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --accent: #4B8BBE;
+            --light: #f7f7f7;
+            --dark: #333;
+            --success: #28a745;
+            --code-bg: #282c34;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--secondary);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Content Section Styling */
+        .content-section {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Styling for code blocks */
+        pre {
+            background-color: var(--code-bg);
+            color: #F8F8F2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 1rem;
+            overflow-x: auto;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            margin: 20px 0;
+            line-height: 1.5;
+            position: relative;
+            border-left: 4px solid var(--secondary);
+        }
+
+        pre::before {
+            content: "Python";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 0 0 0 8px;
+        }
+
+        /* Code elements inside pre */
+        code {
+            background-color: transparent;
+            color: #F8F8F2;
+            padding: 0;
+        }
+
+        pre code {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* File name styling */
+        .file-name {
+            font-weight: bold;
+            color: var(--primary);
+            font-family: 'Fira Code', 'Courier New', monospace;
+            background-color: rgba(48, 105, 152, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px dashed var(--primary);
+        }
+
+        /* Learning objectives */
+        .learning-objectives {
+            background-color: rgba(255, 212, 59, 0.2);
+            border-left: 4px solid var(--secondary);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .learning-objectives h3 {
+            margin-top: 0;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .learning-objectives ul {
+            padding-left: 20px;
+        }
+
+        .learning-objectives li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .learning-objectives li:before {
+            content: "✓";
+            color: var(--success);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            pre {
+                font-size: 0.9rem;
+                padding: 15px;
+            }
+            
+            header {
+                padding: 20px 15px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .content-section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            
+            pre {
+                border-left: 2px solid #999;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-python"></i> Day 03 - Class Work</h1>
+            <p class="subtitle">Working with Operators and If-Else Statements</p>
+        </header>
+
+        <div class="content-section" id="apple-operator-playground">
+            <h2><i class="fas fa-apple-alt"></i> Apple Operator Playground 🍎</h2>
+            <p>Let's explore some common operators in Python using an apple-themed example.</p>
+
+            <pre><code># Equal to (==)
+print("Is the apple red?", "red" == "red")   # True
+
+# Not equal (!=)
+print("Is the apple not green?", "red" != "green")   # True
+
+# Greater than (>)
+print("Is apple price greater than budget?", 60 > 50)   # True
+
+# Less than (<)
+print("Is apple price less than budget?", 40 < 50)   # True
+
+# Greater than or equal (>=)
+print("Do you have enough money?", 50 >= 50)   # True
+
+# Less than or equal (<=)
+print("Is apple weight small?", 150 <= 200)   # True</code></pre>
+        </div>
+
+        <div class="content-section" id="apple-decision-maker">
+            <h2><i class="fas fa-check-circle"></i> Apple Decision Maker: Using If-Else Statements</h2>
+            <p>Learn how computers make decisions using <code style="color: red;">if</code>, <code style="color: red;">elif</code>, and <code style="color: red;">else</code> statements.</p>
+
+            <h3>1. Basic Apple Checker 🍎</h3>
+            <pre><code>apple_color = "red"
+
+if apple_color == "red":
+    print("This is a red apple! ")
+else:
+    print("This apple isn't red.")</code></pre>
+            <p><strong>Explanation:</strong> If the apple is red, the program prints "red apple". Otherwise, it prints "not red".</p>
+
+            <h3>2. Health Checker ❤️</h3>
+            <pre><code>is_healthy = True
+
+if is_healthy:
+    print("This apple is good for you! ")
+else:
+    print("Maybe choose a different fruit. ")</code></pre>
+            <p><strong>Explanation:</strong> If the apple is healthy, it prints "good". Otherwise, it suggests choosing another fruit.</p>
+
+            <h3>3. Apple Type Classifier 🔍</h3>
+            <pre><code>apple_type = input("What color is the apple? ").lower()
+
+if apple_type == "red":
+    print("Classic red apple")
+elif apple_type == "green":
+    print("Tangy green apple")
+elif apple_type == "yellow":
+    print("Sweet golden apple")
+else:
+    print("Unknown apple variety")</code></pre>
+            <p><strong>Explanation:</strong> The program asks for the apple's color and provides a classification based on the input.</p>
+
+            <h3>4. Shopping Decision Maker (Corrected) 🛒</h3>
+            <pre><code>budget = int(input("What is your budget? "))
+apple_price = int(input("What is the apple price? "))
+
+if budget >= apple_price:
+    print("You can buy the apple! ")
+else:
+    print("You don’t have enough money. ")</code></pre>
+            <p><strong>Explanation:</strong> The program compares the budget and apple price to determine if the apple can be bought.</p>
+
+            <h3>5. Apple Ripeness Checker (Simplified) 🟢🔴</h3>
+            <pre><code>color = input("Apple color (green / red): ")
+
+if color.lower() == "green":
+    print("Not ready yet, wait! ")
+elif color.lower() == "red":
+    print("Ripe and ready to eat! ")
+else:
+    print("I don’t know this color. ")</code></pre>
+            <p><strong>Explanation:</strong> The program checks the color of the apple and tells you if it's ripe or not.</p>
+        </div>
+    </div>
+</body>
+</html>

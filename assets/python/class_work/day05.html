@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 05 - Class Work</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern CSS Variables */
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --accent: #4B8BBE;
+            --light: #f7f7f7;
+            --dark: #333;
+            --success: #28a745;
+            --code-bg: #282c34;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--secondary);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Content Section Styling */
+        .content-section {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Styling for code blocks */
+        pre {
+            background-color: var(--code-bg);
+            color: #F8F8F2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 1rem;
+            overflow-x: auto;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            margin: 20px 0;
+            line-height: 1.5;
+            position: relative;
+            border-left: 4px solid var(--secondary);
+        }
+
+        pre::before {
+            content: "Python";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 0 0 0 8px;
+        }
+
+        /* Code elements inside pre */
+        code {
+            background-color: transparent;
+            color: #F8F8F2;
+            padding: 0;
+        }
+
+        pre code {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* File name styling */
+        .file-name {
+            font-weight: bold;
+            color: var(--primary);
+            font-family: 'Fira Code', 'Courier New', monospace;
+            background-color: rgba(48, 105, 152, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px dashed var(--primary);
+        }
+
+        /* Learning objectives */
+        .learning-objectives {
+            background-color: rgba(255, 212, 59, 0.2);
+            border-left: 4px solid var(--secondary);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .learning-objectives h3 {
+            margin-top: 0;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .learning-objectives ul {
+            padding-left: 20px;
+        }
+
+        .learning-objectives li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .learning-objectives li:before {
+            content: "✓";
+            color: var(--success);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            pre {
+                font-size: 0.9rem;
+                padding: 15px;
+            }
+            
+            header {
+                padding: 20px 15px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .content-section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            
+            pre {
+                border-left: 2px solid #999;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-python"></i> Day 05 - Class Work</h1>
+            <p class="subtitle">Using Match-Case Statements in Python</p>
+        </header>
+
+        <div class="content-section" id="calculator">
+            <h2><i class="fas fa-calculator"></i> 1. Calculator</h2>
+            <p>Practice using match-case statements for a basic calculator.</p>
+            <pre><code>a = 10
+b = 5
+operation = input("Choose operation (+, -, *, /): ")
+
+match operation:
+    case "+":
+        print("Result:", a + b)
+    case "-":
+        print("Result:", a - b)
+    case "*":
+        print("Result:", a * b)
+    case "/":
+        print("Result:", a / b)
+    case _:
+        print("Invalid operation")</code></pre>
+        </div>
+
+        <div class="content-section" id="grade-evaluator">
+            <h2><i class="fas fa-graduation-cap"></i> 2. Grade Evaluator</h2>
+            <p>Use match-case statements to evaluate grades and provide feedback.</p>
+            <pre><code>grade = input("Enter grade (A, B, C, D, F): ").upper()
+
+match grade:
+    case "A":
+        print("Excellent")
+    case "B":
+        print("Good")
+    case "C":
+        print("Average")
+    case "D":
+        print("Poor")
+    case "F":
+        print("Fail")
+    case _:
+        print("Invalid grade")</code></pre>
+        </div>
+
+        <div class="content-section" id="month-name-finder">
+            <h2><i class="fas fa-calendar-alt"></i> 3. Month Name Finder</h2>
+            <p>Find the name of the month based on the entered month number.</p>
+            <pre><code>month = int(input("Enter month number (1-12): "))
+
+match month:
+    case 1:
+        print("January")
+    case 2:
+        print("February")
+    case 3:
+        print("March")
+    case 4:
+        print("April")
+    case 5:
+        print("May")
+    case 6:
+        print("June")
+    case 7:
+        print("July")
+    case 8:
+        print("August")
+    case 9:
+        print("September")
+    case 10:
+        print("October")
+    case 11:
+        print("November")
+    case 12:
+        print("December")
+    case _:
+        print("Invalid month number")</code></pre>
+        </div>
+
+        <div class="content-section" id="simple-login-role-checker">
+            <h2><i class="fas fa-user-check"></i> 4. Simple Login Role Checker</h2>
+            <p>Use match-case statements to check user roles and provide access.</p>
+            <pre><code>role = input("Enter role (admin, user, guest): ").lower()
+
+match role:
+    case "admin":
+        print("You have full access")
+    case "user":
+        print("You have limited access")
+    case "guest":
+        print("You have view-only access")
+    case _:
+        print("Unknown role")</code></pre>
+        </div>
+
+        <div class="content-section" id="weather-response">
+            <h2><i class="fas fa-sun"></i> 5. Weather Response</h2>
+            <p>Respond to different weather conditions using match-case statements.</p>
+            <pre><code>weather = input("Enter weather (sunny, rainy, cloudy, snowy): ").lower()
+
+match weather:
+    case "sunny":
+        print("Wear sunglasses")
+    case "rainy":
+        print("Take an umbrella")
+    case "cloudy":
+        print("It might rain later")
+    case "snowy":
+        print("Wear warm clothes")
+    case _:
+        print("Unknown weather condition")</code></pre>
+        </div>
+    </div>
+</body>
+</html>

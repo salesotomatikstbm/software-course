@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming Class - Day 02 Script (Fruit Shop Conversation)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern CSS Variables */
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --accent: #4B8BBE;
+            --light: #f7f7f7;
+            --dark: #333;
+            --success: #28a745;
+            --code-bg: #282c34;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--secondary);
+        }
+
+        p, ul, ol {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 12px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        li:before {
+            content: "▶";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        /* Content Section Styling */
+        .content-section {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: var(--primary);
+            background-color: rgba(255, 212, 59, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Styling for code blocks */
+        pre {
+            background-color: var(--code-bg);
+            color: #F8F8F2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 1rem;
+            overflow-x: auto;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            margin: 20px 0;
+            line-height: 1.5;
+            position: relative;
+            border-left: 4px solid var(--secondary);
+        }
+
+        pre::before {
+            content: "Python";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 0 0 0 8px;
+        }
+
+        /* Code elements inside pre */
+        code {
+            background-color: transparent;
+            color: #F8F8F2;
+            padding: 0;
+        }
+
+        pre code {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .toc-item:hover {
+            background-color: rgba(48, 105, 152, 0.1);
+        }
+
+        .toc-item i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        /* Notification style */
+        .notification {
+            background-color: rgba(255, 212, 59, 0.2);
+            border-left: 4px solid var(--secondary);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            pre {
+                font-size: 0.9rem;
+                padding: 15px;
+            }
+            
+            header {
+                padding: 20px 15px;
+            }
+            
+            .toc {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .content-section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            
+            pre {
+                border-left: 2px solid #999;
+                page-break-inside: avoid;
+            }
+            
+            a {
+                color: black;
+                text-decoration: underline;
+            }
+            
+            .toc {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-python"></i> Day 02 Python Class Script (Fruit Shop Conversation)</h1>
+            <p class="subtitle">Complete overview of Day 02's class activities and learning materials</p>
+        </header>
+
+        <div class="toc">
+            <a href="#warm-up--fruit-shop-role-play" class="toc-item"><i class="fas fa-users"></i> Warm-up & Fruit Shop Role-Play</a>
+            <a href="#introducing-variables-with-apple-brochure" class="toc-item"><i class="fas fa-code"></i> Introducing Variables with Apple Brochure</a>
+            <a href="#variables--data-types" class="toc-item"><i class="fas fa-cogs"></i> Variables & Data Types</a>
+            <a href="#checking-data-types" class="toc-item"><i class="fas fa-check-circle"></i> Checking Data Types</a>
+            <a href="#f-strings-for-output-formatting" class="toc-item"><i class="fas fa-code"></i> f-Strings for Output Formatting</a>
+            <a href="#activity-1-create-apple-brochure-in-python" class="toc-item"><i class="fas fa-laptop-code"></i> Activity 1: Create Apple Brochure in Python</a>
+            <a href="#activity-2-data-type-explorer" class="toc-item"><i class="fas fa-search"></i> Activity 2: Data Type Explorer</a>
+            <a href="#activity-3-print-brochure-with-f-strings" class="toc-item"><i class="fas fa-pencil-alt"></i> Activity 3: Print Brochure with f-Strings</a>
+            <a href="#review--reflection" class="toc-item"><i class="fas fa-brain"></i> Review & Reflection</a>
+            <a href="#homework--practice" class="toc-item"><i class="fas fa-book"></i> Homework & Practice</a>
+            <a href="#next-steps" class="toc-item"><i class="fas fa-forward"></i> Next Steps</a>
+        </div>
+
+        <div class="content-section" id="warm-up--fruit-shop-role-play">
+            <h2><i class="fas fa-users"></i> Warm-up & Fruit Shop Role-Play</h2>
+            <p><strong>Teacher Script:</strong> “Before we write code, let’s imagine we are in a <strong>fruit shop</strong>. One student will be the <strong>seller</strong>, another will be the <strong>buyer</strong>.”</p>
+            <p><strong>Role-Play Example:</strong></p>
+            <ul>
+                <li><strong>Seller:</strong> “Hello! Today we have fresh apples.”</li>
+                <li><strong>Buyer:</strong> “Great! What is the color of the apple?”</li>
+                <li><strong>Seller:</strong> “They are red.”</li>
+                <li><strong>Buyer:</strong> “How much do they cost per kg?”</li>
+                <li><strong>Seller:</strong> “₹120.5 per kg.”</li>
+                <li><strong>Buyer:</strong> “I’ll take 6 kg. Are these apples healthy?”</li>
+                <li><strong>Seller:</strong> “Yes! Very healthy.”</li>
+            </ul>
+            <p><strong>Teacher Connect:</strong> “Did you notice the key details in this conversation? In Python, we can <strong>store all this information in variables</strong>, just like the shopkeeper keeps a record.”</p>
+        </div>
+
+        <div class="content-section" id="introducing-variables-with-apple-brochure">
+            <h2><i class="fas fa-code"></i> Introducing Variables with Apple Brochure</h2>
+            <p><strong>Code Example:</strong></p>
+            <pre><code>fruit_name = "apple"</code></pre>
+            <pre><code>fruit_color = "red"</code></pre>
+            <pre><code>quantity_kg = 6</code></pre>
+            <pre><code>price_rupees = 120.5</code></pre>
+            <pre><code>healthy = True</code></pre>
+            <p><strong>Ask Students:</strong></p>
+            <ul>
+                <li>“What value is stored in `fruit_name`?”</li>
+                <li>“Which variable represents the quantity?”</li>
+            </ul>
+        </div>
+
+        <div class="content-section" id="variables--data-types">
+            <h2><i class="fas fa-cogs"></i> Variables & Data Types</h2>
+            <p><strong>Teacher Script:</strong> “These variables belong to different <strong>data types</strong>. Let’s see.”</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Example values</th>
+                        <th>Data type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>"apple", "red", "my name is ramesh"</td>
+                        <td>str</td>
+                    </tr>
+                    <tr>
+                        <td>12, 18000, -250</td>
+                        <td>int</td>
+                    </tr>
+                    <tr>
+                        <td>120.5, 3.14, -0.5</td>
+                        <td>float</td>
+                    </tr>
+                    <tr>
+                        <td>True, False</td>
+                        <td>bool</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>Prompt:</strong> “Which type is best for the word *red*? What about the price?”</p>
+        </div>
+
+        <div class="content-section" id="checking-data-types">
+            <h2><i class="fas fa-check-circle"></i> Checking Data Types</h2>
+            <p><strong>Code Example:</strong></p>
+            <pre><code>print(type(fruit_name))</code></pre>
+            <pre><code>print(type(fruit_color))</code></pre>
+            <pre><code>print(type(quantity_kg))</code></pre>
+            <pre><code>print(type(price_rupees))</code></pre>
+            <pre><code>print(type(healthy))</code></pre>
+            <p><strong>Interactive Question:</strong> “Predict first — what do you think `price_rupees` will show? `int` or `float`?”</p>
+        </div>
+
+        <div class="content-section" id="f-strings-for-output-formatting">
+            <h2><i class="fas fa-code"></i> f-Strings for Output Formatting</h2>
+            <p><strong>Code Example:</strong></p>
+            <pre><code>print(f"Fruit name is {fruit_name}")</code></pre>
+            <pre><code>print(f"Fruit color is {fruit_color}")</code></pre>
+            <pre><code>print(f"Quantity in kg is {quantity_kg}")</code></pre>
+            <pre><code>print(f"Price in rupees is {price_rupees}")</code></pre>
+            <pre><code>print(f"Is it healthy? {healthy}")</code></pre>
+            <p><strong>Teacher Prompt:</strong> “See how clean this looks! If I remove the `f`, what do you think will happen?”</p>
+        </div>
+
+        <div class="content-section" id="activity-1-create-apple-brochure-in-python">
+            <h2><i class="fas fa-laptop-code"></i> Activity 1: Create Apple Brochure in Python 🍎</h2>
+            <p>Students recreate the **apple brochure** in Python. Ask them to change:</p>
+            <ul>
+                <li>fruit_color → `"green"`</li>
+                <li>quantity_kg → `10`</li>
+                <li>healthy → `False`</li>
+            </ul>
+        </div>
+
+        <div class="content-section" id="activity-2-data-type-explorer">
+            <h2><i class="fas fa-search"></i> Activity 2: Data Type Explorer 🔍</h2>
+            <p><strong>Code Example:</strong></p>
+            <pre><code>x = "120.5"</code></pre>
+            <pre><code>y = 120.5</code></pre>
+            <p><strong>Ask Students:</strong> “Why is `"120.5"` a string but `120.5` is a float?”</p>
+        </div>
+
+        <div class="content-section" id="activity-3-print-brochure-with-f-strings">
+            <h2><i class="fas fa-pencil-alt"></i> Activity 3: Print Brochure with f-Strings 📝</h2>
+            <p><strong>Code Example:</strong></p>
+            <pre><code>print(f"{fruit_name.upper()} BROCHURE")</code></pre>
+            <pre><code>print(f"Color: {fruit_color}")</code></pre>
+            <pre><code>print(f"Quantity: {quantity_kg} kg")</code></pre>
+            <pre><code>print(f"Price: ₹{price_rupees}")</code></pre>
+            <pre><code>print(f"Healthy Choice: {healthy}")</code></pre>
+            <p><strong>Extension Prompt:</strong> “Try making the brochure for another fruit, like mango or orange.”</p>
+        </div>
+
+        <div class="content-section" id="review--reflection">
+            <h2><i class="fas fa-brain"></i> Review & Reflection</h2>
+            <p><strong>Teacher Script:</strong> “Let’s review today’s key ideas. Who can tell me…”</p>
+            <ol>
+                <li>“What is a variable?”</li>
+                <li>“What are the 4 data types we used?”</li>
+                <li>“What does `type()` do?”</li>
+                <li>“How do f-strings help us?”</li>
+            </ol>
+        </div>
+
+        <div class="content-section" id="homework--practice">
+            <h2><i class="fas fa-book"></i> Homework & Practice</h2>
+            <p><strong>Teacher Script:</strong> “Tomorrow (Day 03), we’ll move from <strong>storing values</strong> to <strong>comparing values</strong> using operators, and make decisions with `if-else`. For example: *Can you afford to buy the apple with your budget?*”</p>
+        </div>
+
+        <div class="content-section" id="next-steps">
+            <h2><i class="fas fa-forward"></i> Next Steps</h2>
+            <ul>
+                <li>Class Recap and Learning Outcomes</li>
+                <li>Sharing Visual Aids (Screenshots)</li>
+                <li>Distribution of This Week's Assignment</li>
+            </ul>
+            <p>Before the next class, I will:
+                <ul>
+                    <li>Send a recap of what was covered</li>
+                    <li>Provide screenshots (opening VS Code, navigating folders, creating a file, running code)</li>
+                    <li>Share this week's assignment</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

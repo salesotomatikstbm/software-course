@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Day 06 Assignment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern CSS Variables */
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --accent: #4B8BBE;
+            --light: #f7f7f7;
+            --dark: #333;
+            --success: #28a745;
+            --code-bg: #282c34;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--secondary);
+        }
+
+        h3 {
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-top: 25px;
+        }
+
+        p, ul, ol {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 12px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        li:before {
+            content: "▶";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        /* Content Section Styling */
+        .content-section {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: var(--primary);
+            background-color: rgba(255, 212, 59, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Styling for file names */
+        .file-name {
+            font-weight: bold;
+            color: var(--primary);
+            font-family: 'Fira Code', 'Courier New', monospace;
+            background-color: rgba(48, 105, 152, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px dashed var(--primary);
+        }
+
+        /* Help section specific styling */
+        #if-you-need-help {
+            border-left: 4px solid var(--success);
+        }
+
+        #if-you-need-help h2 {
+            color: var(--success);
+            border-bottom: 2px solid rgba(40, 167, 69, 0.3);
+        }
+
+        /* Notification style */
+        .notification {
+            background-color: rgba(255, 212, 59, 0.2);
+            border-left: 4px solid var(--secondary);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        /* Assignment sections */
+        .assignment-section {
+            background-color: rgba(255, 212, 59, 0.1);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .assignment-section h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .content-section {
+                padding: 20px;
+            }
+
+            pre {
+                font-size: 0.9rem;
+                padding: 15px;
+            }
+
+            header {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-python"></i> Day 06 - Python Homework</h1>
+            <p class="subtitle">Switch-Case Simulations and Calculators</p>
+        </header>
+
+        <div class="content-section">
+            <p>Practice Python to improve your coding skills. Use VS Code and create the files below. Run each program and check the output.</p>
+            <div class="notification">
+                <i class="fas fa-lightbulb"></i> Remember to save your files with a <span class="file-name">.py</span> extension and run them to see the output!
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment01">
+            <h2><i class="fas fa-graduation-cap"></i> Assignment 01: Grade Calculator (Switch-Case)</h2>
+            <p>To calculate the grade based on the marks obtained using <strong>match-case</strong> and display the grade with a suitable message.</p>
+
+            <div class="assignment-section">
+                <h4>Objective:</h4>
+                <p>Learn how to use <code>match-case</code> conditions in Python to simulate the switch-case structure and calculate the grade based on the marks obtained.</p>
+
+                <h3>Instructions:</h3>
+                <ul>
+                    <li>Ask the user to enter the marks obtained in the exam (between 0 and 100).</li>
+                    <li>Using <code>match-case</code>, calculate the grade based on the following rules:
+                        <ul>
+                            <li>If marks are ≥ 90, grade = <code>"A+"</code></li>
+                            <li>If marks are ≥ 75 and < 90, grade = <code>"A"</code></li>
+                            <li>If marks are ≥ 60 and < 75, grade = <code>"B"</code></li>
+                            <li>If marks are ≥ 50 and < 60, grade = <code>"C"</code></li>
+                            <li>If marks are < 50, grade = <code>"F"</code></li>
+                        </ul>
+                    </li>
+                    <li>If the grade is <code>"F"</code>, display: <strong>"Sorry, you failed! Please try again"</strong></li>
+                    <li>Otherwise, display: <strong>"Congratulations! You passed!"</strong></li>
+                    <li>Show the marks obtained and the final grade clearly.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment02">
+            <h2><i class="fas fa-tag"></i> Assignment 02: Discount Calculator (Switch-Case)</h2>
+            <p>To calculate the discount on a shopping bill using <strong>match-case</strong> conditions and display the final bill amount after applying the discount.</p>
+
+            <div class="assignment-section">
+                <h4>Objective:</h4>
+                <p>Learn how to calculate the discount on a shopping bill using <code>match-case</code> conditions in Python.</p>
+
+                <h3>Instructions:</h3>
+                <ul>
+                    <li>Ask the user to enter the total bill amount of the purchase.</li>
+                    <li>Using <code>match-case</code>, calculate the discount based on the following rules:
+                        <ul>
+                            <li>If the bill is ≤ ₹500, discount = ₹0</li>
+                            <li>If the bill is > ₹500 and ≤ ₹1000, discount = ₹50</li>
+                            <li>If the bill is > ₹1000 and ≤ ₹5000, discount = ₹100</li>
+                            <li>If the bill is > ₹5000, discount = ₹200</li>
+                        </ul>
+                    </li>
+                    <li>Subtract the discount from the total bill to calculate the final amount.</li>
+                    <li>If the final amount is more than ₹5000, display: <strong>"You have a high bill amount!"</strong></li>
+                    <li>Otherwise, display: <strong>"Thank you for your purchase!"</strong></li>
+                    <li>Show the total bill, discount applied, and the final amount clearly.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="if-you-need-help">
+            <h2><i class="fas fa-hands-helping"></i> If you need help</h2>
+            <p>Post in the group with any of these problems:</p>
+            <ul>
+                <li>VS Code not opening</li>
+                <li>Can't create a file</li>
+                <li>My file is not running</li>
+            </ul>
+            <p>Good luck and have fun coding!</p>
+        </div>
+    </div>
+</body>
+</html>

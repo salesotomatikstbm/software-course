@@ -25,14 +25,3 @@
 
 
 
-   // Basic password prompt for authentication
-  function authenticateUser() {
-    var password = prompt("Please enter the password to access this course:");
-    var correctPassword = "scratch"; // Replace with your desired password
-
-    if (password === correctPassword) {
-      window.location.href = "./scratch/scratch.html"; // Redirect to course page
-    } else {
-      alert("Incorrect password. Access denied.");
-    }
-  }

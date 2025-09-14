@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Day 01 Assignment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern CSS Variables */
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --accent: #4B8BBE;
+            --light: #f7f7f7;
+            --dark: #333;
+            --success: #28a745;
+            --code-bg: #282c34;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--secondary);
+        }
+
+        p, ul {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 12px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        li:before {
+            content: "▶";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        /* Content Section Styling */
+        .content-section {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: var(--primary);
+            background-color: rgba(255, 212, 59, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Styling for code blocks */
+        pre {
+            background-color: var(--code-bg);
+            color: #F8F8F2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 1rem;
+            overflow-x: auto;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            margin: 20px 0;
+            line-height: 1.5;
+            position: relative;
+            border-left: 4px solid var(--secondary);
+        }
+
+        pre::before {
+            content: "Python";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 0 0 0 8px;
+        }
+
+        /* Code elements inside pre */
+        code {
+            background-color: transparent;
+            color: #F8F8F2;
+            padding: 0;
+        }
+
+        pre code {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Styling for file names like program1.py, program2.py */
+        .file-name {
+            font-weight: bold;
+            color: var(--primary);
+            font-family: 'Fira Code', 'Courier New', monospace;
+            background-color: rgba(48, 105, 152, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px dashed var(--primary);
+        }
+
+        /* Help section specific styling */
+        #if-you-need-help {
+            border-left: 4px solid var(--success);
+        }
+
+        #if-you-need-help h2 {
+            color: var(--success);
+            border-bottom: 2px solid rgba(40, 167, 69, 0.3);
+        }
+
+        /* Notification style */
+        .notification {
+            background-color: rgba(255, 212, 59, 0.2);
+            border-left: 4px solid var(--secondary);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            pre {
+                font-size: 0.9rem;
+                padding: 15px;
+            }
+            
+            header {
+                padding: 20px 15px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .content-section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            
+            pre {
+                border-left: 2px solid #999;
+                page-break-inside: avoid;
+            }
+            
+            a {
+                color: black;
+                text-decoration: underline;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-python"></i> Python Homework</h1>
+            <p class="subtitle">Day 01 Assignment</p>
+        </header>
+        
+        <div class="content-section">
+            <p>Practice Python to improve your typing and coding skills. Use VS Code and create the files below. Run each program and check the output.</p>
+            <div class="notification">
+                <i class="fas fa-lightbulb"></i> Remember to save your files with a <span class="file-name">.py</span> extension and run them to see the output!
+            </div>
+        </div>
+        
+        <div class="content-section" id="program1">
+            <h2><i class="fas fa-code"></i> Program 1</h2>
+            <p>Create a file named <span class="file-name">program1.py</span> and enter:</p>
+            <pre><code>print("About Me")
+print("My name is Ramesh.")
+print("I am studying in 7th standard at ABC School.")
+print("I live in Madambakkam.")
+print("My father's name is Kumar.")
+print("My mother's name is Vasantha.")
+print("I like chocolate and ice cream.")
+print("I enjoy reading storybooks.")
+print("My favorite subject is Mathematics.")
+print("I have a pet dog named Bruno.")
+print("I like playing cricket with my friends.")
+print("I want to become an engineer when I grow up.") </code></pre>
+        </div>
+
+        <div class="content-section" id="program2">
+            <h2><i class="fas fa-code"></i> Program 2</h2>
+            <p>Create a file named <span class="file-name">program2.py</span> and enter:</p>
+            <pre><code>name = "Ramesh"
+standard = "7th"
+school = "ABC School"
+city = "Madambakkam"
+father_name = "Kumar"
+mother_name = "Vasantha"
+favorite_food1 = "chocolate"
+favorite_food2 = "ice cream"
+
+print("About Me")
+print(name)
+print(standard)
+print(school)
+print(city)
+print(father_name)
+print(mother_name)
+print(favorite_food1)
+print(favorite_food2) </code></pre>
+        </div>
+
+        <div class="content-section" id="program3">
+            <h2><i class="fas fa-code"></i> Program 3</h2>
+            <p>Create a file named <span class="file-name">program3.py</span> and enter:</p>
+            <pre><code>name = "Ramesh"
+standard = "7th"
+school = "ABC School"
+city = "Madambakkam"
+father_name = "Kumar"
+mother_name = "Vasantha"
+favorite_food1 = "chocolate"
+favorite_food2 = "ice cream"
+
+print("About Me")
+print("My name is " + name + ".")
+print("I am studying in " + standard + " standard at " + school + ".")
+print("I live in " + city + ".")
+print("My father's name is " + father_name + ".")
+print("My mother's name is " + mother_name + ".")
+print("I like " + favorite_food1 + " and " + favorite_food2 + ".")
+print("I enjoy reading storybooks.")
+print("My favorite subject is " + "Mathematics" + ".")
+print("I have a pet dog named " + "Bruno" + ".")
+print("I like playing cricket with my friends.") </code></pre>
+        </div>
+
+        <div class="content-section" id="if-you-need-help">
+            <h2><i class="fas fa-hands-helping"></i> If you need help</h2>
+            <p>Post in the group with any of these problems:</p>
+            <ul>
+                <li>VS Code not opening</li>
+                <li>Can't create a file</li>
+                <li>My file is not running</li>
+            </ul>
+            <p>Good luck and have fun coding!</p>
+        </div>
+    </div>
+</body>
+</html>

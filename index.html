@@ -1,133 +1,1450 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="Otomatiks, Education, Online Course" />
+    <meta name="description" content="Otomatiks - Education & Online Course" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Otomatiks - Secure Login</title>
+    <!-- Fontawesome Icon -->
+    <link rel="stylesheet" href="assets/css/all.min.css" />
+    <!-- Icomoon Icon -->
+    <link rel="stylesheet" href="assets/fonts/style.css" />
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.min.css" />
+    <!-- Aos Animation -->
+    <link rel="stylesheet" href="assets/css/aos.css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <!-- Swiper -->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+    <!-- Animate Css -->
+    <link rel="stylesheet" href="assets/css/animate.min.css" />
+    <!-- Main Css File -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Responsive -->
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <style>
+      /* Custom styles for authentication */
 
-<head>
-  <meta charset="utf-8">
-  <meta name="keywords" content="Otomatiks, Education, Online Course">
-  <meta name="description" content="Otomatiks - Education & Online Course">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Otomatiks - Secure Login</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-      padding: 20px;
-    }
-    
-    .login-container {
-      max-width: 440px;
-      width: 100%;
-    }
-    
-    .card {
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      overflow: hidden;
-      border: none;
-    }
-    
-    .card-header {
-      background: linear-gradient(120deg, #2575fc 0%, #6a11cb 100%);
-      color: white;
-      text-align: center;
-      padding: 25px 20px;
-      border-bottom: none;
-    }
-    
-    .card-body {
-      padding: 30px;
-    }
-    
-    .logo {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 15px;
-      background: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 20px;
-      color: #2575fc;
-    }
-    
-    .form-control {
-      border-radius: 8px;
-      padding: 12px 16px;
-      border: 2px solid #eef2f7;
-      transition: all 0.3s;
-    }
-    
-    .form-control:focus {
-      border-color: #2575fc;
-      box-shadow: 0 0 0 0.25rem rgba(37, 117, 252, 0.25);
-    }
-    
-    .btn-login {
-      background: linear-gradient(120deg, #2575fc 0%, #6a11cb 100%);
-      border: none;
-      padding: 12px;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: all 0.3s;
-    }
-    
-    .btn-login:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(37, 117, 252, 0.4);
-    }
-    
-    .error-message {
-      text-align: center;
-      padding: 10px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      display: none;
-    }
-  </style>
-</head>
+      .auth-container {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+      }
 
-<body>
-  <div class="login-container">
-    <div class="card">
-      <div class="card-header">
-        <div class="logo">O</div>
-        <h4 class="mb-0">Secure Login</h4>
-        <p class="mb-0">Access Otomatiks Course Portal</p>
-      </div>
-      <div class="card-body">
-        <div id="error-message" class="error-message alert alert-danger"></div>
-        
-        <form id="loginForm">
-          <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" required autocomplete="off" placeholder="Enter your username">
-          </div>
-          <div class="mb-4">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" required autocomplete="off" placeholder="Enter your password">
-          </div>
-          <button type="submit" class="btn btn-login w-100">Login to Portal</button>
-        </form>
+      .logo {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #4a6cf7;
+        margin-bottom: 5px;
+      }
+
+      .btn-clerk {
+        display: block;
+        width: 100%;
+        padding: 12px 20px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 8px;
+        background-color: #4a6cf7;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .btn-clerk:hover {
+        background-color: #3a5be0;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(74, 108, 247, 0.3);
+      }
+
+      .loader {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .status-message {
+        padding: 12px;
+        border-radius: 8px;
+        margin: 15px 0;
+        text-align: center;
+        display: none;
+      }
+
+      .status-message.success {
+        background-color: #d4edda;
+        color: #155724;
+        display: block;
+      }
+
+      .status-message.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        display: block;
+      }
+
+      .user-info {
+        text-align: center;
+        display: none;
+      }
+
+      .user-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 15px;
+        border: 3px solid #f0f0f0;
+      }
+
+      .admin-panel {
+        display: none;
+        margin-top: 20px;
+      }
+
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: #f5f7fa;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+      }
+
+      .feature-icon i {
+        font-size: 24px;
+        color: #4a6cf7;
+      }
+
+      .card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card-title {
+        color: #2d3748;
+        font-weight: 600;
+      }
+
+      .btn-primary {
+        background-color: #4a6cf7;
+        border-color: #4a6cf7;
+        border-radius: 6px;
+        padding: 8px 20px;
+      }
+
+      .btn-primary:hover {
+        background-color: #3a5be0;
+        border-color: #3a5be0;
+      }
+
+      .btn-outline-danger {
+        border-radius: 6px;
+        padding: 8px 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="auth-container animate_animated animate_fadeIn">
+        <h1 class="logo text-center">Otomatiks</h1>
+        <p class="text-center text-muted mb-4">
+          Education & Online Course Platform
+        </p>
+
+        <!-- Authentication Buttons -->
+        <div id="auth-buttons" class="text-center">
+          <button id="sign-in-btn" class="btn-clerk">
+            <i class="fas fa-sign-in-alt me-2"></i>Sign In
+            <span
+              id="sign-in-loader"
+              class="loader"
+              style="display: none"
+            ></span>
+          </button>
+          <button id="sign-up-btn" class="btn-clerk">
+            <i class="fas fa-user-plus me-2"></i>Sign Up
+            <span
+              id="sign-up-loader"
+              class="loader"
+              style="display: none"
+            ></span>
+          </button>
+        </div>
+
+        <!-- Status Message -->
+        <div id="status-message" class="status-message"></div>
+
+        <!-- User Info (shown after authentication) -->
+        <div id="user-info" class="user-info">
+          <img id="user-avatar" class="user-avatar" src="" alt="User Avatar" />
+          <h4 id="user-name" class="mb-3">Welcome, User!</h4>
+          <button id="sign-out-btn" class="btn btn-outline-danger mt-3">
+            <i class="fas fa-sign-out-alt me-2"></i>Sign Out
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Bootstrap JS and Popper.js -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Admin Panel (shown only to authorized users) -->
+    <div id="admin-panel" class="admin-panel">
+      <section class="courses-plan v1 @ py-120">
+        <div class="container-lg">
+          <div class="section-title center">
+            <div class="section-title-inner center">
+              <h4
+                class="sub-title"
+                data-aos="fade-down"
+                data-aos-duration="1000"
+              >
+                Courses Plan
+              </h4>
+              <h2
+                class="big-title s-color-white"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+              >
+                Our Most Popular Courses
+              </h2>
+            </div>
+          </div>
+          <div class="courses-cards v1">
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <!-- Nav Tabs -->
+                <button
+                  class="nav-link"
+                  id="nav-admin-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-admin"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-admin"
+                  aria-selected="false"
+                >
+                  Admin
+                </button>
 
-  <script src="assets/js/animation.js"></script>
+                <button
+                  class="nav-link"
+                  id="nav-robotics-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-robotics"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-robotics"
+                  aria-selected="false"
+                >
+                  Robotics
+                </button>
 
-  <!-- Animation CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-</body>
+                <button
+                  class="nav-link"
+                  id="nav-ai-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-ai"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-ai"
+                  aria-selected="false"
+                >
+                  AI
+                </button>
 
+                <button
+                  class="nav-link active"
+                  id="nav-kids-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-kids"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-kids"
+                  aria-selected="true"
+                >
+                  Kids Courses
+                </button>
+
+                <button
+                  class="nav-link"
+                  id="nav-college-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-college"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-college"
+                  aria-selected="false"
+                >
+                  College/Professionals
+                </button>
+              </div>
+            </nav>
+
+            <div class="tab-content" id="nav-tabContent">
+              <!-- Admin Tab -->
+              <div
+                class="tab-pane fade"
+                id="nav-admin"
+                role="tabpanel"
+                aria-labelledby="nav-admin-tab"
+              >
+                <div class="row">
+                  <div
+                    class="col-lg-2 col-md-8 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="300"
+                  >
+                    <div class="all-btn">
+                      <a
+                        href="assets/admin/kidscodingcourse/scratch.html"
+                        target="_blank"
+                        class="btn-p v2 btn-blue rounded"
+                      >
+                        Scratch for kids
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    class="col-lg-2 col-md-8 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="300"
+                  >
+                    <div class="all-btn">
+                      <a
+                        href="assets/admin/kidscodingcourse/python.html"
+                        target="_blank"
+                        class="btn-p v2 btn-blue rounded"
+                      >
+                        Python for kids
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    class="col-lg-2 col-md-8 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="300"
+                  >
+                    <div class="all-btn">
+                      <a
+                        href="assets/admin/kidscodingcourse/webbeginner.html"
+                        target="_blank"
+                        class="btn-p v2 btn-blue rounded"
+                      >
+                        Web Development (Beginner) for kids
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Kids Courses Tab -->
+              <div
+                class="tab-pane fade show active"
+                id="nav-kids"
+                role="tabpanel"
+                aria-labelledby="nav-kids-tab"
+              >
+                <div class="row">
+                  <!-- Scratch Programming -->
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="300"
+                  >
+                    <div class="courses-cards-content" data-name="kids">
+                      <div class="courses-img">
+                        <a href="assets/scratch/scratch.html" target="_blank">
+                          <img
+                            src="assets/img/courses/scratch.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">Kids</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/scratch/scratch.html" target="_blank"
+                            >Scratch Programming</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">₹ 8,000</h2>
+                          <div class="review">
+                            <p class="rating">Beginner</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Processing</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/scratch/scratch.html"
+                            target="_blank"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Python for Kids -->
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="100"
+                  >
+                    <div class="courses-cards-content" data-name="kids">
+                      <div class="courses-img">
+                        <a href="assets/python/python.html" target="_blank">
+                          <img
+                            src="assets/img/courses/python.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">Kids</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/python/python.html" target="_blank"
+                            >Python for Kids</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">₹ 8,000</h2>
+                          <div class="review">
+                            <p class="rating">Beginner</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Processing</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/python/python.html"
+                            target="_blank"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Web Development for Kids -->
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="400"
+                  >
+                    <div class="courses-cards-content" data-name="kids">
+                      <div class="courses-img">
+                        <a href="assets/webdevkids/beginner.html">
+                          <img
+                            src="./assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">Kids</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/webdevkids/beginner.html"
+                            >Web Development</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Beginner</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Processing</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/webdevkids/beginner.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Web Development Advanced for Kids -->
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="400"
+                  >
+                    <div class="courses-cards-content" data-name="kids">
+                      <div class="courses-img">
+                        <a href="assets/webdevkids/advanced.html">
+                          <img
+                            src="./assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">Kids</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/webdevkids/advanced.html"
+                            >Web Development Advanced</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Beginner</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Processing</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/webdevkids/advanced.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Java for Kids -->
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="200"
+                  >
+                    <div class="courses-cards-content" data-name="kids">
+                      <div class="courses-img">
+                        <a href="assets/java/java.html">
+                          <img
+                            src="./assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">Kids</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/java/java.html">Java for Kids</a>
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Beginner</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Not Started</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/java/java.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- College/Professionals Courses Tab -->
+              <div
+                class="tab-pane fade"
+                id="nav-college"
+                role="tabpanel"
+                aria-labelledby="nav-college-tab"
+              >
+                <div class="row">
+                  <!-- Career LaunchPad -->
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="100"
+                  >
+                    <div class="courses-cards-content" data-name="college">
+                      <div class="courses-img">
+                        <a href="assets/college/college.html">
+                          <img
+                            src="assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">College</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/college/college.html"
+                            >Career LaunchPad</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Advanced</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Otomatiks</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/college/college.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- System Design -->
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="200"
+                  >
+                    <div class="courses-cards-content" data-name="college">
+                      <div class="courses-img">
+                        <a href="assets/college/college.html">
+                          <img
+                            src="assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">College</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/college/college.html"
+                            >System Design</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Advanced</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Otomatiks</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/college/college.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Full Stack Development -->
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="300"
+                  >
+                    <div class="courses-cards-content" data-name="college">
+                      <div class="courses-img">
+                        <a href="assets/college/college.html">
+                          <img
+                            src="assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">College</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/college/college.html"
+                            >Full Stack Development</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Advanced</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Otomatiks</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/college/college.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Frontend Development (React) -->
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="400"
+                  >
+                    <div class="courses-cards-content" data-name="college">
+                      <div class="courses-img">
+                        <a href="assets/college/college.html">
+                          <img
+                            src="assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">College</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/college/college.html"
+                            >Frontend Development (React)</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Advanced</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Otomatiks</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/college/college.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Python Programming -->
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="500"
+                  >
+                    <div class="courses-cards-content" data-name="college">
+                      <div class="courses-img">
+                        <a href="assets/college/college.html">
+                          <img
+                            src="assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">College</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/college/college.html"
+                            >Python Programming</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Advanced</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Otomatiks</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/college/college.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Java Programming -->
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="600"
+                  >
+                    <div class="courses-cards-content" data-name="college">
+                      <div class="courses-img">
+                        <a href="assets/college/college.html">
+                          <img
+                            src="assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">College</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/college/college.html"
+                            >Java Programming</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Advanced</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Otomatiks</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/college/college.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Web Development -->
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="700"
+                  >
+                    <div class="courses-cards-content" data-name="college">
+                      <div class="courses-img">
+                        <a href="assets/college/college.html">
+                          <img
+                            src="assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">College</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/college/college.html"
+                            >Web Development</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Advanced</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Otomatiks</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/college/college.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Databases (SQL) -->
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="800"
+                  >
+                    <div class="courses-cards-content" data-name="college">
+                      <div class="courses-img">
+                        <a href="assets/college/college.html">
+                          <img
+                            src="assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">College</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/college/college.html"
+                            >Databases (SQL)</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Advanced</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Otomatiks</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/college/college.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Robotics and AI Courses (Tab 3 & 4) -->
+              <!-- Robotics Tab -->
+              <div
+                class="tab-pane fade"
+                id="nav-robotics"
+                role="tabpanel"
+                aria-labelledby="nav-robotics-tab"
+              >
+                <div class="row">
+                  <!-- Robotics Level 1 -->
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="100"
+                  >
+                    <div class="courses-cards-content" data-name="robotics">
+                      <div class="courses-img">
+                        <a
+                          href="assets/robotics/level1/level1.html"
+                          target="_blank"
+                        >
+                          <img
+                            src="assets/img/courses/roboticslevel1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">Robotics Level 1</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a
+                            href="assets/robotics/level1/level1.html"
+                            target="_blank"
+                            >Robotics Level 1</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Beginner</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Otomatiks</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/robotics/level1/level1.html"
+                            target="_blank"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Robotics Level 2 -->
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="200"
+                  >
+                    <div class="courses-cards-content" data-name="robotics">
+                      <div class="courses-img">
+                        <a href="assets/robotics/level1/level1.html">
+                          <img
+                            src="assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">Robotics Level 2</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/robotics/level1/level1.html"
+                            >Robotics Level 2</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Intermediate</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Otomatiks</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/robotics/level1/level1.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="200"
+                  >
+                    <div class="courses-cards-content" data-name="robotics">
+                      <div class="courses-img">
+                        <a href="assets/robotics/level1/level1.html">
+                          <img
+                            src="assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">Robotics Level 3</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/robotics/level1/level1.html"
+                            >Robotics Level 3</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Intermediate</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Otomatiks</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/robotics/level1/level1.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="200"
+                  >
+                    <div class="courses-cards-content" data-name="robotics">
+                      <div class="courses-img">
+                        <a href="assets/robotics/level1/level1.html">
+                          <img
+                            src="assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">Robotics Level 4</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/robotics/level1/level1.html"
+                            >Robotics Level 4</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Intermediate</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Otomatiks</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/robotics/level1/level1.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="200"
+                  >
+                    <div class="courses-cards-content" data-name="robotics">
+                      <div class="courses-img">
+                        <a href="assets/robotics/level1/level1.html">
+                          <img
+                            src="assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">Robotics Level 5</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/robotics/level1/level1.html"
+                            >Robotics Level 5</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Intermediate</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Otomatiks</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/robotics/level1/level1.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="200"
+                  >
+                    <div class="courses-cards-content" data-name="robotics">
+                      <div class="courses-img">
+                        <a href="assets/robotics/level1/level1.html">
+                          <img
+                            src="assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">Robotics Level 6</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/robotics/level1/level1.html"
+                            >Robotics Level 6</a
+                          >
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Intermediate</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Otomatiks</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/robotics/level1/level1.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Robotics Level 3 to 6 -->
+                  <!-- Similarly, add the remaining levels (3 to 6) for robotics here -->
+                </div>
+              </div>
+
+              <!-- AI Tab -->
+              <div
+                class="tab-pane fade"
+                id="nav-ai"
+                role="tabpanel"
+                aria-labelledby="nav-ai-tab"
+              >
+                <div class="row">
+                  <!-- AI Level 1 -->
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="100"
+                  >
+                    <div class="courses-cards-content" data-name="ai">
+                      <div class="courses-img">
+                        <a href="assets/ai/level1.html">
+                          <img
+                            src="assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">AI Level 1</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/ai/level1.html">AI Level 1</a>
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Beginner</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Otomatiks</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/ai/level1.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- AI Level 2 -->
+                  <div
+                    class="col-lg-4 col-md-6 col-sm-6"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay="200"
+                  >
+                    <div class="courses-cards-content" data-name="ai">
+                      <div class="courses-img">
+                        <a href="assets/ai/level1.html">
+                          <img
+                            src="assets/img/courses/courses-img-1.jpg"
+                            alt="courses-img"
+                          />
+                        </a>
+                        <div class="category">AI Level 2</div>
+                      </div>
+                      <div class="courses-content">
+                        <h4 class="courses-title">
+                          <a href="assets/ai/level1.html">AI Level 2</a>
+                        </h4>
+                        <div class="price-and-review">
+                          <h2 class="price">Premium</h2>
+                          <div class="review">
+                            <p class="rating">Intermediate</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="admin">
+                        <div class="admin-data">
+                          <h5 class="admin-name">Otomatiks</h5>
+                        </div>
+                        <div class="all-btn">
+                          <a
+                            href="assets/ai/level1.html"
+                            class="btn-p v2 btn-blue rounded"
+                            >Enroll Now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- AI Level 3 to 6 -->
+                  <!-- Similarly, add the remaining levels (3 to 6) for AI here -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="courses-bg-left">
+          <img
+            src="assets/img/courses/courses-bg-left.png"
+            alt="courses-bg-left"
+          />
+        </div>
+        <div class="courses-bg-right">
+          <img
+            src="assets/img/courses/courses-bg-right.png"
+            alt="courses-bg-left"
+          />
+        </div>
+      </section>
+    </div>
+
+    <!-- Clerk JS -->
+    <script
+      async
+      crossorigin="anonymous"
+      data-clerk-publishable-key="pk_test_cHJvZm91bmQtbGlnZXItNDQuY2xlcmsuYWNjb3VudHMuZGV2JA"
+      src="https://profound-liger-44.clerk.accounts.dev/npm/@clerk/clerk-js@5/dist/clerk.browser.js"
+      type="text/javascript"
+    ></script>
+
+    <!-- Jquery -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/nav.js"></script>
+    <script src="assets/js/clerk.js"></script>
+    <!-- bootstrap -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <!-- Anime Js -->
+    <script src="assets/js/anime.min.js"></script>
+    <!-- Swiper Js -->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <!-- Gsap -->
+    <script src="assets/js/gsap.min.js"></script>
+    <!-- ScrollTrigger -->
+    <script src="assets/js/ScrollTrigger.min.js"></script>
+    <!-- Counter Up -->
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <!-- Waypoints -->
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <!-- Magnific Popup -->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- Countdown -->
+    <script src="assets/js/jquery.countdown.min.js"></script>
+    <!-- Aos -->
+    <script src="assets/js/aos.js"></script>
+    <!-- Main Js File -->
+    <script src="assets/js/index.js"></script>
+
+    <!-- Access Denied Modal -->
+    <div
+      class="modal fade"
+      id="accessDeniedModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <h5 class="modal-title text-danger">
+              <i class="fas fa-ban me-2"></i>Access Denied
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text-center py-4">
+            <i class="fas fa-lock text-danger" style="font-size: 3rem"></i>
+            <p class="mt-3">
+              You don't have permission to access this page. Please contact the
+              administrator if you believe this is an error.
+            </p>
+          </div>
+          <div class="modal-footer border-0 justify-content-center">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

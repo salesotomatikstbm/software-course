@@ -11812,3 +11812,165 @@ html {
   -webkit-transform: translate(0, 7px);
   transform: translate(0, 7px);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ .header {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .logo {
+      font-weight: 700;
+      font-size: 2.2rem;
+      color: #4a6cf7;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .course-container {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .course-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      height: 100%;
+    }
+    
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .course-icon {
+      font-size: 2.5rem;
+      color: #4a6cf7;
+      margin-bottom: 15px;
+    }
+    
+    .btn-primary {
+      background: #4a6cf7;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background: #3a5ae0;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(74, 108, 247, 0.3);
+    }
+    
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #4a6cf7;
+    }
+    
+    .access-denied-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      padding: 20px;
+    }
+    
+    .access-denied {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      padding: 40px;
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+      animation: fadeIn 0.6s ease-out;
+    }
+    
+    .access-denied-icon {
+      font-size: 5rem;
+      color: #ff4757;
+      margin-bottom: 20px;
+      animation: bounce 1.5s infinite;
+    }
+    
+    .access-denied h2 {
+      color: #ff4757;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    
+    .access-denied p {
+      color: #555;
+      margin-bottom: 25px;
+      font-size: 1.1rem;
+    }
+    
+    .access-denied-btn {
+      background: #4a6cf7;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(74, 108, 247, 0.3);
+    }
+    
+    .access-denied-btn:hover {
+      background: #3a5ae0;
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(74, 108, 247, 0.4);
+      color: white;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-20px); }
+      60% { transform: translateY(-10px); }
+    }

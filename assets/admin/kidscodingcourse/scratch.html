@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scratch Programming Course - Otomatiks</title>
+  <meta name="description" content="Scratch Programming Course for kids. 30 hours, hands-on projects, certificate, flexible batches." />
+  <!-- Icons (monochrome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --text-dim: #4b5563;
+      --line: #e5e7eb;
+      --blue: #2563eb;
+      --blue-600: #1d4ed8;
+      --blue-50: #eff6ff;
+      --radius: 14px;
+      --shadow-sm: 0 6px 16px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.08);
+      --container: 1040px;
+      --nav-h: 70px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 16px;
+    }
+
+    .brochure {
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+
+    /* ------- Hero ------- */
+    .hero {
+      margin-top: 14px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: clamp(28px, 5vw, 56px);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -40% -10%;
+      height: 60%;
+      background: radial-gradient(40% 60% at 50% 100%, var(--blue-50), transparent 70%);
+      z-index: -1;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--blue);
+      background: var(--blue-50);
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .h1 {
+      font-size: clamp(1.9rem, 4.2vw, 3rem);
+      line-height: 1.1;
+      margin: 12px 0 8px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-dim);
+      margin: 0 0 28px;
+      font-weight: 400;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+      justify-content: center;
+    }
+
+    .btn {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn.primary {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    .btn.primary:hover {
+      background: var(--blue-600);
+    }
+
+    .btn.ghost:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    /* ------- Sections ------- */
+    .section {
+      padding: clamp(26px, 4.2vw, 40px) 0;
+      scroll-margin-top: calc(var(--nav-h) + 10px);
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px;
+      background: var(--bg);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .title {
+      font-size: 1.8rem;
+      margin: 0 0 16px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--text);
+    }
+
+    .lead {
+      color: var(--text-dim);
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+    }
+
+    /* ------- Accordion (interactive) ------- */
+    .accordion {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .acc-item + .acc-item {
+      border-top: 1px solid var(--line);
+    }
+
+    .acc-btn {
+      width: 100%;
+      text-align: left;
+      background: var(--bg);
+      border: 0;
+      padding: 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .acc-btn i {
+      transition: transform .2s ease;
+      font-size: 0.9rem;
+    }
+
+    .acc-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease;
+    }
+
+    .acc-item.open .acc-panel {
+      max-height: 500px;
+    }
+
+    .acc-item.open .acc-btn {
+      color: var(--blue);
+    }
+
+    .acc-item.open .acc-btn i {
+      transform: rotate(180deg);
+      color: var(--blue);
+    }
+
+    .list {
+      padding: 0 20px 20px;
+      margin: 0;
+    }
+
+    .list li {
+      margin-bottom: 8px;
+      padding-left: 4px;
+    }
+
+    .list li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ------- Info cards ------- */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .info-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .info-title {
+      margin: 0 0 12px;
+      color: var(--blue);
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    /* ------- Footer ------- */
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 40px 26px;
+      text-align: center;
+      border-radius: 18px;
+      margin-top: 40px;
+    }
+
+    .contact {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .contact a {
+      border: 1px solid var(--line);
+      padding: 10px 16px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .contact a:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    /* Floating WhatsApp */
+    .whatsapp {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      height: 56px;
+      width: 56px;
+      border-radius: 14px;
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .whatsapp:hover {
+      border-color: var(--blue);
+      transform: scale(1.05);
+    }
+
+    .whatsapp i {
+      font-size: 24px;
+      color: var(--blue);
+    }
+
+    /* Modal for poster */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .7);
+      display: none;
+      place-items: center;
+      padding: 20px;
+      z-index: 70;
+    }
+
+    .modal.open {
+      display: grid;
+    }
+
+    .modal-card {
+      background: var(--bg);
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      max-width: 90vw;
+      max-height: 90vh;
+      padding: 10px;
+      border: 1px solid var(--line);
+      position: relative;
+    }
+
+    .modal-card img {
+      display: block;
+      max-width: 85vw;
+      max-height: 75vh;
+      border-radius: 10px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      border-radius: 10px;
+      height: 36px;
+      width: 36px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+
+    /* Course highlights */
+    .highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .highlight-item {
+      flex: 1;
+      min-width: 200px;
+      background: var(--blue-50);
+      padding: 16px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .highlight-item i {
+      font-size: 24px;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .highlight-item h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .highlight-item p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+  </style>
+</head>
+<body>
+  <main class="brochure">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <span class="eyebrow"><i class="fa-solid fa-puzzle-piece"></i> Otomatiks</span>
+      <h1 class="h1" id="hero-title">SCRATCH PROGRAMMING COURSE</h1>
+      <p class="subtitle">Creative Coding for Young Minds - "Drag, drop, and create - the fun way to learn programming!"</p>
+
+      <div class="highlights">
+        <div class="highlight-item">
+          <i class="fa-solid fa-certificate"></i>
+          <h3>Certificate</h3>
+          <p>Upon completion</p>
+        </div>
+        <div class="highlight-item">
+          <i class="fa-solid fa-laptop-code"></i>
+          <h3>30 Hours</h3>
+          <p>Hands-on training</p>
+        </div>
+        <div class="highlight-item">
+          <i class="fa-solid fa-users"></i>
+          <h3>Small Batches</h3>
+          <p>Personal attention</p>
+        </div>
+        <div class="highlight-item">
+          <i class="fa-solid fa-briefcase"></i>
+          <h3>Projects</h3>
+          <p>Build your portfolio</p>
+        </div>
+      </div>
+      
+      <div class="cta-row">
+        <button class="btn ghost">Download Brochure</button>
+      </div>
+    </section>
+
+    <!-- PROGRAM OBJECTIVE -->
+    <section class="section" id="program-objective">
+      <div class="card">
+        <h2 class="title">Program Objective</h2>
+        <p class="lead">This course introduces young learners to the fundamentals of programming through Scratch, a visual programming language developed by MIT. Students will learn computational thinking, problem-solving skills, and creative expression through interactive projects.</p>
+
+        <div class="accordion">
+          <div class="acc-item">
+            <button class="acc-btn" aria-expanded="false">Who Can Join? <i class="fa-solid fa-chevron-down"></i></button>
+            <div class="acc-panel">
+              <ul class="list">
+                <li>Students aged 8+ years</li>
+                <li>No prior coding experience needed</li>
+                <li>Young creators interested in making games and animations</li>
+                <li>Students who enjoy solving puzzles and logical challenges</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="acc-item">
+            <button class="acc-btn" aria-expanded="false">Course Structure <i class="fa-solid fa-chevron-down"></i></button>
+            <div class="acc-panel">
+              <ul class="list">
+                <li>Total duration: <strong>30 hours</strong></li>
+                <li>Flexible scheduling options</li>
+                <li>Online or offline classes</li>
+                <li>Weekday or weekend batches available</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+
+         <div class="accordion">
+          <div class="acc-item">
+            <button class="acc-btn" aria-expanded="false">Featured Projects <i class="fa-solid fa-chevron-down"></i></button>
+            <div class="acc-panel">
+              <ul class="list">
+                <li>Animate a Bouncing Ball</li>
+                <li>Create a School Story Scene</li>
+                <li>Broadcast Message</li>
+                <li>Number Count</li>
+                <li>Even or Odd Checker</li>
+                <li>Student Grade System</li>
+                <li>Catching Game</li>
+                <li>Maze Master</li>
+                <li>Quiz Game</li>
+                <li>Temperature Converter</li>
+                <li>Calculator App</li>
+                <li>Electrical Circuit</li>
+                <li>Typing Game</li>
+                <li>To-Do List</li>
+                <li>Language Translator</li>
+                <li>Scratch OS</li>
+                <li>Jump Quest</li>
+                <li>Chess Game</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion">
+          <div class="acc-item">
+            <button class="acc-btn" aria-expanded="false">Featured Projects <i class="fa-solid fa-chevron-down"></i></button>
+            <div class="acc-panel">
+              <ul class="list">
+                <li>Animate a Bouncing Ball</li>
+                <li>Create a School Story Scene</li>
+                <li>Broadcast Message</li>
+                <li>Number Count</li>
+                <li>Even or Odd Checker</li>
+                <li>Student Grade System</li>
+                <li>Catching Game</li>
+                <li>Maze Master</li>
+                <li>Quiz Game</li>
+                <li>Temperature Converter</li>
+                <li>Calculator App</li>
+                <li>Electrical Circuit</li>
+                <li>Typing Game</li>
+                <li>To-Do List</li>
+                <li>Language Translator</li>
+                <li>Scratch OS</li>
+                <li>Jump Quest</li>
+                <li>Chess Game</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="acc-item">
+            <button class="acc-btn" aria-expanded="false">Fees Structure <i class="fa-solid fa-chevron-down"></i></button>
+            <div class="acc-panel">
+              <ul class="list">
+                <li>Rs. 8,000 </li>
+           
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="acc-item">
+            <button class="acc-btn" aria-expanded="false">What's Next After the Course? <i class="fa-solid fa-chevron-down"></i></button>
+            <div class="acc-panel">
+              <ul class="list">
+                <li>Advanced Scratch projects</li>
+                <li>Transition to text-based programming (Python, JavaScript)</li>
+                <li>Join our advanced coding courses</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+       
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <h2 class="title">Get In Touch</h2>
+      <p>Have questions about our Scratch course? Contact us today!</p>
+      <div class="contact">
+        <a href="tel:+916383791772"><i class="fa-solid fa-phone"></i> +91 6383791772</a>
+        <a href="mailto:support@otomatiks.in"><i class="fa-solid fa-envelope"></i> support@otomatiks.in</a>
+        <a href="https://wa.me/916383791772" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+      </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <div class="whatsapp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </div>
+  </main>
+
+  <script>
+    // Accordion behavior
+    document.querySelectorAll('.accordion').forEach(acc => {
+      acc.querySelectorAll('.acc-item').forEach(item => {
+        const btn = item.querySelector('.acc-btn');
+        const panel = item.querySelector('.acc-panel');
+        btn.addEventListener('click', () => {
+          const isOpen = item.classList.toggle('open');
+          btn.setAttribute('aria-expanded', String(isOpen));
+        });
+      });
+    });
+
+    // WhatsApp button
+    document.querySelector('.whatsapp').addEventListener('click', function() {
+      window.open('https://wa.me/916383791772', '_blank');
+    });
+  </script>
+</body>
+</html>

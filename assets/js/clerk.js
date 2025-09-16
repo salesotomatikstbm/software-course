@@ -24,9 +24,9 @@ const pageAccessConfig = {
   'assets/ai/level1.html': { role: 'ai' },
   'assets/ai/level2.html': { role: 'ai' },
 
-  'assets/admin/kidscodingcourse/python.html': { role: 'admin' },
-  'assets/admin/kidscodingcourse/scratch.html': { role: 'admin' },
-  'assets/admin/kidscodingcourse/webbeginner.html': { role: 'admin' },
+  'assets/admin/kidscodingcourse/pythondemo.html': { role: 'admin' },
+  'assets/admin/kidscodingcourse/scratchdemo.html': { role: 'admin' },
+  'assets/admin/kidscodingcourse/webbeginnerdemo.html': { role: 'admin' },
 
   'assets/college/college.html': { role: 'college' }
 };

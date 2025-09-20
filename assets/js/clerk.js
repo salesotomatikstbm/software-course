@@ -3,11 +3,17 @@
 const pageAccessConfig = {
   // --- Admin (your current mix kept) ---
   '/assets/admin/kidscodingcourse/scratch.html': {},                 
-  '/assets/admin/kidscodingcourse/scratchdemo.html': {},
   '/assets/admin/kidscodingcourse/python.html': {},                  
-  '/assets/admin/kidscodingcourse/pythondemo.html': {},
   '/assets/admin/kidscodingcourse/webbeginner.html': {},             
-  '/assets/admin/kidscodingcourse/webbeginnerdemo.html': {},
+ '/assets/admin/college/career_launchpad.html': {},  
+ '/assets/admin/college/system_design.html': {},  
+
+
+//  demo 
+
+'assets\demo\web\Web_demo.html' :{},
+'assets\demo\kids\scratch.html' :{},
+
 
   // --- Kids coding (role: coding) ---
   '/assets/scratch/scratch.html': { role: 'coding' },

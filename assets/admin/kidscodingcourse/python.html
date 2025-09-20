@@ -1,411 +1,619 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python Programming Course - Otomatiks</title>
-  <meta name="description" content="Python Programming Course for kids and beginners at Otomatiks. 30 hours, hands-on projects, certificate, flexible batches." />
-  <!-- Icons (monochrome) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #111111;
-      --text-dim: #4b5563;
-      --line: #e5e7eb;
-      --blue: #2563eb;
-      --blue-600: #1d4ed8;
-      --blue-50: #eff6ff;
-      --radius: 14px;
-      --shadow-sm: 0 6px 16px rgba(0, 0, 0, 0.06);
-      --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.08);
-      --container: 1040px;
-      --nav-h: 70px;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python Programming Course - Otomatiks</title>
+    <meta
+      name="description"
+      content="Scratch Programming Course for kids. 30 hours, hands-on projects, certificate, flexible batches."
+    />
+    <!-- Icons (monochrome) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --text: #111111;
+        --text-dim: #4b5563;
+        --line: #e5e7eb;
+        --blue: #2563eb;
+        --blue-600: #1d4ed8;
+        --blue-50: #eff6ff;
+        --blue-100: #dbeafe;
+        --orange: #f97316;
+        --orange-50: #fff7ed;
+        --radius: 14px;
+        --radius-lg: 20px;
+        --shadow-sm: 0 6px 16px rgba(0, 0, 0, 0.06);
+        --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.08);
+        --container: 1040px;
+        --nav-h: 70px;
+      }
 
-    * {
-      box-sizing: border-box;
-    }
+      * {
+        box-sizing: border-box;
+      }
 
-    html {
-      scroll-behavior: smooth;
-    }
+      html {
+        scroll-behavior: smooth;
+      }
 
-    body {
-      margin: 0;
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      padding: 16px;
-    }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+          Cantarell, Noto Sans, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        padding: 16px;
+        background-image: radial-gradient(
+            at 90% 80%,
+            var(--blue-50) 0,
+            transparent 60%
+          ),
+          radial-gradient(at 10% 20%, var(--orange-50) 0, transparent 50%);
+        background-attachment: fixed;
+      }
 
-    .brochure {
-      max-width: var(--container);
-      margin: 0 auto;
-    }
+      .brochure {
+        max-width: var(--container);
+        margin: 0 auto;
+      }
 
-    /* ------- Hero ------- */
-    .hero {
-      margin-top: 14px;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: clamp(28px, 5vw, 56px);
-      box-shadow: var(--shadow-md);
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-    }
+      /* ------- Hero ------- */
+      .hero {
+        margin-top: 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: clamp(28px, 5vw, 56px);
+        box-shadow: var(--shadow-md);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+      }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto -10% -40% -10%;
-      height: 60%;
-      background: radial-gradient(40% 60% at 50% 100%, var(--blue-50), transparent 70%);
-      z-index: -1;
-    }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto -10% -40% -10%;
+        height: 60%;
+        background: radial-gradient(
+          40% 60% at 50% 100%,
+          var(--blue-50),
+          transparent 70%
+        );
+        z-index: -1;
+      }
 
-    .eyebrow {
-      display: inline-block;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--blue);
-      background: var(--blue-50);
-      padding: 6px 12px;
-      border-radius: 20px;
-      margin-bottom: 16px;
-    }
+      .logo-container {
+        margin-bottom: 20px;
+      }
 
-    .h1 {
-      font-size: clamp(1.9rem, 4.2vw, 3rem);
-      line-height: 1.1;
-      margin: 12px 0 8px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
+      .logo {
+        max-width: 280px;
+        height: auto;
+      }
 
-    .subtitle {
-      font-size: 1.15rem;
-      color: var(--text-dim);
-      margin: 0 0 28px;
-      font-weight: 400;
-    }
+      .eyebrow {
+        display: inline-block;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--blue);
+        background: var(--blue-50);
+        padding: 6px 12px;
+        border-radius: 20px;
+        margin-bottom: 16px;
+      }
 
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
-      justify-content: center;
-    }
+      .h1 {
+        font-size: clamp(1.9rem, 4.2vw, 3rem);
+        line-height: 1.1;
+        margin: 12px 0 8px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        font-family: "Fredoka", sans-serif;
+        color: #1e3a8a;
+      }
 
-    .btn {
-      appearance: none;
-      border: 1px solid var(--line);
-      background: var(--bg);
-      padding: 14px 24px;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: all 0.2s ease;
-    }
+      .subtitle {
+        font-size: 1.15rem;
+        color: var(--text-dim);
+        margin: 0 0 28px;
+        font-weight: 400;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
 
-    .btn.primary {
-      background: var(--blue);
-      border-color: var(--blue);
-      color: #fff;
-    }
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+        justify-content: center;
+      }
 
-    .btn.primary:hover {
-      background: var(--blue-600);
-    }
+      .btn {
+        appearance: none;
+        border: 1px solid var(--line);
+        background: var(--bg);
+        padding: 14px 24px;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
 
-    .btn.ghost:hover {
-      border-color: var(--blue);
-      color: var(--blue);
-    }
+      .btn.primary {
+        background: var(--blue);
+        border-color: var(--blue);
+        color: #fff;
+        box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+      }
 
-    /* ------- Sections ------- */
-    .section {
-      padding: clamp(26px, 4.2vw, 40px) 0;
-      scroll-margin-top: calc(var(--nav-h) + 10px);
-    }
+      .btn.primary:hover {
+        background: var(--blue-600);
+        transform: translateY(-2px);
+      }
 
-    .card {
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 28px;
-      background: var(--bg);
-      box-shadow: var(--shadow-sm);
-    }
+      .btn.ghost {
+        background: transparent;
+      }
 
-    .title {
-      font-size: 1.8rem;
-      margin: 0 0 16px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      color: var(--text);
-    }
+      .btn.ghost:hover {
+        border-color: var(--blue);
+        color: var(--blue);
+        transform: translateY(-2px);
+      }
 
-    .lead {
-      color: var(--text-dim);
-      font-size: 1.1rem;
-      margin-bottom: 24px;
-    }
+      /* ------- Sections ------- */
+      .section {
+        padding: clamp(26px, 4.2vw, 40px) 0;
+        scroll-margin-top: calc(var(--nav-h) + 10px);
+      }
 
-    /* ------- Accordion (interactive) ------- */
-    .accordion {
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      overflow: hidden;
-      margin-bottom: 16px;
-    }
+      .card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 28px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-sm);
+      }
 
-    .acc-item + .acc-item {
-      border-top: 1px solid var(--line);
-    }
+      .title {
+        font-size: 1.8rem;
+        margin: 0 0 16px;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+        color: var(--text);
+        font-family: "Fredoka", sans-serif;
+        color: #1e3a8a;
+      }
 
-    .acc-btn {
-      width: 100%;
-      text-align: left;
-      background: var(--bg);
-      border: 0;
-      padding: 20px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
+      .lead {
+        color: var(--text-dim);
+        font-size: 1.1rem;
+        margin-bottom: 24px;
+      }
 
-    .acc-btn i {
-      transition: transform .2s ease;
-      font-size: 0.9rem;
-    }
+      /* ------- Accordion (interactive) ------- */
+      .accordion {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        margin-bottom: 16px;
+        background: white;
+        transition: all 0.3s ease;
+      }
 
-    .acc-panel {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .3s ease;
-    }
+      .accordion:hover {
+        box-shadow: var(--shadow-sm);
+      }
 
-    .acc-item.open .acc-panel {
-      max-height: 500px;
-    }
+      .acc-item + .acc-item {
+        border-top: 1px solid var(--line);
+      }
 
-    .acc-item.open .acc-btn {
-      color: var(--blue);
-    }
+      .acc-btn {
+        width: 100%;
+        text-align: left;
+        background: var(--bg);
+        border: 0;
+        padding: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.2s ease;
+      }
 
-    .acc-item.open .acc-btn i {
-      transform: rotate(180deg);
-      color: var(--blue);
-    }
+      .acc-btn:hover {
+        background: var(--blue-50);
+      }
 
-    .list {
-      padding: 0 20px 20px;
-      margin: 0;
-    }
+      .acc-btn i {
+        transition: transform 0.2s ease;
+        font-size: 0.9rem;
+      }
 
-    .list li {
-      margin-bottom: 8px;
-      padding-left: 4px;
-    }
+      .acc-panel {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
 
-    .list li:last-child {
-      margin-bottom: 0;
-    }
+      .acc-item.open .acc-panel {
+        max-height: 1000px;
+      }
 
-    /* ------- Info cards ------- */
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 18px;
-      margin-top: 24px;
-    }
+      .acc-item.open .acc-btn {
+        color: var(--blue);
+        background: var(--blue-50);
+      }
 
-    .info-card {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 20px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+      .acc-item.open .acc-btn i {
+        transform: rotate(180deg);
+        color: var(--blue);
+      }
 
-    .info-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
+      /* Improved list styles */
+      .list {
+        padding: 0 20px 20px;
+        margin: 0;
+      }
 
-    .info-title {
-      margin: 0 0 12px;
-      color: var(--blue);
-      font-weight: 600;
-      font-size: 1.2rem;
-    }
+      .list li {
+        list-style: none ;
+        margin-bottom: 10px;
+        padding-left: 24px;
+        position: relative;
+        transition: all 0.2s ease;
+      }
 
-    /* ------- Footer ------- */
-    .footer {
-      border-top: 1px solid var(--line);
-      padding: 40px 26px;
-      text-align: center;
-      border-radius: 18px;
-      margin-top: 40px;
-    }
+      .list li:hover {
+        transform: translateX(4px);
+      }
 
-    .contact {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
+      .list li::before {
+        content: "•";
+        color: var(--blue);
+        font-weight: bold;
+        position: absolute;
+        left: 8px;
+      }
 
-    .contact a {
-      border: 1px solid var(--line);
-      padding: 10px 16px;
-      border-radius: 10px;
-      text-decoration: none;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s ease;
-    }
+      /* Grid list for topics */
+      .grid-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 12px;
+        padding: 0 20px 20px;
+      }
 
-    .contact a:hover {
-      border-color: var(--blue);
-      color: var(--blue);
-    }
+      .grid-list li {
+        background: var(--blue-50);
+        padding: 10px 14px;
+        border-radius: 8px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.2s ease;
+      }
 
-    /* Floating WhatsApp */
-    .whatsapp {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 60;
-      border: 1px solid var(--line);
-      background: var(--bg);
-      height: 56px;
-      width: 56px;
-      border-radius: 14px;
-      box-shadow: var(--shadow-sm);
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
+      .grid-list li::before {
+        content: "✓";
+        color: var(--blue);
+        font-weight: bold;
+        position: static;
+      }
 
-    .whatsapp:hover {
-      border-color: var(--blue);
-      transform: scale(1.05);
-    }
+      .grid-list li:hover {
+        background: var(--blue-100);
+        transform: translateY(-2px);
+      }
 
-    .whatsapp i {
-      font-size: 24px;
-      color: var(--blue);
-    }
+      /* Project showcase */
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        padding: 0 20px 20px;
+      }
 
-    /* Modal for poster */
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, .7);
-      display: none;
-      place-items: center;
-      padding: 20px;
-      z-index: 70;
-    }
+      .project-card {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 16px;
+        transition: all 0.3s ease;
+        background: white;
+      }
 
-    .modal.open {
-      display: grid;
-    }
+      .project-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--blue);
+      }
 
-    .modal-card {
-      background: var(--bg);
-      border-radius: 16px;
-      box-shadow: var(--shadow-md);
-      max-width: 90vw;
-      max-height: 90vh;
-      padding: 10px;
-      border: 1px solid var(--line);
-      position: relative;
-    }
+      .project-card h4 {
+        margin: 0 0 8px;
+        color: var(--blue);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
 
-    .modal-card img {
-      display: block;
-      max-width: 85vw;
-      max-height: 75vh;
-      border-radius: 10px;
-    }
+      .project-card p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--text-dim);
+      }
 
-    .modal-close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      border: 1px solid var(--line);
-      background: var(--bg);
-      border-radius: 10px;
-      height: 36px;
-      width: 36px;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-    }
+      /* ------- Info cards ------- */
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 18px;
+        margin-top: 24px;
+      }
 
-    /* Course highlights */
-    .highlights {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin: 24px 0;
-    }
+      .info-card {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 20px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        background: white;
+      }
 
-    .highlight-item {
-      flex: 1;
-      min-width: 200px;
-      background: var(--blue-50);
-      padding: 16px;
-      border-radius: 12px;
-      text-align: center;
-    }
+      .info-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+      }
 
-    .highlight-item i {
-      font-size: 24px;
-      color: var(--blue);
-      margin-bottom: 10px;
-    }
+      .info-title {
+        margin: 0 0 12px;
+        color: var(--blue);
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
 
-    .highlight-item h3 {
-      margin: 0 0 8px;
-      font-size: 1rem;
-    }
+      /* ------- Footer ------- */
+      .footer {
+        border-top: 1px solid var(--line);
+        padding: 40px 26px;
+        text-align: center;
+        border-radius: 18px;
+        margin-top: 40px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+      }
 
-    .highlight-item p {
-      margin: 0;
-      font-size: 0.9rem;
-      color: var(--text-dim);
-    }
-  </style>
-</head>
-<body>
-  <main class="brochure">
+      .contact {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+
+      .contact a {
+        border: 1px solid var(--line);
+        padding: 10px 16px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s ease;
+        background: white;
+      }
+
+      .contact a:hover {
+        border-color: var(--blue);
+        color: var(--blue);
+        transform: translateY(-2px);
+      }
+
+      /* Floating WhatsApp */
+      .whatsapp {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 60;
+        border: 1px solid var(--line);
+        background: var(--bg);
+        height: 56px;
+        width: 56px;
+        border-radius: 14px;
+        box-shadow: var(--shadow-sm);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .whatsapp:hover {
+        border-color: var(--blue);
+        transform: scale(1.05);
+      }
+
+      .whatsapp i {
+        font-size: 24px;
+        color: var(--blue);
+      }
+
+      /* Modal for poster */
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: none;
+        place-items: center;
+        padding: 20px;
+        z-index: 70;
+      }
+
+      .modal.open {
+        display: grid;
+      }
+
+      .modal-card {
+        background: var(--bg);
+        border-radius: 16px;
+        box-shadow: var(--shadow-md);
+        max-width: 90vw;
+        max-height: 90vh;
+        padding: 10px;
+        border: 1px solid var(--line);
+        position: relative;
+      }
+
+      .modal-card img {
+        display: block;
+        max-width: 85vw;
+        max-height: 75vh;
+        border-radius: 10px;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border: 1px solid var(--line);
+        background: var(--bg);
+        border-radius: 10px;
+        height: 36px;
+        width: 36px;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+      }
+
+      /* Course highlights */
+      .highlights {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin: 24px 0;
+        justify-content: center;
+      }
+
+      .highlight-item {
+        flex: 1;
+        min-width: 200px;
+        background: var(--blue-50);
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.2s ease;
+        border: 1px solid transparent;
+      }
+
+      .highlight-item:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-sm);
+        border-color: var(--blue);
+      }
+
+      .highlight-item i {
+        font-size: 32px;
+        color: var(--blue);
+        margin-bottom: 12px;
+      }
+
+      .highlight-item h3 {
+        margin: 0 0 8px;
+        font-size: 1.1rem;
+        color: #1e3a8a;
+      }
+
+      .highlight-item p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--text-dim);
+      }
+
+      /* Badge for list items */
+      .badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-left: 8px;
+        background: var(--blue-100);
+        color: var(--blue);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .grid-list {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .project-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .highlight-item {
+          min-width: 140px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .grid-list {
+          grid-template-columns: 1fr;
+        }
+
+        .contact {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .contact a {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+
+
+   <main class="brochure">
     <!-- HERO -->
     <section class="hero" aria-labelledby="hero-title">
-       <img
-  src="../../img/logo/otomatiks%20White%20bg.png"
-  alt="Otomatiks logo"
-  style="display:block;width:100%;max-width:500px;height:auto;margin:0 auto;"
-  loading="lazy"
-  decoding="async"
-/>
-
+      <div class="logo-container">
+        <img
+          src="../../img/logo/otomatiks%20White%20bg.png"
+          alt="Otomatiks logo"
+          class="logo"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      
       <h1 class="h1" id="hero-title">PYTHON PROGRAMMING COURSE</h1>
       <p class="subtitle">Introduction to Text-Based Coding — from basics to real-world projects.</p>
       
@@ -433,9 +641,8 @@
       </div>
       
       <div class="cta-row">
-     
-        <button class="btn ghost">Download Brochure</button>
-      
+        <button class="btn primary"><i class="fa-solid fa-download"></i> Download Brochure</button>
+       
       </div>
     </section>
 
@@ -447,7 +654,7 @@
         
         <div class="accordion">
           <div class="acc-item">
-            <button class="acc-btn" aria-expanded="false">Who Can Join <i class="fa-solid fa-chevron-down"></i></button>
+            <button class="acc-btn" aria-expanded="false"><i class="fa-solid fa-user-graduate"></i> Who Can Join <i class="fa-solid fa-chevron-down"></i></button>
             <div class="acc-panel">
               <ul class="list">
                 <li>Students ages 10+ Years</li>
@@ -461,7 +668,7 @@
 
         <div class="accordion">
           <div class="acc-item">
-            <button class="acc-btn" aria-expanded="false">Basic Requirements <i class="fa-solid fa-chevron-down"></i></button>
+            <button class="acc-btn" aria-expanded="false"><i class="fa-solid fa-list-check"></i> Basic Requirements <i class="fa-solid fa-chevron-down"></i></button>
             <div class="acc-panel">
               <ul class="list">
                 <li>Basic computer knowledge</li>
@@ -475,7 +682,7 @@
 
         <div class="accordion">
           <div class="acc-item">
-            <button class="acc-btn" aria-expanded="false">Course Structure <i class="fa-solid fa-chevron-down"></i></button>
+            <button class="acc-btn" aria-expanded="false"><i class="fa-solid fa-calendar-days"></i> Course Structure <i class="fa-solid fa-chevron-down"></i></button>
             <div class="acc-panel">
               <ul class="list">
                 <li>Total duration: <strong>30 hours</strong></li>
@@ -489,10 +696,10 @@
 
         <div class="accordion">
           <div class="acc-item">
-            <button class="acc-btn" aria-expanded="false">Topics Covered <i class="fa-solid fa-chevron-down"></i></button>
+            <button class="acc-btn" aria-expanded="false"><i class="fa-solid fa-book-open"></i> Topics Covered <i class="fa-solid fa-chevron-down"></i></button>
             <div class="acc-panel">
-              <ul class="list">
-                <li>Introduction to text-based programming with Python</li>
+              <ul class="grid-list">
+                <li>Introduction to Python</li>
                 <li>Variables & Data Types</li>
                 <li>Operators and comparisons</li>
                 <li>Conditionals (if/else)</li>
@@ -500,6 +707,10 @@
                 <li>Functions & reusable code</li>
                 <li>Game development basics</li>
                 <li>GUI programming</li>
+                <li>File handling</li>
+                <li>Error handling</li>
+                <li>Modules and libraries</li>
+                <li>Basic algorithms</li>
               </ul>
             </div>
           </div>
@@ -507,98 +718,110 @@
         
         <div class="accordion">
           <div class="acc-item">
-            <button class="acc-btn" aria-expanded="false">Featured Projects <i class="fa-solid fa-chevron-down"></i></button>
+            <button class="acc-btn" aria-expanded="false"><i class="fa-solid fa-laptop-code"></i> Featured Projects <i class="fa-solid fa-chevron-down"></i></button>
             <div class="acc-panel">
-              <ul class="list">
-                <li>Interactive calculator</li>
-                <li>Number guessing game</li>
-                <li>Simple chatbot</li>
-                <li>Text‑based adventure game</li>
-                <li>Basic data visualization</li>
-                <li>GUI application using Tkinter</li>
-                <li>Final capstone project</li>
-              </ul>
+              <div class="project-grid">
+                <div class="project-card">
+                  <h4><i class="fa-solid fa-calculator"></i> Interactive Calculator</h4>
+                  <p>Build a functional calculator with a user interface</p>
+                </div>
+                <div class="project-card">
+                  <h4><i class="fa-solid fa-question-circle"></i> Number Guessing Game</h4>
+                  <p>Create a game where the computer guesses your number</p>
+                </div>
+                <div class="project-card">
+                  <h4><i class="fa-solid fa-robot"></i> Simple Chatbot</h4>
+                  <p>Program a basic conversational AI that responds to user input</p>
+                </div>
+                <div class="project-card">
+                  <h4><i class="fa-solid fa-dragon"></i> Text Adventure Game</h4>
+                  <p>Design an interactive story with multiple paths and endings</p>
+                </div>
+                <div class="project-card">
+                  <h4><i class="fa-solid fa-chart-bar"></i> Data Visualization</h4>
+                  <p>Create graphs and charts from data using Python libraries</p>
+                </div>
+                <div class="project-card">
+                  <h4><i class="fa-solid fa-window-restore"></i> GUI Application</h4>
+                  <p>Build a desktop app with buttons, inputs, and displays</p>
+                </div>
+                <div class="project-card">
+                  <h4><i class="fa-solid fa-medal"></i> Final Capstone Project</h4>
+                  <p>Combine all skills to create a comprehensive Python application</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="accordion">
-          <div class="acc-item">
-            <button class="acc-btn" aria-expanded="false">Fees Structure <i class="fa-solid fa-chevron-down"></i></button>
-            <div class="acc-panel">
-              <ul class="list">
-                <li>Rs. 8,000</li>
-            
-              </ul>
-            </div>
-          </div>
-        </div>
+      
 
         <div class="accordion">
           <div class="acc-item">
-            <button class="acc-btn" aria-expanded="false">What's Next After the Course? <i class="fa-solid fa-chevron-down"></i></button>
+            <button class="acc-btn" aria-expanded="false"><i class="fa-solid fa-arrow-right"></i> What's Next After the Course? <i class="fa-solid fa-chevron-down"></i></button>
             <div class="acc-panel">
               <ul class="list">
-                <li>Artificial Intelligence fundamentals</li>
-                <li>Game Development with PyGame</li>
-                <li>Web Development with Python</li>
-                <li>Data Science basics</li>
+                <li>Artificial Intelligence fundamentals <span class="badge">Advanced</span></li>
+                <li>Game Development with PyGame <span class="badge">Fun</span></li>
+                <li>Web Development with Python <span class="badge">Practical</span></li>
+               
               </ul>
             </div>
           </div>
         </div>
-        
-        <div class="accordion">
-          <div class="acc-item">
-            <button class="acc-btn" aria-expanded="false">Demo Class <i class="fa-solid fa-chevron-down"></i></button>
-            <div class="acc-panel">
-              <ul class="list">
-                <li>Schedule a free demo session to experience our teaching method</li>
-                <li>See sample projects created by our students</li>
-                <li>Meet our instructors and ask questions</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+      
       </div>
     </section>
 
- 
+     <!-- FOOTER -->
+      <footer class="footer">
+        <h2 class="title">Get In Touch</h2>
+        <p>Have questions about our Scratch course? Contact us today!</p>
+        <div class="contact">
+          <a href="tel:+919043209448"
+            ><i class="fa-solid fa-phone"></i> +91 90432 09448</a
+          >
+          <a href="mailto:support@otomatiks.in"
+            ><i class="fa-solid fa-envelope"></i> support@otomatiks.in</a
+          >
+          <a href="https://wa.me/919043209448" target="_blank"
+            ><i class="fa-brands fa-whatsapp"></i> WhatsApp</a
+          >
+        </div>
+      </footer>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-      <h2 class="title">Get In Touch</h2>
-      <p>Have questions about our Python course? Contact us today!</p>
-      <div class="contact">
-        <a href="tel:+916383791772"><i class="fa-solid fa-phone"></i> +91 6383791772</a>
-        <a href="mailto:support@otomatiks.in"><i class="fa-solid fa-envelope"></i> support@otomatiks.in</a>
-        <a href="https://wa.me/916383791772" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-      </div>
-    </footer>
 
     <!-- Floating WhatsApp -->
     <div class="whatsapp">
       <i class="fa-brands fa-whatsapp"></i>
     </div>
-  </main>
+</main>
 
-  <script>
-    // Accordion behavior
-    document.querySelectorAll('.accordion').forEach(acc => {
-      acc.querySelectorAll('.acc-item').forEach(item => {
-        const btn = item.querySelector('.acc-btn');
-        const panel = item.querySelector('.acc-panel');
-        btn.addEventListener('click', () => {
-          const isOpen = item.classList.toggle('open');
-          btn.setAttribute('aria-expanded', String(isOpen));
+    <script>
+      // Accordion behavior
+      document.querySelectorAll(".accordion").forEach((acc) => {
+        acc.querySelectorAll(".acc-item").forEach((item) => {
+          const btn = item.querySelector(".acc-btn");
+          const panel = item.querySelector(".acc-panel");
+          btn.addEventListener("click", () => {
+            const isOpen = item.classList.toggle("open");
+            btn.setAttribute("aria-expanded", String(isOpen));
+          });
         });
       });
-    });
 
-    // WhatsApp button
-    document.querySelector('.whatsapp').addEventListener('click', function() {
-      window.open('https://wa.me/916383791772', '_blank');
-    });
-  </script>
-</body>
+      // WhatsApp button
+      document
+        .querySelector(".whatsapp")
+        .addEventListener("click", function () {
+          window.open("https://wa.me/919043209448", "_blank");
+        });
+
+      // Add animation to highlight items
+      document.querySelectorAll(".highlight-item").forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.1}s`;
+        item.classList.add("animate__animated", "animate__fadeInUp");
+      });
+    </script>
+  </body>
 </html>

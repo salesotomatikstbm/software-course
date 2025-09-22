@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 10 - Practice Class</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --accent: #4B8BBE;
+            --light: #f7f7f7;
+            --dark: #333;
+            --success: #28a745;
+            --code-bg: #282c34;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 { font-size: 2.8rem; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);}
+        .subtitle { font-size: 1.2rem; opacity: 0.9; margin-top: 10px;}
+        h2 { color: var(--primary); font-size: 1.8rem; margin-top:0; padding-bottom:10px; border-bottom:2px solid var(--secondary); display:flex; align-items:center; gap:10px;}
+        h2 i { color: var(--secondary);}
+        p { font-size:1.1rem; margin-bottom:20px; }
+        .content-section { background-color:#fff; padding:30px; margin-bottom:40px; border-radius:12px; box-shadow:var(--card-shadow); transition: var(--transition); border-left:4px solid var(--primary);}
+        .content-section:hover { transform:translateY(-5px); box-shadow:0 15px 30px rgba(0,0,0,0.15);}
+        pre { background-color: var(--code-bg); color:#F8F8F2; padding:20px; border-radius:8px; font-family:'Fira Code','Courier New',monospace; font-size:1rem; overflow-x:auto; white-space:pre-wrap; margin:20px 0; line-height:1.5; position:relative; border-left:4px solid var(--secondary);}
+        pre::before { content:"Python"; position:absolute; top:0; right:0; background: var(--secondary); color: var(--dark); padding:4px 10px; font-size:0.8rem; font-weight:bold; border-radius:0 0 0 8px;}
+        code { background-color:transparent; color:red; padding:0;}
+        pre code { font-size:1rem; line-height:1.5;}
+
+        @media (max-width:768px){ .container{padding:15px;} h1{font-size:2.2rem;} h2{font-size:1.5rem;} .content-section{padding:20px;} pre{font-size:0.9rem; padding:15px;} header{padding:20px 15px;} }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-python"></i> Day 10 - Practice Class</h1>
+            <p class="subtitle">Practice For Loop, While Loop, and Functions</p>
+        </header>
+
+        <!-- Question 01 -->
+        <div class="content-section" id="q1-for-loop">
+            <h2><i class="fas fa-sync-alt"></i> Question 01: Sum of Numbers (For Loop)</h2>
+            <p>Step 1: Ask the student to calculate the sum of numbers from 1 to 10 using a <code>for</code> loop.</p>
+            <p>Step 2: Initialize a total variable to store the sum.</p>
+            <p>Step 3: Use the loop to add each number to the total.</p>
+        </div>
+
+        <!-- Question 02 -->
+        <div class="content-section" id="q2-even-numbers">
+            <h2><i class="fas fa-check"></i> Question 02: Print Even Numbers (For Loop)</h2>
+            <p>Step 1: Ask the student to print all even numbers between 1 and 20 using a <code>for</code> loop.</p>
+            <p>Step 2: Check if a number is even using the modulus operator.</p>
+        </div>
+
+        <!-- Question 03 -->
+        <div class="content-section" id="q3-while-sum">
+            <h2><i class="fas fa-sync-alt"></i> Question 03: Sum Using While Loop</h2>
+            <p>Step 1: Ask the student to calculate the sum of numbers from 1 to 10 using a <code>while</code> loop.</p>
+            <p>Step 2: Initialize a counter and total variable.</p>
+            <p>Step 3: Add numbers using the while loop and increment the counter each time.</p>
+        </div>
+
+        <!-- Question 04 -->
+        <div class="content-section" id="q4-while-even">
+            <h2><i class="fas fa-check"></i> Question 04: Print Even Numbers (While Loop)</h2>
+            <p>Step 1: Ask the student to print all even numbers from 1 to 20 using a <code>while</code> loop.</p>
+            <p>Step 2: Use a counter to iterate and check if a number is even.</p>
+        </div>
+
+        <!-- Question 05 -->
+        <div class="content-section" id="q5-function-no-parameters">
+            <h2><i class="fas fa-code"></i> Question 05: Function Without Parameters</h2>
+            <p>Step 1: Create a function that prints a greeting message.</p>
+            <p>Step 2: Call the function to display the message.</p>
+        </div>
+
+        <!-- Question 06 -->
+        <div class="content-section" id="q6-function-with-parameters">
+            <h2><i class="fas fa-code"></i> Question 06: Function With Parameters</h2>
+            <p>Step 1: Create a function that accepts a name as a parameter.</p>
+            <p>Step 2: Print a greeting message using the name parameter.</p>
+            <p>Step 3: Call the function with different names.</p>
+        </div>
+
+        <!-- Question 07 -->
+        <div class="content-section" id="q7-function-return">
+            <h2><i class="fas fa-code"></i> Question 07: Function That Returns Value</h2>
+            <p>Step 1: Create a function that returns the square of a number.</p>
+            <p>Step 2: Store the returned value in a variable and print it.</p>
+        </div>
+
+        <!-- Question 08 -->
+        <div class="content-section" id="q8-function-default">
+            <h2><i class="fas fa-code"></i> Question 08: Function With Default Parameter</h2>
+            <p>Step 1: Create a function with a default name parameter.</p>
+            <p>Step 2: Call the function without a parameter and with a parameter.</p>
+        </div>
+
+        <!-- Question 09 -->
+        <div class="content-section" id="q9-for-sum-function">
+            <h2><i class="fas fa-code"></i> Question 09: Function to Sum Numbers Using For Loop</h2>
+            <p>Step 1: Create a function that sums numbers from 1 to n using a <code>for</code> loop.</p>
+            <p>Step 2: Return the total sum and call the function with a sample number.</p>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="content-section" id="q10-while-sum-function">
+            <h2><i class="fas fa-code"></i> Question 10: Function to Sum Numbers Using While Loop</h2>
+            <p>Step 1: Create a function that sums numbers from 1 to n using a <code>while</code> loop.</p>
+            <p>Step 2: Initialize counter and total inside the function, update total in the loop, and return it.</p>
+        </div>
+
+    </div>
+</body>
+</html>

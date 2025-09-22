@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 09 - Python Functions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern CSS Variables */
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --accent: #4B8BBE;
+            --light: #f7f7f7;
+            --dark: #333;
+            --success: #28a745;
+            --code-bg: #282c34;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--secondary);
+        }
+
+        h3 {
+            margin-top: 20px;
+            color: var(--accent);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .content-section {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            color: #F8F8F2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 1rem;
+            overflow-x: auto;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            margin: 20px 0;
+            line-height: 1.5;
+            position: relative;
+            border-left: 4px solid var(--secondary);
+        }
+
+        pre::before {
+            content: "Python";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 0 0 0 8px;
+        }
+
+        code {
+            background-color: transparent;
+            color: #F8F8F2;
+            padding: 0;
+        }
+
+        pre code {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: var(--card-shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.5rem; }
+            .content-section { padding: 20px; }
+            pre { font-size: 0.9rem; padding: 15px; }
+            header { padding: 20px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-python"></i> Day 09 - Class Work</h1>
+            <p class="subtitle">Understanding Python Functions</p>
+        </header>
+
+        <!-- Syntax Section -->
+        <div class="content-section">
+            <h2><i class="fas fa-code"></i> Syntax of a Python Function</h2>
+            <pre><code>def function_name(parameters):
+    # code block
+    return value</code></pre>
+            <p>
+                <b>def</b> → keyword to define a function<br>
+                <b>function_name</b> → name of the function<br>
+                <b>parameters</b> → input values (optional)<br>
+                <b>return</b> → value returned by the function (optional)
+            </p>
+        </div>
+
+        <!-- Table Section -->
+        <div class="content-section">
+            <h2><i class="fas fa-exchange-alt"></i> Function vs Without Function</h2>
+            <table>
+                <tr>
+                    <th>Without Function</th>
+                    <th>With Function</th>
+                </tr>
+                <tr>
+                    <td>
+<pre>
+print("Hello, Arun")
+print("Hello, Hasvanth")
+print("Hello, Ayyappan")
+</pre>
+                    </td>
+                    <td>
+<pre>
+def greet(name):
+    print("Hello,", name)
+
+greet("Arun")
+greet("Hasvanth")
+greet("Ayyappan")
+</pre>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Examples Section -->
+        <div class="content-section">
+            <h2><i class="fas fa-list-ol"></i> 10 Examples of Python Functions with Output</h2>
+
+            <h3>1. Function without parameters</h3>
+            <pre><code>def say_hello():
+    print("Hello World!")
+
+say_hello()
+# Output:
+# Hello World!</code></pre>
+
+            <h3>2. Function with one parameter</h3>
+            <pre><code>def greet(name):
+    print("Hello,", name)
+
+greet("Arun")
+# Output:
+# Hello, Arun</code></pre>
+
+            <h3>3. Function with two parameters</h3>
+            <pre><code>def add(a, b):
+    print("Sum:", a + b)
+
+add(5, 3)
+# Output:
+# Sum: 8</code></pre>
+
+            <h3>4. Function that returns a value</h3>
+            <pre><code>def square(num):
+    return num * num
+
+result = square(4)
+print("Square:", result)
+# Output:
+# Square: 16</code></pre>
+
+            <h3>5. Function with default parameter</h3>
+            <pre><code>def greet(name="Guest"):
+    print("Welcome,", name)
+
+greet()
+greet("Hasvanth")
+# Output:
+# Welcome, Guest
+# Welcome, Hasvanth</code></pre>
+
+            <h3>6. Function with multiple return values</h3>
+            <pre><code>def calculator(a, b):
+    return a+b, a-b, a*b
+
+s, d, m = calculator(5, 3)
+print("Sum:", s, "Diff:", d, "Mul:", m)
+# Output:
+# Sum: 8 Diff: 2 Mul: 15</code></pre>
+
+            <h3>7. Function with a loop inside</h3>
+            <pre><code>def print_numbers(n):
+    for i in range(1, n+1):
+        print(i)
+
+print_numbers(5)
+# Output:
+# 1
+# 2
+# 3
+# 4
+# 5</code></pre>
+
+            <h3>8. Recursive function (factorial)</h3>
+            <pre><code>def factorial(n):
+    if n == 1:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+print("Factorial of 5:", factorial(5))
+# Output:
+# Factorial of 5: 120</code></pre>
+
+            <h3>9. Function with *args</h3>
+            <pre><code>def display(*names):
+    for name in names:
+        print("Hello", name)
+
+display("Arun", "Hasvanth", "Ayyappan")
+# Output:
+# Hello Arun
+# Hello Hasvanth
+# Hello Ayyappan</code></pre>
+
+            <h3>10. Function with **kwargs</h3>
+            <pre><code>def student_info(**details):
+    for key, value in details.items():
+        print(key, ":", value)
+
+student_info(name="Arun", age=21, grade="A")
+# Output:
+# name : Arun
+# age : 21
+# grade : A</code></pre>
+
+        </div>
+    </div>
+</body>
+</html>

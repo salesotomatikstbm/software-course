@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 08.0 - Class Work</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #306998;
+      --secondary: #FFD43B;
+      --accent: #4B8BBE;
+      --light: #f7f7f7;
+      --dark: #333;
+      --success: #28a745;
+      --code-bg: #282c34;
+      --card-shadow: 0 10px 20px rgba(0,0,0,0.12);
+      --transition: all 0.3s ease;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0; padding: 0;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+      color: var(--dark); line-height: 1.6;
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+    header {
+      text-align: center; padding: 30px 20px;
+      background: linear-gradient(120deg, var(--primary), var(--accent));
+      color: white; border-radius: 10px;
+      margin-bottom: 30px; box-shadow: var(--card-shadow);
+    }
+    h1 { font-size: 2.8rem; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+    .subtitle { font-size: 1.2rem; opacity: 0.9; margin-top: 10px; }
+    h2 {
+      color: var(--primary); font-size: 1.8rem; margin-top: 0;
+      padding-bottom: 10px; border-bottom: 2px solid var(--secondary);
+      display: flex; align-items: center; gap: 10px;
+    }
+    h2 i { color: var(--secondary); }
+    p { font-size: 1.1rem; margin-bottom: 20px; }
+    .content-section {
+      background-color: #fff; padding: 30px; margin-bottom: 40px;
+      border-radius: 12px; box-shadow: var(--card-shadow);
+      transition: var(--transition); border-left: 4px solid var(--primary);
+    }
+    .content-section:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+    pre {
+      background-color: var(--code-bg); color: #F8F8F2; padding: 20px;
+      border-radius: 8px; font-family: 'Fira Code', monospace;
+      font-size: 1rem; overflow-x: auto; white-space: pre-wrap;
+      margin: 20px 0; line-height: 1.5; position: relative;
+      border-left: 4px solid var(--secondary);
+    }
+    pre::before {
+      content: "Python"; position: absolute; top: 0; right: 0;
+      background: var(--secondary); color: var(--dark);
+      padding: 4px 10px; font-size: 0.8rem; font-weight: bold;
+      border-radius: 0 0 0 8px;
+    }
+    code { background: transparent; color: #F8F8F2; }
+    @media (max-width: 768px) {
+      .container { padding: 15px; }
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.5rem; }
+      .content-section { padding: 20px; }
+      pre { font-size: 0.9rem; padding: 15px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1><i class="fab fa-python"></i> Day 08.0 - Class Work</h1>
+    <p class="subtitle">Understanding For Loop in Python</p>
+  </header>
+
+  <!-- Syntax -->
+  <div class="content-section">
+    <h2><i class="fas fa-code"></i> What is a For Loop?</h2>
+    <p>A <b>for loop</b> is used to repeat a block of code multiple times.  
+       It goes through each item in a sequence (like a list, word, or range of numbers).</p>
+<pre><code># Basic For Loop Syntax
+for item in sequence:
+    # code to run
+    print(item)</code></pre>
+    <p>Here, <code style="color: red;">item</code> is a variable that takes each value from the <code style="color: red;">sequence</code> one by one.</p>
+  </div>
+
+  <!-- in keyword -->
+  <div class="content-section">
+    <h2><i class="fas fa-key"></i> The "in" Keyword</h2>
+    <p>The keyword <b>in</b> is used to check each element inside a sequence.  
+       For example, when we say <code style="color: red;">for x in fruits:</code>, Python will go one by one through the fruits list.</p>
+<pre><code>fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+    print(x)
+
+# Output:
+# apple
+# banana
+# cherry</code></pre>
+  </div>
+
+  <!-- range() -->
+  <div class="content-section">
+    <h2><i class="fas fa-random"></i> The range() Function</h2>
+    <p>The <code style="color: red;">range()</code> function generates a sequence of numbers.  
+       <br><code style="color: red;">range(n)</code> gives numbers from 0 to n-1.  
+       <br><code style="color: red;">range(start, stop)</code> gives numbers from start to stop-1.  
+       <br><code style="color: red;">range(start, stop, step)</code> gives numbers with jumps (step).</p>
+<pre><code>for i in range(5):
+    print(i)
+
+# Output:
+# 0
+# 1
+# 2
+# 3
+# 4</code></pre>
+  </div>
+
+  <!-- Now the 15 Examples -->
+  <div class="content-section">
+    <h2><i class="fas fa-hashtag"></i> 1. Print Numbers from 0 to 4</h2>
+<pre><code>for i in range(5):
+    print(i)
+
+# Output:
+# 0
+# 1
+# 2
+# 3
+# 4</code></pre>
+  </div>
+
+  <div class="content-section">
+    <h2><i class="fas fa-list"></i> 2. Print Each Fruit</h2>
+<pre><code>fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)
+
+# Output:
+# apple
+# banana
+# cherry</code></pre>
+  </div>
+
+  <div class="content-section">
+    <h2><i class="fas fa-magic"></i> 3. Print Hello 5 Times</h2>
+<pre><code>for i in range(5):
+    print("Hello")
+
+# Output:
+# Hello
+# Hello
+# Hello
+# Hello
+# Hello</code></pre>
+  </div>
+
+  <div class="content-section">
+    <h2><i class="fas fa-plus-circle"></i> 4. Sum of Numbers</h2>
+<pre><code>numbers = [1, 2, 3, 4, 5]
+total = 0
+for num in numbers:
+    total += num
+print(total)
+
+# Output:
+# 15</code></pre>
+  </div>
+
+  <div class="content-section">
+    <h2><i class="fas fa-check"></i> 5. Print Even Numbers</h2>
+<pre><code>for num in range(10):
+    if num % 2 == 0:
+        print(num)
+
+# Output:
+# 0
+# 2
+# 4
+# 6
+# 8</code></pre>
+  </div>
+
+  <div class="content-section">
+    <h2><i class="fas fa-times"></i> 6. Print Odd Numbers</h2>
+<pre><code>for num in range(10):
+    if num % 2 != 0:
+        print(num)
+
+# Output:
+# 1
+# 3
+# 5
+# 7
+# 9</code></pre>
+  </div>
+
+  <div class="content-section">
+    <h2><i class="fas fa-arrow-up"></i> 7. Numbers Greater than 5</h2>
+<pre><code>for num in range(10):
+    if num > 5:
+        print(num)
+
+# Output:
+# 6
+# 7
+# 8
+# 9</code></pre>
+  </div>
+
+  <div class="content-section">
+    <h2><i class="fas fa-percent"></i> 8. Numbers Divisible by 3</h2>
+<pre><code>for num in range(10):
+    if num % 3 == 0:
+        print(num)
+
+# Output:
+# 0
+# 3
+# 6
+# 9</code></pre>
+  </div>
+
+  <div class="content-section">
+    <h2><i class="fas fa-star"></i> 9. Print Each Letter in a Word</h2>
+<pre><code>word = "Python"
+for letter in word:
+    print(letter)
+
+# Output:
+# P
+# y
+# t
+# h
+# o
+# n</code></pre>
+  </div>
+
+  <div class="content-section">
+    <h2><i class="fas fa-mug-hot"></i> 10. Print Squares of Numbers</h2>
+<pre><code>for num in range(1, 6):
+    print(num * num)
+
+# Output:
+# 1
+# 4
+# 9
+# 16
+# 25</code></pre>
+  </div>
+
+  <div class="content-section">
+    <h2><i class="fas fa-caret-right"></i> 11. Print Numbers in Reverse</h2>
+<pre><code>for num in range(5, 0, -1):
+    print(num)
+
+# Output:
+# 5
+# 4
+# 3
+# 2
+# 1</code></pre>
+  </div>
+
+  <div class="content-section">
+    <h2><i class="fas fa-heart"></i> 12. Multiplication Table of 2</h2>
+<pre><code>for i in range(1, 11):
+    print("2 x", i, "=", 2*i)
+
+# Output:
+# 2 x 1 = 2
+# 2 x 2 = 4
+# ...
+# 2 x 10 = 20</code></pre>
+  </div>
+
+  <div class="content-section">
+    <h2><i class="fas fa-sun"></i> 13. Numbers with Step 2</h2>
+<pre><code>for i in range(0, 10, 2):
+    print(i)
+
+# Output:
+# 0
+# 2
+# 4
+# 6
+# 8</code></pre>
+  </div>
+
+  <div class="content-section">
+    <h2><i class="fas fa-gift"></i> 14. Print Name 3 Times</h2>
+<pre><code>for i in range(3):
+    print("Alice")
+
+# Output:
+# Alice
+# Alice
+# Alice</code></pre>
+  </div>
+
+  <div class="content-section">
+    <h2><i class="fas fa-tree"></i> 15. First 5 Natural Numbers</h2>
+<pre><code>for i in range(1, 6):
+    print(i)
+
+# Output:
+# 1
+# 2
+# 3
+# 4
+# 5</code></pre>
+  </div>
+</div>
+</body>
+</html>

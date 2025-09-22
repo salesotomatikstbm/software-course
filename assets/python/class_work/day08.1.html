@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 08.1 - Class Work</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern CSS Variables */
+        :root {
+               --primary: #306998;
+      --secondary: #FFD43B;
+      --accent: #4B8BBE;
+            --light: #f7f7f7;
+            --dark: #333;
+            --success: #28a745;
+            --code-bg: #282c34;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+      
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--secondary);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .content-section {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            color: #F8F8F2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 1rem;
+            overflow-x: auto;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            margin: 20px 0;
+            line-height: 1.5;
+            position: relative;
+            border-left: 4px solid var(--secondary);
+        }
+
+        pre::before {
+            content: "Python";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 0 0 0 8px;
+        }
+
+        code {
+            background-color: transparent;
+            color: #F8F8F2;
+            padding: 0;
+        }
+
+        pre code {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: var(--card-shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.5rem; }
+            .content-section { padding: 20px; }
+            pre { font-size: 0.9rem; padding: 15px; }
+            header { padding: 20px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-python"></i> Day 08.1 - Class Work</h1>
+            <p class="subtitle">Understanding the While Loop in Python</p>
+        </header>
+
+        <!-- Difference Table -->
+        <div class="content-section">
+            <h2><i class="fas fa-exchange-alt"></i> Difference Between For and While Loop</h2>
+            <table>
+                <tr>
+                    <th>For Loop</th>
+                    <th>While Loop</th>
+                </tr>
+                <tr>
+                    <td>Used when we know the number of iterations in advance.</td>
+                    <td>Used when we don’t know the exact number of iterations, loop runs until condition is False.</td>
+                </tr>
+                <tr>
+                    <td>Iterates over a sequence (list, string, range, etc.).</td>
+                    <td>Repeats a block of code based on a condition.</td>
+                </tr>
+                <tr>
+                    <td>Example:<br><code style="color: red;">for i in range(5): print(i)</code></td>
+                    <td>Example:<br><code style="color: red;">i=1<br>while i<=5:<br>&nbsp;&nbsp;print(i)<br>&nbsp;&nbsp;i+=1</code></td>
+                </tr>
+                <tr>
+                    <td>Stops when the sequence ends.</td>
+                    <td>Stops when the condition becomes False.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Syntax Section -->
+        <div class="content-section" id="syntax">
+            <h2><i class="fas fa-code"></i> Syntax of a While Loop</h2>
+            <p>The <b>while loop</b> repeats a block of code as long as the condition is <b>True</b>.</p>
+            <pre><code># Basic While Loop syntax
+while condition:
+    # code to execute
+    statement</code></pre>
+            <p><b>Flow:</b> Check condition → if True → run code → check again → stop when condition is False.</p>
+        </div>
+
+        <!-- Example 1 -->
+        <div class="content-section">
+            <h2><i class="fas fa-list-ol"></i> 1. Print Numbers 1 to 5</h2>
+            <p>Simple counting from 1 to 5:</p>
+            <pre><code>count = 1
+while count <= 5:
+    print(count)
+    count += 1
+# Output: 1, 2, 3, 4, 5</code></pre>
+        </div>
+
+        <!-- Example 2 -->
+        <div class="content-section">
+            <h2><i class="fas fa-plus-circle"></i> 2. Sum of Numbers</h2>
+            <p>Calculate sum of numbers from 1 to 5:</p>
+            <pre><code>total = 0
+num = 1
+while num <= 5:
+    total += num
+    num += 1
+print(total)
+# Output: 15</code></pre>
+        </div>
+
+        <!-- Example 3 -->
+        <div class="content-section">
+            <h2><i class="fas fa-sort-numeric-up"></i> 3. Even Numbers</h2>
+            <p>Print even numbers from 1 to 10:</p>
+            <pre><code>num = 1
+while num <= 10:
+    if num % 2 == 0:
+        print(num)
+    num += 1
+# Output: 2, 4, 6, 8, 10</code></pre>
+        </div>
+
+        <!-- Example 4 -->
+        <div class="content-section">
+            <h2><i class="fas fa-sort-numeric-down"></i> 4. Odd Numbers</h2>
+            <p>Print odd numbers from 1 to 10:</p>
+            <pre><code>num = 1
+while num <= 10:
+    if num % 2 != 0:
+        print(num)
+    num += 1
+# Output: 1, 3, 5, 7, 9</code></pre>
+        </div>
+
+        <!-- Example 5 -->
+        <div class="content-section">
+            <h2><i class="fas fa-arrow-up"></i> 5. Numbers Greater than 5</h2>
+            <p>Print numbers from 6 to 10:</p>
+            <pre><code>num = 1
+while num <= 10:
+    if num > 5:
+        print(num)
+    num += 1
+# Output: 6, 7, 8, 9, 10</code></pre>
+        </div>
+
+        <!-- Example 6 -->
+        <div class="content-section">
+            <h2><i class="fas fa-percent"></i> 6. Numbers Divisible by 3</h2>
+            <p>Print numbers divisible by 3 between 1 and 15:</p>
+            <pre><code>num = 1
+while num <= 15:
+    if num % 3 == 0:
+        print(num)
+    num += 1
+# Output: 3, 6, 9, 12, 15</code></pre>
+        </div>
+
+        <!-- Example 7 -->
+        <div class="content-section">
+            <h2><i class="fas fa-backward"></i> 7. Countdown</h2>
+            <p>Print countdown from 5 to 1:</p>
+            <pre><code>num = 5
+while num >= 1:
+    print(num)
+    num -= 1
+# Output: 5, 4, 3, 2, 1</code></pre>
+        </div>
+
+        <!-- Example 8 -->
+        <div class="content-section">
+            <h2><i class="fas fa-asterisk"></i> 8. Print Stars</h2>
+            <p>Print 5 stars using a while loop:</p>
+            <pre><code>i = 1
+while i <= 5:
+    print("*")
+    i += 1
+# Output: * * * * *</code></pre>
+        </div>
+
+        <!-- Example 9 -->
+        <div class="content-section">
+            <h2><i class="fas fa-calculator"></i> 9. Multiplication Table of 2</h2>
+            <p>Print table of 2:</p>
+            <pre><code>i = 1
+while i <= 10:
+    print("2 x", i, "=", 2*i)
+    i += 1
+# Output: 2x1=2, 2x2=4, ..., 2x10=20</code></pre>
+        </div>
+
+        <!-- Example 10 -->
+        <div class="content-section">
+            <h2><i class="fas fa-smile"></i> 10. Repeat a Message</h2>
+            <p>Print "Hello" 5 times:</p>
+            <pre><code>i = 1
+while i <= 5:
+    print("Hello")
+    i += 1
+# Output: Hello (5 times)</code></pre>
+        </div>
+
+    </div>
+</body>
+</html>

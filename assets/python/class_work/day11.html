@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 11 - Introduction to OOP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --accent: #4B8BBE;
+            --light: #f7f7f7;
+            --dark: #333;
+            --success: #28a745;
+            --code-bg: #282c34;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--secondary);
+        }
+
+        h3 {
+            margin-top: 20px;
+            color: var(--accent);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .content-section {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            color: #F8F8F2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 1rem;
+            overflow-x: auto;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            margin: 20px 0;
+            line-height: 1.5;
+            position: relative;
+            border-left: 4px solid var(--secondary);
+        }
+
+        pre::before {
+            content: "Python";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 0 0 0 8px;
+        }
+
+        code {
+            background-color: transparent;
+            color: #F8F8F2;
+            padding: 0;
+        }
+
+        pre code {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: var(--card-shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.5rem; }
+            .content-section { padding: 20px; }
+            pre { font-size: 0.9rem; padding: 15px; }
+            header { padding: 20px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-python"></i> Day 11 - Class Work</h1>
+            <p class="subtitle">Introduction to Object-Oriented Programming (OOP)</p>
+        </header>
+
+        <!-- OOP Introduction -->
+        <div class="content-section">
+            <h2><i class="fas fa-info-circle"></i> What is OOP?</h2>
+            <p>
+                Object-Oriented Programming (OOP) is a programming style that uses <b>classes</b> and <b>objects</b> 
+                to organize code. It helps in writing reusable, modular, and organized programs. 
+            </p>
+        </div>
+
+       
+
+        <!-- Table Section -->
+        <div class="content-section">
+            <h2><i class="fas fa-exchange-alt"></i> Without OOP vs With OOP</h2>
+            <table>
+                <tr>
+                    <th>Without OOP</th>
+                    <th>With OOP</th>
+                </tr>
+                <tr>
+                    <td>
+<pre>
+# Print details of students
+print("Name: Arun, Age: 21")
+print("Name: Hasvanth, Age: 22")
+print("Name: Ayyappan, Age: 23")
+</pre>
+                    </td>
+                    <td>
+<pre>
+class Student:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def display(self):
+        print("Name:", self.name, ", Age:", self.age)
+
+s1 = Student("Arun", 21)
+s2 = Student("Hasvanth", 22)
+s3 = Student("Ayyappan", 23)
+
+s1.display()
+s2.display()
+s3.display()
+</pre>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+
+ <!-- Syntax Section -->
+        <div class="content-section">
+            <h2><i class="fas fa-code"></i> Syntax of a Class and Object</h2>
+            <pre><code>class ClassName:
+    def __init__(self, parameter1, parameter2):
+        # constructor code
+        self.parameter1 = parameter1
+        self.parameter2 = parameter2
+
+    def method_name(self):
+        # method code
+        print(self.parameter1, self.parameter2)
+
+# Creating object
+obj = ClassName(value1, value2)
+obj.method_name()</code></pre>
+        </div>
+
+
+        <!-- Examples Section -->
+        <div class="content-section">
+          
+
+            <h3>1. Simple class with method</h3>
+            <pre><code>class Person:
+    def greet(self):
+        print("Hello!")
+
+p = Person()
+p.greet()
+# Output:
+# Hello!</code></pre>
+
+            <h3>2. Class with constructor (__init__)</h3>
+            <pre><code>class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        print("Hello,", self.name)
+
+p = Person("Arun")
+p.greet()
+# Output:
+# Hello, Arun</code></pre>
+
+            <h3>3. Multiple objects</h3>
+            <pre><code>p1 = Person("Hasvanth")
+p2 = Person("Ayyappan")
+p1.greet()
+p2.greet()
+# Output:
+# Hello, Hasvanth
+# Hello, Ayyappan</code></pre>
+
+            <h3>4. Class with multiple methods</h3>
+            <pre><code>class Calculator:
+    def add(self, a, b):
+        print("Sum:", a+b)
+
+    def multiply(self, a, b):
+        print("Product:", a*b)
+
+calc = Calculator()
+calc.add(5, 3)
+calc.multiply(5, 3)
+# Output:
+# Sum: 8
+# Product: 15</code></pre>
+
+            <h3>5. Class with attributes</h3>
+            <pre><code>class Student:
+    def __init__(self, name, grade):
+        self.name = name
+        self.grade = grade
+
+s = Student("Arun", "A")
+print(s.name, s.grade)
+# Output:
+# Arun A</code></pre>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Day 9 Assignment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+               --primary: #306998;
+            --secondary: #FFD43B;
+            --accent: #4B8BBE;
+            --light: #f9f9f9;
+            --dark: #222;
+            --success: #388e3c;
+            --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+               background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            margin: 0;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--accent);
+        }
+
+        h3 {
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-top: 20px;
+        }
+
+        p, ul {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 12px 0;
+            position: relative;
+            padding-left: 28px;
+        }
+
+        li:before {
+            content: "➤";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+        }
+
+        .content-section {
+            background-color: #ffffff;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15);
+        }
+
+        .assignment-section {
+            background-color: rgba(142, 36, 170, 0.08);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .assignment-section h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        #if-you-need-help {
+            border-left: 4px solid var(--success);
+        }
+
+        #if-you-need-help h2 {
+            color: var(--success);
+            border-bottom: 2px solid rgba(56, 142, 60, 0.3);
+        }
+
+        .notification {
+            background-color: rgba(209, 196, 233, 0.4);
+            border-left: 4px solid var(--accent);
+            padding: 12px 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.3rem; }
+            .content-section { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-python"></i> Day 9 - Python Homework</h1>
+            <p class="subtitle">Advanced Practice with Functions</p>
+        </header>
+
+        <div class="content-section">
+            <p>Now that you know the basics of functions, let’s try some <strong>challenging function problems</strong>. These tasks will test your logic, return values, and use of multiple parameters.</p>
+            <div class="notification">
+                <i class="fas fa-lightbulb"></i> Hint: Break the problem into smaller steps and use <code>return</code> carefully!
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment01">
+            <h2><i class="fas fa-sort-numeric-up-alt"></i> Assignment 01: Factorial Function</h2>
+            <p>Create a function that calculates factorial of a number.</p>
+            <div class="assignment-section">
+                <h4>Objective:</h4>
+                <p>Practice loops inside a function and returning results.</p>
+                <h3>Instructions:</h3>
+                <ul>
+                    <li>Write a function <code>factorial(n)</code> that returns the factorial of <code>n</code>.</li>
+                    <li>For example: <code>factorial(5)</code> → <strong>120</strong>.</li>
+                    <li>Test the function with different values of <code>n</code>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment02">
+            <h2><i class="fas fa-list-ol"></i> Assignment 02: Palindrome Checker</h2>
+            <p>Write a function to check if a word is a palindrome.</p>
+            <div class="assignment-section">
+                <h4>Objective:</h4>
+                <p>Use string operations inside functions.</p>
+                <h3>Instructions:</h3>
+                <ul>
+                    <li>Define a function <code>is_palindrome(word)</code>.</li>
+                    <li>The function should return <code>True</code> if the word is a palindrome, else <code>False</code>.</li>
+                    <li>Example: <code>is_palindrome("madam")</code> → <strong>True</strong>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment03">
+            <h2><i class="fas fa-calculator"></i> Assignment 03: Calculator Function</h2>
+            <p>Create a function that works like a simple calculator.</p>
+            <div class="assignment-section">
+                <h4>Objective:</h4>
+                <p>Understand how to handle multiple parameters and conditions inside a function.</p>
+                <h3>Instructions:</h3>
+                <ul>
+                    <li>Write a function <code>calculator(a, b, operator)</code>.</li>
+                    <li>The operator can be <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>.</li>
+                    <li>Return the result based on the operator.</li>
+                    <li>Example: <code>calculator(10, 5, "*")</code> → <strong>50</strong>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="if-you-need-help">
+            <h2><i class="fas fa-hands-helping"></i> If you need help</h2>
+            <p>Ask for help if you are stuck on:</p>
+            <ul>
+                <li>Using loops inside functions</li>
+                <li>Working with strings inside a function</li>
+                <li>Handling multiple parameters in one function</li>
+            </ul>
+            <p>Good luck! These are tricky but fun 🚀</p>
+        </div>
+    </div>
+</body>
+</html>

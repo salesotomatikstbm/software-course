@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Day 08.1 Assignment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --accent: #4B8BBE;
+            --light: #f7f7f7;
+            --dark: #333;
+            --success: #28a745;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--secondary);
+        }
+
+        h3 {
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-top: 25px;
+        }
+
+        p, ul {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 12px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        li:before {
+            content: "▶";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+        }
+
+        .content-section {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .assignment-section {
+            background-color: rgba(255, 212, 59, 0.1);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .assignment-section h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        #if-you-need-help {
+            border-left: 4px solid var(--success);
+        }
+
+        #if-you-need-help h2 {
+            color: var(--success);
+            border-bottom: 2px solid rgba(40, 167, 69, 0.3);
+        }
+
+        .notification {
+            background-color: rgba(255, 212, 59, 0.2);
+            border-left: 4px solid var(--secondary);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .content-section {
+                padding: 20px;
+            }
+
+            header {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-python"></i> Day 08 - Python Homework</h1>
+            <p class="subtitle">Practicing While Loops in Python</p>
+        </header>
+
+        <div class="content-section">
+            <p>Today you will practice using <span class="highlight">while loops</span> in Python. While loops repeat code until a condition becomes false. Work on the following problems step by step.</p>
+            <div class="notification">
+                <i class="fas fa-lightbulb"></i> Remember: A <code>while</code> loop keeps running until its condition is no longer true. Don’t forget to update your loop variable!
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment01">
+            <h2><i class="fas fa-sort-numeric-up"></i> Assignment 01: Counting Numbers</h2>
+            <p>Use a <strong>while loop</strong> to print numbers in a sequence.</p>
+            <div class="assignment-section">
+                <h4>Objective:</h4>
+                <p>Understand how to use a while loop to control repetition.</p>
+                <h3>Instructions:</h3>
+                <ul>
+                    <li>Print numbers from 1 to 20.</li>
+                    <li>Print numbers in reverse order from 10 down to 1.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment02">
+            <h2><i class="fas fa-plus"></i> Assignment 02: Sum of Numbers</h2>
+            <p>Use a <strong>while loop</strong> to calculate totals.</p>
+            <div class="assignment-section">
+                <h4>Objective:</h4>
+                <p>Practice using a while loop to add numbers repeatedly.</p>
+                <h3>Instructions:</h3>
+                <ul>
+                    <li>Find the sum of numbers from 1 to 50.</li>
+                    <li>Find the sum of even numbers between 1 and 50.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment03">
+            <h2><i class="fas fa-question-circle"></i> Assignment 03: User Controlled Loop</h2>
+            <p>Use a <strong>while loop</strong> that keeps running until the user decides to stop.</p>
+            <div class="assignment-section">
+                <h4>Objective:</h4>
+                <p>Learn how to use input to control when a while loop should exit.</p>
+                <h3>Instructions:</h3>
+                <ul>
+                    <li>Keep asking the user for numbers until they enter <code>0</code>.</li>
+                    <li>When they enter <code>0</code>, stop the loop and display the sum of all entered numbers.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="if-you-need-help">
+            <h2><i class="fas fa-hands-helping"></i> If you need help</h2>
+            <p>Post in the group if you get stuck with:</p>
+            <ul>
+                <li>Loop condition not stopping</li>
+                <li>Forgetting to update the loop variable</li>
+                <li>Understanding infinite loops</li>
+            </ul>
+            <p>Good luck and keep practicing!</p>
+        </div>
+    </div>
+</body>
+</html>

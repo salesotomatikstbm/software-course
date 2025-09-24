@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Day 07 Assignment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern CSS Variables */
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --accent: #4B8BBE;
+            --light: #f7f7f7;
+            --dark: #333;
+            --success: #28a745;
+            --code-bg: #282c34;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--secondary);
+        }
+
+        h3 {
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-top: 25px;
+        }
+
+        p, ul, ol {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 12px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        li:before {
+            content: "▶";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .content-section {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .file-name {
+            font-weight: bold;
+            color: var(--primary);
+            font-family: 'Fira Code', 'Courier New', monospace;
+            background-color: rgba(48, 105, 152, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px dashed var(--primary);
+        }
+
+        #if-you-need-help {
+            border-left: 4px solid var(--success);
+        }
+
+        #if-you-need-help h2 {
+            color: var(--success);
+            border-bottom: 2px solid rgba(40, 167, 69, 0.3);
+        }
+
+        .notification {
+            background-color: rgba(255, 212, 59, 0.2);
+            border-left: 4px solid var(--secondary);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .assignment-section {
+            background-color: rgba(255, 212, 59, 0.1);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .assignment-section h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .content-section {
+                padding: 20px;
+            }
+
+            header {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-python"></i> Day 07 - Python Homework</h1>
+            <p class="subtitle">Working with Lists, Sets, and Dictionaries</p>
+        </header>
+
+        <div class="content-section">
+            <p>Today’s assignment will help you practice Python <span class="highlight">Lists</span>, <span class="highlight">Sets</span>, and <span class="highlight">Dictionaries</span>. Use VS Code, create the files, run each program, and check the results.</p>
+            <div class="notification">
+                <i class="fas fa-lightbulb"></i> Don’t forget to use <span class="file-name">.py</span> extension and test your code by running it in the terminal!
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment01">
+            <h2><i class="fas fa-list"></i> Assignment 01: Student Marks List</h2>
+            <p>Work with <strong>Lists</strong> to store and process student marks.</p>
+            <div class="assignment-section">
+                <h4>Objective:</h4>
+                <p>Learn how to use Python lists to store, modify, and calculate values.</p>
+                <h3>Instructions:</h3>
+                <ul>
+                    <li>Create a list of marks for 5 students.</li>
+                    <li>Display all marks using a loop.</li>
+                    <li>Find and display the <strong>highest</strong>, <strong>lowest</strong>, and <strong>average</strong> marks.</li>
+                    <li>Allow the user to add one more mark and update the list.</li>
+                    <li>Display the updated list of marks.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment02">
+            <h2><i class="fas fa-layer-group"></i> Assignment 02: Unique Subjects (Sets)</h2>
+            <p>Use <strong>Sets</strong> to manage and display unique subjects chosen by students.</p>
+            <div class="assignment-section">
+                <h4>Objective:</h4>
+                <p>Learn how to use sets to remove duplicates and perform operations like union and intersection.</p>
+                <h3>Instructions:</h3>
+                <ul>
+                    <li>Create two sets of subjects chosen by Student A and Student B.</li>
+                    <li>Display all unique subjects (Union of sets).</li>
+                    <li>Display common subjects (Intersection of sets).</li>
+                    <li>Display subjects chosen only by Student A (Difference).</li>
+                    <li>Add a new subject to Student B’s set and display the updated set.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment03">
+            <h2><i class="fas fa-database"></i> Assignment 03: Phonebook (Dictionaries)</h2>
+            <p>Use <strong>Dictionaries</strong> to create a simple phonebook application.</p>
+            <div class="assignment-section">
+                <h4>Objective:</h4>
+                <p>Understand how to use key-value pairs in Python dictionaries.</p>
+                <h3>Instructions:</h3>
+                <ul>
+                    <li>Create a dictionary with 3 contacts (Name → Phone Number).</li>
+                    <li>Display all contacts in the phonebook.</li>
+                    <li>Ask the user to search for a name and display the phone number if found.</li>
+                    <li>Allow the user to add a new contact to the dictionary.</li>
+                    <li>Display the updated dictionary.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="if-you-need-help">
+            <h2><i class="fas fa-hands-helping"></i> If you need help</h2>
+            <p>Post in the group with any of these problems:</p>
+            <ul>
+                <li>Confused about how to use lists, sets, or dictionaries</li>
+                <li>Code is giving errors</li>
+                <li>Don’t know how to add or update elements</li>
+            </ul>
+            <p>Good luck and happy coding!</p>
+        </div>
+    </div>
+</body>
+</html>

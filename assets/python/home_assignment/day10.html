@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Homework Assignment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --accent: #4B8BBE;
+            --light: #f9f9f9;
+            --dark: #222;
+            --success: #388e3c;
+            --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 { font-size: 2.6rem; margin: 0; }
+        .subtitle { font-size: 1.2rem; opacity: 0.9; margin-top: 10px; }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 i { color: var(--accent); }
+        h3 { color: var(--accent); font-size: 1.3rem; margin-top: 20px; }
+
+        p, ul { font-size: 1.1rem; margin-bottom: 20px; }
+        ul { padding-left: 20px; }
+        li { margin: 12px 0; position: relative; padding-left: 28px; }
+        li:before { content: "➤"; color: var(--primary); position: absolute; left: 0; font-size: 0.9rem; }
+
+        .content-section {
+            background-color: #ffffff;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15);
+        }
+
+        .assignment-section {
+            background-color: rgba(142, 36, 170, 0.08);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+        .assignment-section h4 { margin-top: 0; color: var(--primary); }
+
+        #if-you-need-help { border-left: 4px solid var(--success); }
+        #if-you-need-help h2 { color: var(--success); border-bottom: 2px solid rgba(56, 142, 60, 0.3); }
+
+        .notification {
+            background-color: rgba(209, 196, 233, 0.4);
+            border-left: 4px solid var(--accent);
+            padding: 12px 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.3rem; }
+            .content-section { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-python"></i> Python Homework Assignment</h1>
+            <p class="subtitle">Practice All Core Concepts</p>
+        </header>
+
+        <div class="content-section">
+            <p>This homework covers all the key Python concepts you learned so far. Attempt each problem using the appropriate Python constructs.</p>
+            <div class="notification">
+                <i class="fas fa-lightbulb"></i> Remember to write clean, readable code and comment your work if needed!
+            </div>
+        </div>
+
+        <!-- Assignment Sections -->
+
+        <div class="content-section" id="assignment01">
+            <h2><i class="fas fa-pen-nib"></i> Assignment 01: Variables and Data Types</h2>
+            <div class="assignment-section">
+                <h4>Instructions:</h4>
+                <ul>
+                    <li>Create 5 variables of different data types (int, float, string, bool, list).</li>
+                    <li>Print each variable along with its type.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment02">
+            <h2><i class="fas fa-calculator"></i> Assignment 02: Operators and If-Else</h2>
+            <div class="assignment-section">
+                <h4>Instructions:</h4>
+                <ul>
+                    <li>Ask the user for two numbers.</li>
+                    <li>Perform arithmetic operations (+, -, *, /) and display results.</li>
+                    <li>Use an if-else statement to print which number is greater.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment03">
+            <h2><i class="fas fa-chalkboard"></i> Assignment 03: Practice Class</h2>
+            <div class="assignment-section">
+                <h4>Instructions:</h4>
+                <ul>
+                    <li>Create a program that asks the user to input their name and age.</li>
+                    <li>Print a welcome message with the details.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment04">
+            <h2><i class="fas fa-exchange-alt"></i> Assignment 04: Switch-Case (If-Elif)</h2>
+            <div class="assignment-section">
+                <h4>Instructions:</h4>
+                <ul>
+                    <li>Ask the user for a day number (1-7).</li>
+                    <li>Print the corresponding day of the week using if-elif-else statements.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment05">
+            <h2><i class="fas fa-list"></i> Assignment 05: Lists, Tuples, Sets, and Dictionaries</h2>
+            <div class="assignment-section">
+                <h4>Instructions:</h4>
+                <ul>
+                    <li>Create a list, tuple, set, and dictionary with 5 elements each.</li>
+                    <li>Perform one operation on each data structure (e.g., add, remove, access element).</li>
+                </ul>
+            </div>
+        </div>
+
+      
+
+        <div class="content-section" id="assignment07">
+            <h2><i class="fas fa-redo"></i> Assignment 06: For Loop</h2>
+            <div class="assignment-section">
+                <h4>Instructions:</h4>
+                <ul>
+                    <li>Print all even numbers from 1 to 50 using a for loop.</li>
+                    <li>Print the multiplication table of 9 using a for loop.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment08">
+            <h2><i class="fas fa-sync-alt"></i> Assignment 07: While Loop</h2>
+            <div class="assignment-section">
+                <h4>Instructions:</h4>
+                <ul>
+                    <li>Ask the user for a number and print all numbers from that number down to 1 using a while loop.</li>
+                    <li>Sum all numbers from 1 to n using a while loop and display the result.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section" id="assignment09">
+            <h2><i class="fas fa-code"></i> Assignment 08: Functions</h2>
+            <div class="assignment-section">
+                <h4>Instructions:</h4>
+                <ul>
+                    <li>Write a function called <code>is_even(n)</code> that returns True if n is even, else False.</li>
+                    <li>Write a function called <code>calculate_square(n)</code> that returns the square of a number.</li>
+                    <li>Test both functions with different inputs.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Help Section -->
+        <div class="content-section" id="if-you-need-help">
+            <h2><i class="fas fa-hands-helping"></i> If you need help</h2>
+            <ul>
+                <li>Review your notes and examples for each concept.</li>
+                <li>Ask classmates or post in the group if stuck.</li>
+                <li>Practice step by step, don't try to do everything at once.</li>
+            </ul>
+            <p>Good luck! 💻🚀</p>
+        </div>
+    </div>
+</body>
+</html>

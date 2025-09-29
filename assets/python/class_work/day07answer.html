@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 07 - Answers</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #306998;
+      --secondary: #FFD43B;
+      --accent: #4B8BBE;
+      --dark: #333;
+      --success: #28a745;
+      --answer-bg: #1e1e1e;
+      --card-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg,#f5f7fa 0%,#e4e8f0 100%);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+    header {
+      text-align: center;
+      padding: 30px 20px;
+      background: linear-gradient(120deg,var(--primary),var(--accent));
+      color: white;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: var(--card-shadow);
+    }
+    h1 { font-size: 2.5rem; margin: 0; }
+    pre {
+      background-color: var(--answer-bg);
+      color: #f8f8f2;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: 'Fira Code','Courier New',monospace;
+      font-size: 1rem;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin: 20px 0;
+      line-height: 1.5;
+      border-left: 4px solid var(--success);
+      position: relative;
+    }
+    pre::before {
+      content:"Answer";
+      position:absolute;
+      top:0; right:0;
+      background: var(--success);
+      color:#fff;
+      padding:4px 10px;
+      font-size:0.8rem;
+      font-weight:bold;
+      border-radius:0 0 0 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fab fa-python"></i> Day 07 - Answers</h1>
+    </header>
+
+    <pre><code>num = int(input("Enter a number: "))
+if num > 0:
+    print("Positive")
+elif num < 0:
+    print("Negative")
+else:
+    print("Zero")</code></pre>
+
+    <pre><code>marks = int(input("Enter your marks: "))
+if marks >= 35:
+    print("Pass")
+else:
+    print("Fail")</code></pre>
+
+    <pre><code>day = int(input("Enter a number (1-7): "))
+match day:
+    case 1: print("Monday")
+    case 2: print("Tuesday")
+    case 3: print("Wednesday")
+    case 4: print("Thursday")
+    case 5: print("Friday")
+    case 6: print("Saturday")
+    case 7: print("Sunday")
+    case _: print("Other Day")</code></pre>
+
+    <pre><code>names = ["Arun", "Hasvanth", "Ayyappan"]
+print("First name:", names[0])
+print("Last name:", names[-1])</code></pre>
+
+    <pre><code>names = ["Arun", "Hasvanth", "Ayyappan"]
+names.append("NewName")
+names.remove("Ayyappan")
+print(names)</code></pre>
+
+    <pre><code>nums = [1, 2, 2, 3, 3, 3]
+unique_nums = set(nums)
+print(unique_nums)</code></pre>
+
+    <pre><code>my_set = {1, 2, 3}
+my_set.add(4)
+my_set.remove(2)
+print(my_set)</code></pre>
+
+    <pre><code>marks = {"Arun": 45, "Hasvanth": 50, "Ayyappan": 38}
+print("Arun's marks:", marks["Arun"])
+print("Ayyappan's marks:", marks["Ayyappan"])</code></pre>
+
+    <pre><code>marks = {"Arun": 45, "Hasvanth": 50, "Ayyappan": 38}
+marks["Arun"] = 60
+marks["NewStudent"] = 40
+print(marks)</code></pre>
+
+    <pre><code>marks = {"Arun": 45, "Hasvanth": 50, "Ayyappan": 38}
+if "Arun" in marks:
+    print("Arun exists")
+else:
+    print("Not found")</code></pre>
+
+  </div>
+</body>
+</html>

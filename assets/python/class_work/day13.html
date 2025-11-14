@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 13 - Logical Thinking & Pattern Printing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --accent: #4B8BBE;
+            --light: #f7f7f7;
+            --dark: #333;
+            --success: #28a745;
+            --code-bg: #282c34;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--secondary);
+        }
+
+        h3 {
+            margin-top: 20px;
+            color: var(--accent);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .content-section {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            color: #F8F8F2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 1rem;
+            overflow-x: auto;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            margin: 20px 0;
+            line-height: 1.5;
+            position: relative;
+            border-left: 4px solid var(--secondary);
+        }
+
+        pre::before {
+            content: "Python";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 0 0 0 8px;
+        }
+
+        code {
+            background-color: transparent;
+            color: #F8F8F2;
+            padding: 0;
+        }
+
+        pre code {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: var(--card-shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .step {
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .step-number {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .question-number {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            margin-right: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .pattern-output {
+            font-family: 'Courier New', monospace;
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 3px solid var(--secondary);
+        }
+
+        .answer {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #e9f7ef;
+            border-radius: 5px;
+            border-left: 4px solid var(--success);
+        }
+
+        .solution-label {
+            font-weight: bold;
+            color: var(--success);
+            margin-bottom: 10px;
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.5rem; }
+            .content-section { padding: 20px; }
+            pre { font-size: 0.9rem; padding: 15px; }
+            header { padding: 20px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-brain"></i> Day 13 - Logical Thinking</h1>
+            <p class="subtitle">Pattern Printing & Problem Solving Exercises</p>
+        </header>
+
+        <!-- Introduction -->
+        <div class="content-section">
+            <h2><i class="fas fa-info-circle"></i> Why Pattern Printing?</h2>
+            <p>
+                Pattern printing exercises help develop <b>logical thinking</b> and <b>problem-solving skills</b>. 
+                They teach you how to break down complex problems into smaller, manageable steps.
+            </p>
+            <p>
+                These exercises improve your understanding of loops, conditional statements, and algorithmic thinking - 
+                essential skills for any programmer!
+            </p>
+        </div>
+
+        <!-- Pattern Printing Exercises -->
+        <div class="content-section">
+            <h2><i class="fas fa-shapes"></i> Pattern Printing Exercises</h2>
+            <p>Try to solve these pattern printing problems. Solutions are provided below each problem.</p>
+
+            <!-- Question 1 -->
+            <div class="question">
+                <h3><span class="question-number">1</span> Right-Angled Triangle</h3>
+                <p>Print a right-angled triangle pattern with 5 rows:</p>
+                <div class="pattern-output">
+                    *<br>
+                    **<br>
+                    ***<br>
+                    ****<br>
+                    *****
+                </div>
+                <div class="answer">
+                    <span class="solution-label">Solution:</span>
+                    <pre><code>rows = 5
+for i in range(1, rows + 1):
+    print('*' * i)</code></pre>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question">
+                <h3><span class="question-number">2</span> Inverted Right-Angled Triangle</h3>
+                <p>Print an inverted right-angled triangle pattern with 5 rows:</p>
+                <div class="pattern-output">
+                    *****<br>
+                    ****<br>
+                    ***<br>
+                    **<br>
+                    *
+                </div>
+                <div class="answer">
+                    <span class="solution-label">Solution:</span>
+                    <pre><code>rows = 5
+for i in range(rows, 0, -1):
+    print('*' * i)</code></pre>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question">
+                <h3><span class="question-number">3</span> Pyramid Pattern</h3>
+                <p>Print a pyramid pattern with 4 rows:</p>
+                <div class="pattern-output">
+                    &nbsp;&nbsp;&nbsp;*<br>
+                    &nbsp;&nbsp;***<br>
+                    &nbsp;*****<br>
+                    *******
+                </div>
+                <div class="answer">
+                    <span class="solution-label">Solution:</span>
+                    <pre><code>rows = 4
+for i in range(1, rows + 1):
+    spaces = ' ' * (rows - i)
+    stars = '*' * (2 * i - 1)
+    print(spaces + stars)</code></pre>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question">
+                <h3><span class="question-number">4</span> Number Triangle</h3>
+                <p>Print a number triangle with 5 rows:</p>
+                <div class="pattern-output">
+                    1<br>
+                    12<br>
+                    123<br>
+                    1234<br>
+                    12345
+                </div>
+                <div class="answer">
+                    <span class="solution-label">Solution:</span>
+                    <pre><code>rows = 5
+for i in range(1, rows + 1):
+    for j in range(1, i + 1):
+        print(j, end='')
+    print()</code></pre>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question">
+                <h3><span class="question-number">5</span> Diamond Pattern</h3>
+                <p>Print a diamond pattern with 5 rows in the top half:</p>
+                <div class="pattern-output">
+                    &nbsp;&nbsp;*<br>
+                    &nbsp;***<br>
+                    *****<br>
+                    &nbsp;***<br>
+                    &nbsp;&nbsp;*
+                </div>
+                <div class="answer">
+                    <span class="solution-label">Solution:</span>
+                    <pre><code>n = 5
+# Top half
+for i in range(1, n+1, 2):
+    spaces = ' ' * ((n - i) // 2)
+    print(spaces + '*' * i)
+
+# Bottom half
+for i in range(n-2, 0, -2):
+    spaces = ' ' * ((n - i) // 2)
+    print(spaces + '*' * i)</code></pre>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question">
+                <h3><span class="question-number">6</span> Hollow Square</h3>
+                <p>Print a hollow square pattern with side length 5:</p>
+                <div class="pattern-output">
+                    *****<br>
+                    *&nbsp;&nbsp;&nbsp;*<br>
+                    *&nbsp;&nbsp;&nbsp;*<br>
+                    *&nbsp;&nbsp;&nbsp;*<br>
+                    *****
+                </div>
+                <div class="answer">
+                    <span class="solution-label">Solution:</span>
+                    <pre><code>size = 5
+for i in range(size):
+    for j in range(size):
+        if i == 0 or i == size-1 or j == 0 or j == size-1:
+            print('*', end='')
+        else:
+            print(' ', end='')
+    print()</code></pre>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question">
+                <h3><span class="question-number">7</span> Alphabet Pyramid</h3>
+                <p>Print an alphabet pyramid with 5 rows:</p>
+                <div class="pattern-output">
+                    A<br>
+                    AB<br>
+                    ABC<br>
+                    ABCD<br>
+                    ABCDE
+                </div>
+                <div class="answer">
+                    <span class="solution-label">Solution:</span>
+                    <pre><code>rows = 5
+for i in range(1, rows + 1):
+    for j in range(i):
+        print(chr(65 + j), end='')
+    print()</code></pre>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question">
+                <h3><span class="question-number">8</span> Number Pyramid</h3>
+                <p>Print a number pyramid with 5 rows:</p>
+                <div class="pattern-output">
+                    1<br>
+                    22<br>
+                    333<br>
+                    4444<br>
+                    55555
+                </div>
+                <div class="answer">
+                    <span class="solution-label">Solution:</span>
+                    <pre><code>rows = 5
+for i in range(1, rows + 1):
+    print(str(i) * i)</code></pre>
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question">
+                <h3><span class="question-number">9</span> Floyd's Triangle</h3>
+                <p>Print Floyd's Triangle with 5 rows:</p>
+                <div class="pattern-output">
+                    1<br>
+                    2 3<br>
+                    4 5 6<br>
+                    7 8 9 10<br>
+                    11 12 13 14 15
+                </div>
+                <div class="answer">
+                    <span class="solution-label">Solution:</span>
+                    <pre><code>rows = 5
+number = 1
+for i in range(1, rows + 1):
+    for j in range(1, i + 1):
+        print(number, end=' ')
+        number += 1
+    print()</code></pre>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question">
+                <h3><span class="question-number">10</span> Pascal's Triangle</h3>
+                <p>Print the first 5 rows of Pascal's Triangle:</p>
+                <div class="pattern-output">
+                    1<br>
+                    1 1<br>
+                    1 2 1<br>
+                    1 3 3 1<br>
+                    1 4 6 4 1
+                </div>
+                <div class="answer">
+                    <span class="solution-label">Solution:</span>
+                    <pre><code>rows = 5
+for i in range(rows):
+    # Print leading spaces
+    print(' ' * (rows - i), end='')
+    
+    # Calculate and print values
+    value = 1
+    for j in range(i + 1):
+        print(value, end=' ')
+        value = value * (i - j) // (j + 1)
+    print()</code></pre>
+                </div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="question">
+                <h3><span class="question-number">11</span> Cross Pattern</h3>
+                <p>Print a cross pattern with size 5:</p>
+                <div class="pattern-output">
+                    *&nbsp;&nbsp;&nbsp;&nbsp;*<br>
+                    &nbsp;*&nbsp;&nbsp;*<br>
+                    &nbsp;&nbsp;*<br>
+                    &nbsp;*&nbsp;&nbsp;*<br>
+                    *&nbsp;&nbsp;&nbsp;&nbsp;*
+                </div>
+                <div class="answer">
+                    <span class="solution-label">Solution:</span>
+                    <pre><code>size = 5
+for i in range(size):
+    for j in range(size):
+        if i == j or i + j == size - 1:
+            print('*', end='')
+        else:
+            print(' ', end='')
+    print()</code></pre>
+                </div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="question">
+                <h3><span class="question-number">12</span> Binary Number Triangle</h3>
+                <p>Print a binary number triangle with 5 rows:</p>
+                <div class="pattern-output">
+                    1<br>
+                    01<br>
+                    101<br>
+                    0101<br>
+                    10101
+                </div>
+                <div class="answer">
+                    <span class="solution-label">Solution:</span>
+                    <pre><code>rows = 5
+for i in range(1, rows + 1):
+    start = 1 if i % 2 == 1 else 0
+    for j in range(i):
+        print(start, end='')
+        start = 1 - start  # Flip between 0 and 1
+    print()</code></pre>
+                </div>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="question">
+                <h3><span class="question-number">13</span> Hollow Diamond</h3>
+                <p>Print a hollow diamond pattern with 5 rows in the top half:</p>
+                <div class="pattern-output">
+                    &nbsp;&nbsp;*<br>
+                    &nbsp;*&nbsp;*<br>
+                    *&nbsp;&nbsp;&nbsp;*<br>
+                    &nbsp;*&nbsp;*<br>
+                    &nbsp;&nbsp;*
+                </div>
+                <div class="answer">
+                    <span class="solution-label">Solution:</span>
+                    <pre><code>n = 5
+# Top half
+for i in range(1, n+1):
+    spaces = ' ' * (n - i)
+    if i == 1:
+        print(spaces + '*')
+    else:
+        print(spaces + '*' + ' ' * (2*i-3) + '*')
+
+# Bottom half
+for i in range(n-1, 0, -1):
+    spaces = ' ' * (n - i)
+    if i == 1:
+        print(spaces + '*')
+    else:
+        print(spaces + '*' + ' ' * (2*i-3) + '*')</code></pre>
+                </div>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="question">
+                <h3><span class="question-number">14</span> Spiral Number Pattern</h3>
+                <p>Print a spiral number pattern with size 4:</p>
+                <div class="pattern-output">
+                    1&nbsp;&nbsp;2&nbsp;&nbsp;3&nbsp;&nbsp;4<br>
+                    12 13 14 5<br>
+                    11 16 15 6<br>
+                    10 9&nbsp;&nbsp;8&nbsp;&nbsp;7
+                </div>
+                <div class="answer">
+                    <span class="solution-label">Solution:</span>
+                    <pre><code>n = 4
+matrix = [[0]*n for _ in range(n)]
+directions = [(0,1), (1,0), (0,-1), (-1,0)]
+x, y, d = 0, 0, 0
+
+for i in range(1, n*n+1):
+    matrix[x][y] = i
+    nx, ny = x + directions[d][0], y + directions[d][1]
+    
+    if 0 <= nx < n and 0 <= ny < n and matrix[nx][ny] == 0:
+        x, y = nx, ny
+    else:
+        d = (d + 1) % 4
+        x, y = x + directions[d][0], y + directions[d][1]
+
+for row in matrix:
+    for num in row:
+        print(f"{num:2}", end=' ')
+    print()</code></pre>
+                </div>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="question">
+                <h3><span class="question-number">15</span> Zigzag Pattern</h3>
+                <p>Print a zigzag pattern with height 4 and width 8:</p>
+                <div class="pattern-output">
+                    *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
+                    &nbsp;*&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;*<br>
+                    &nbsp;&nbsp;*&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;*<br>
+                    &nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*
+                </div>
+                <div class="answer">
+                    <span class="solution-label">Solution:</span>
+                    <pre><code>height = 4
+width = 8
+
+for i in range(height):
+    line = [' '] * width
+    pos = i
+    step = 2 * (height - 1)
+    
+    while pos < width:
+        line[pos] = '*'
+        pos += step
+        if step != 2 * (height - 1):
+            step = 2 * (height - 1) - step
+    
+    print(''.join(line))</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips Section -->
+        <div class="content-section">
+            <h2><i class="fas fa-lightbulb"></i> Tips for Pattern Printing</h2>
+            <div class="step">
+                <h3><span class="step-number">1</span> Analyze the Pattern</h3>
+                <p>Look for relationships between row numbers and the number of spaces/stars.</p>
+            </div>
+            
+            <div class="step">
+                <h3><span class="step-number">2</span> Break It Down</h3>
+                <p>Divide the pattern into smaller parts (spaces, stars, numbers, etc.).</p>
+            </div>
+            
+            <div class="step">
+                <h3><span class="step-number">3</span> Use Nested Loops</h3>
+                <p>Outer loop for rows, inner loops for columns and content.</p>
+            </div>
+            
+            <div class="step">
+                <h3><span class="step-number">4</span> Test with Small Values</h3>
+                <p>Start with smaller patterns to verify your logic before scaling up.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

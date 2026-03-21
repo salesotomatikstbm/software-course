@@ -1,0 +1,16 @@
+{
+  "title": "Movie Ticket Booking System",
+  "description": "A Tkinter application to book movie tickets by selecting movie, show date, show time, and number of tickets. It calculates the total cost automatically, displays bookings in a table, allows deletion of entries, and maintains a running grand total.",
+  "technical": [
+    "Tkinter GUI framework",
+    "Entry widgets for user input",
+    "Combobox dropdown for movie and time selection",
+    "Form validation",
+    "Arithmetic calculations",
+    "Treeview widget for booking table",
+    "Add and delete records",
+    "Dynamic grand total calculation",
+    "Layout using frames, grid, and pack"
+  ],
+  "screenshots": ["img01.png"]
+}

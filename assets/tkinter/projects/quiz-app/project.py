@@ -1,0 +1,229 @@
+
+import tkinter as tk
+
+window = tk.Tk()
+window.title("Simple Quiz App")
+window.geometry("500x400")
+window.configure(bg="white")
+
+score = 0
+
+def clear_screen():
+    for widget in window.winfo_children():
+        widget.destroy()
+
+# ---------------- QUESTION 1 ----------------
+
+def show_question1():
+    global selected_option_q1
+    global feedback_label_q1
+    global button_q1
+    global option1_q1, option2_q1, option3_q1, option4_q1
+
+    clear_screen()
+
+    title_label = tk.Label(window, text="SIMPLE QUIZ APP",
+                           font=("Arial", 20, "bold"),
+                           bg="#1F3C88",
+                           fg="white",
+                           pady=10)
+    title_label.pack(fill="x")
+
+    question_label = tk.Label(window,
+                              text="Question 1:\nWhat is the capital of India?",
+                              font=("Arial", 14),
+                              bg="white",
+                              justify="left")
+    question_label.pack(pady=20, anchor="w", padx=20)
+
+    selected_option_q1 = tk.IntVar()
+    selected_option_q1.set(0)
+
+    option1_q1 = tk.Radiobutton(window, text="Mumbai",
+                                variable=selected_option_q1,
+                                value=1, bg="white",
+                                font=("Arial", 12))
+    option2_q1 = tk.Radiobutton(window, text="Chennai",
+                                variable=selected_option_q1,
+                                value=2, bg="white",
+                                font=("Arial", 12))
+    option3_q1 = tk.Radiobutton(window, text="New Delhi",
+                                variable=selected_option_q1,
+                                value=3, bg="white",
+                                font=("Arial", 12))
+    option4_q1 = tk.Radiobutton(window, text="Kolkata",
+                                variable=selected_option_q1,
+                                value=4, bg="white",
+                                font=("Arial", 12))
+
+    option1_q1.pack(anchor="w", padx=40)
+    option2_q1.pack(anchor="w", padx=40)
+    option3_q1.pack(anchor="w", padx=40)
+    option4_q1.pack(anchor="w", padx=40)
+
+    feedback_label_q1 = tk.Label(window, text="",
+                                 font=("Arial", 12, "bold"),
+                                 bg="white")
+    feedback_label_q1.pack(pady=15)
+
+    button_q1 = tk.Button(window, text="Submit",
+                          font=("Arial", 12),
+                          bg="#2E8B57",
+                          fg="white",
+                          relief="flat",
+                          padx=10, pady=5,
+                          command=check_question1)
+    button_q1.pack(pady=10)
+
+def check_question1():
+    global score
+
+    selected = selected_option_q1.get()
+
+    if selected == 0:
+        feedback_label_q1.config(text="Please select an option!", fg="darkorange")
+        return
+
+    if selected == 3:
+        feedback_label_q1.config(text="Correct Answer!", fg="green")
+        score += 1
+    else:
+        feedback_label_q1.config(text="Wrong Answer! Correct Answer is New Delhi", fg="red")
+
+    disable_question1()
+    button_q1.config(text="Next", bg="#4169E1", command=show_question2)
+
+def disable_question1():
+    option1_q1.config(state="disabled")
+    option2_q1.config(state="disabled")
+    option3_q1.config(state="disabled")
+    option4_q1.config(state="disabled")
+
+# ---------------- QUESTION 2 ----------------
+
+def show_question2():
+    global selected_option_q2
+    global feedback_label_q2
+    global button_q2
+    global option1_q2, option2_q2, option3_q2, option4_q2
+
+    clear_screen()
+
+    title_label = tk.Label(window, text="SIMPLE QUIZ APP",
+                           font=("Arial", 20, "bold"),
+                           bg="#1F3C88",
+                           fg="white",
+                           pady=10)
+    title_label.pack(fill="x")
+
+    question_label = tk.Label(window,
+                              text="Question 2:\nHow many sides does a triangle have?",
+                              font=("Arial", 14),
+                              bg="white",
+                              justify="left")
+    question_label.pack(pady=20, anchor="w", padx=20)
+
+    selected_option_q2 = tk.IntVar()
+    selected_option_q2.set(0)
+
+    option1_q2 = tk.Radiobutton(window, text="2",
+                                variable=selected_option_q2,
+                                value=1, bg="white",
+                                font=("Arial", 12))
+    option2_q2 = tk.Radiobutton(window, text="3",
+                                variable=selected_option_q2,
+                                value=2, bg="white",
+                                font=("Arial", 12))
+    option3_q2 = tk.Radiobutton(window, text="4",
+                                variable=selected_option_q2,
+                                value=3, bg="white",
+                                font=("Arial", 12))
+    option4_q2 = tk.Radiobutton(window, text="5",
+                                variable=selected_option_q2,
+                                value=4, bg="white",
+                                font=("Arial", 12))
+
+    option1_q2.pack(anchor="w", padx=40)
+    option2_q2.pack(anchor="w", padx=40)
+    option3_q2.pack(anchor="w", padx=40)
+    option4_q2.pack(anchor="w", padx=40)
+
+    feedback_label_q2 = tk.Label(window, text="",
+                                 font=("Arial", 12, "bold"),
+                                 bg="white")
+    feedback_label_q2.pack(pady=15)
+
+    button_q2 = tk.Button(window, text="Submit",
+                          font=("Arial", 12),
+                          bg="#2E8B57",
+                          fg="white",
+                          relief="flat",
+                          padx=10, pady=5,
+                          command=check_question2)
+    button_q2.pack(pady=10)
+
+def check_question2():
+    global score
+
+    selected = selected_option_q2.get()
+
+    if selected == 0:
+        feedback_label_q2.config(text="Please select an option!", fg="darkorange")
+        return
+
+    if selected == 2:
+        feedback_label_q2.config(text="Correct Answer!", fg="green")
+        score += 1
+    else:
+        feedback_label_q2.config(text="Wrong Answer! Correct Answer is 3", fg="red")
+
+    disable_question2()
+    button_q2.config(text="Show Result", bg="#4169E1", command=show_result)
+
+def disable_question2():
+    option1_q2.config(state="disabled")
+    option2_q2.config(state="disabled")
+    option3_q2.config(state="disabled")
+    option4_q2.config(state="disabled")
+
+# ---------------- RESULT ----------------
+
+def show_result():
+    clear_screen()
+
+    result_label = tk.Label(window, text="QUIZ RESULT",
+                            font=("Arial", 20, "bold"),
+                            bg="#1F3C88",
+                            fg="white",
+                            pady=10)
+    result_label.pack(fill="x")
+
+    score_label = tk.Label(window,
+                           text="Your Score is: " + str(score) + " / 2",
+                           font=("Arial", 14),
+                           bg="white")
+    score_label.pack(pady=30)
+
+    if score == 2:
+        message = "Excellent!"
+    elif score == 1:
+        message = "Good Try!"
+    else:
+        message = "Practice More!"
+
+    message_label = tk.Label(window, text=message,
+                             font=("Arial", 14, "bold"),
+                             bg="white")
+    message_label.pack(pady=10)
+
+    exit_button = tk.Button(window, text="Exit",
+                            font=("Arial", 12),
+                            bg="#B22222",
+                            fg="white",
+                            relief="flat",
+                            padx=10, pady=5,
+                            command=window.destroy)
+    exit_button.pack(pady=20)
+
+show_question1()
+window.mainloop()

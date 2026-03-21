@@ -1,0 +1,12 @@
+{
+  "title": "Quiz App",
+  "description": "A simple multi-question quiz application that calculates score based on user answers.",
+  "technical": [
+    "Radio buttons",
+    "Multiple screens",
+    "Score calculation",
+    "Button navigation",
+    "User feedback"
+  ],
+  "screenshots": ["img01.png"]
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Viewer</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 30px;
+            background: #f5f5f5;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        #editor {
+            height: 500px;
+            border: 1px solid #ccc;
+        }
+
+        .screenshots img {
+            max-width: 300px;
+            margin: 10px;
+            border-radius: 6px;
+        }
+    </style>
+
+    <!-- Monaco Editor CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs/loader.min.js"></script>
+
+</head>
+
+<body>
+
+<h1 id="title">Loading...</h1>
+
+<div class="section">
+    <h2>Description</h2>
+    <p id="description"></p>
+</div>
+
+<div class="section">
+    <h2>Technical Details</h2>
+    <ul id="technical"></ul>
+</div>
+
+<div class="section">
+    <h2>Code</h2>
+    <div id="editor"></div>
+</div>
+
+<div class="section">
+    <h2>Screenshots</h2>
+    <div class="screenshots" id="screenshots"></div>
+</div>
+
+<script>
+
+function getProjectName() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("p");
+}
+
+const projectName = getProjectName();
+
+if (!projectName) {
+    alert("No project specified!");
+}
+
+// ---------- Load JSON ----------
+
+fetch(`projects/${projectName}/project.json`)
+.then(res => res.json())
+.then(data => {
+
+    document.getElementById("title").textContent = data.title;
+    document.getElementById("description").textContent = data.description;
+
+    // Technical details
+    const techList = document.getElementById("technical");
+    data.technical.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        techList.appendChild(li);
+    });
+
+    // Screenshots
+    const screenshotDiv = document.getElementById("screenshots");
+    data.screenshots.forEach(img => {
+        const image = document.createElement("img");
+        image.src = `projects/${projectName}/${img}`;
+        screenshotDiv.appendChild(image);
+    });
+
+});
+
+// ---------- Load Python Code ----------
+
+fetch(`projects/${projectName}/project.py`)
+.then(res => res.text())
+.then(code => {
+
+    require.config({
+        paths: {
+            vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs'
+        }
+    });
+
+    require(["vs/editor/editor.main"], function () {
+        monaco.editor.create(document.getElementById("editor"), {
+            value: code,
+            language: "python",
+            theme: "vs-dark",
+            readOnly: true
+        });
+    });
+
+});
+
+</script>
+
+</body>
+</html>

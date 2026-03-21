@@ -1,0 +1,15 @@
+{
+  "title": "Clinic Appointment System",
+  "description": "A Tkinter application to schedule and manage patient appointments in a clinic. Users can enter patient details, select doctors and time slots, view appointments in a table, delete bookings, and track the total number of appointments.",
+  "technical": [
+    "Tkinter GUI framework",
+    "Entry widgets for patient input",
+    "Combobox dropdown for doctor and time selection",
+    "Form validation",
+    "Treeview widget for appointment table",
+    "Add and delete records",
+    "Dynamic appointment count",
+    "Layout using frames, grid, and pack"
+  ],
+  "screenshots": ["img01.png"]
+}

@@ -1,0 +1,11 @@
+{
+  "title": "Grade Calculator",
+  "description": "Calculates average marks and assigns a grade based on performance.",
+  "technical": [
+    "Entry input",
+    "Arithmetic calculation",
+    "Conditional logic",
+    "Screen update"
+  ],
+  "screenshots": ["img01.png"]
+}

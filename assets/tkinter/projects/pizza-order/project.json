@@ -1,0 +1,12 @@
+{
+  "title": "Pizza Ordering System",
+  "description": "A GUI application to place pizza orders, calculate totals, and display all orders in a table.",
+  "technical": [
+    "Combobox selection",
+    "Price calculation",
+    "Treeview table",
+    "Order management",
+    "Form validation"
+  ],
+  "screenshots": ["img01.png"]
+}

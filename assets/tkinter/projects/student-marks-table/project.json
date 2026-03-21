@@ -1,0 +1,14 @@
+{
+  "title": "Student Marks Table",
+  "description": "A Tkinter application to record student marks for different subjects and display them in a table with validation.",
+  "technical": [
+    "Tkinter GUI",
+    "Entry widgets",
+    "Combobox dropdown",
+    "Treeview table",
+    "Input validation",
+    "Dynamic record count",
+    "Form reset"
+  ],
+  "screenshots": ["img01.png"]
+}

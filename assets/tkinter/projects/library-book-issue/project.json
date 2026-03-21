@@ -1,0 +1,15 @@
+{
+  "title": "Library Book Issue System",
+  "description": "A Tkinter application to issue books to students and manage records. Users can enter student and book details, track issue and return dates, view issued books in a table, delete records, and see the total number of issued books.",
+  "technical": [
+    "Tkinter GUI framework",
+    "Entry widgets for data input",
+    "Combobox dropdown for book selection",
+    "Form validation",
+    "Treeview widget for records table",
+    "Add and delete records",
+    "Dynamic record count",
+    "Layout using frames, grid, and pack"
+  ],
+  "screenshots": ["img01.png"]
+}

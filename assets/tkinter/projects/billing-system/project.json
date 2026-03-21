@@ -1,0 +1,15 @@
+{
+  "title": "Simple Billing System",
+  "description": "A Tkinter application to create a bill by adding items with quantity and price. It calculates subtotals automatically, maintains a running grand total, allows deletion of items, and displays the bill in a table.",
+  "technical": [
+    "Tkinter GUI framework",
+    "Entry widgets for item input",
+    "Form validation",
+    "Arithmetic calculations",
+    "Treeview widget for bill table",
+    "Add and delete records",
+    "Dynamic grand total calculation",
+    "Layout using frames, grid, and pack"
+  ],
+  "screenshots": ["img01.png"]
+}

@@ -1,0 +1,11 @@
+{
+  "title": "Task Manager",
+  "description": "Allows users to add tasks with descriptions and manage them in a table.",
+  "technical": [
+    "Form input",
+    "Treeview table",
+    "Add/delete records",
+    "Task tracking"
+  ],
+  "screenshots": ["img01.png"]
+}

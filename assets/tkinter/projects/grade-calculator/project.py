@@ -1,0 +1,121 @@
+
+import tkinter as tk
+
+window = tk.Tk()
+window.title("Grade Calculator")
+window.geometry("500x400")
+window.configure(bg="white")
+
+def clear_screen():
+    for widget in window.winfo_children():
+        widget.destroy()
+
+# ---------------- INPUT SCREEN ----------------
+
+def show_input_screen():
+    global math_entry, science_entry, english_entry
+
+    clear_screen()
+
+    title = tk.Label(window,
+                     text="STUDENT GRADE CALCULATOR",
+                     font=("Arial", 20, "bold"),
+                     bg="#1F3C88",
+                     fg="white",
+                     pady=10)
+    title.pack(fill="x")
+
+    tk.Label(window, text="Enter Marks", font=("Arial", 14),
+             bg="white").pack(pady=20)
+
+    tk.Label(window, text="Math:", font=("Arial", 12),
+             bg="white").pack()
+    math_entry = tk.Entry(window, font=("Arial", 12), bd=1, relief="solid")
+    math_entry.pack(pady=5)
+
+    tk.Label(window, text="Science:", font=("Arial", 12),
+             bg="white").pack()
+    science_entry = tk.Entry(window, font=("Arial", 12), bd=1, relief="solid")
+    science_entry.pack(pady=5)
+
+    tk.Label(window, text="English:", font=("Arial", 12),
+             bg="white").pack()
+    english_entry = tk.Entry(window, font=("Arial", 12), bd=1, relief="solid")
+    english_entry.pack(pady=5)
+
+    calculate_button = tk.Button(window,
+                                 text="Calculate Grade",
+                                 font=("Arial", 12),
+                                 bg="#2E8B57",
+                                 fg="white",
+                                 command=calculate_grade)
+    calculate_button.pack(pady=20)
+
+# ---------------- CALCULATE ----------------
+
+def calculate_grade():
+    global average, grade
+
+    math = int(math_entry.get())
+    science = int(science_entry.get())
+    english = int(english_entry.get())
+
+    average = (math + science + english) / 3
+
+    if average >= 90:
+        grade = "A"
+    elif average >= 75:
+        grade = "B"
+    elif average >= 60:
+        grade = "C"
+    elif average >= 40:
+        grade = "D"
+    else:
+        grade = "Fail"
+
+    show_result()
+
+# ---------------- RESULT SCREEN ----------------
+
+def show_result():
+    clear_screen()
+
+    title = tk.Label(window,
+                     text="RESULT",
+                     font=("Arial", 20, "bold"),
+                     bg="#1F3C88",
+                     fg="white",
+                     pady=10)
+    title.pack(fill="x")
+
+    avg_label = tk.Label(window,
+                         text="Average Marks: " + str(round(average,2)),
+                         font=("Arial", 14),
+                         bg="white")
+    avg_label.pack(pady=20)
+
+    grade_label = tk.Label(window,
+                           text="Your Grade: " + grade,
+                           font=("Arial", 16, "bold"),
+                           bg="white")
+    grade_label.pack(pady=10)
+
+    restart_button = tk.Button(window,
+                               text="Calculate Again",
+                               font=("Arial", 12),
+                               bg="#4169E1",
+                               fg="white",
+                               command=show_input_screen)
+    restart_button.pack(pady=10)
+
+    exit_button = tk.Button(window,
+                            text="Exit",
+                            font=("Arial", 12),
+                            bg="#B22222",
+                            fg="white",
+                            command=window.destroy)
+    exit_button.pack(pady=10)
+
+show_input_screen()
+
+window.mainloop()

@@ -1,0 +1,15 @@
+{
+  "title": "Student Attendance Manager",
+  "description": "A Tkinter application that allows teachers to record daily student attendance. Users can enter student details, mark attendance status, view records in a table, delete entries, and see a summary of present and absent students.",
+  "technical": [
+    "Tkinter GUI framework",
+    "Entry widgets for text input",
+    "Combobox dropdown for attendance status",
+    "Form validation",
+    "Treeview widget for tabular display",
+    "Add and delete records",
+    "Dynamic summary calculation",
+    "Layout using frames, grid, and pack"
+  ],
+  "screenshots": ["img01.png"]
+}

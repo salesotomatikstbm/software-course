@@ -1,0 +1,17 @@
+{
+      "title": "Fruit Basket Menu System",
+      "description": "A menu-driven program that allows users to add, remove, and view fruits in a basket using a list.",
+      "technical": [
+        "Console input/output",
+        "Lists",
+        "Adding and removing items from list",
+        "Membership testing",
+        "Loop (while True)",
+        "Match-case statement",
+        "Conditional statements",
+        "Iterating through list",
+        "Index-based access",
+        "Menu-driven program"
+      ],
+      "screenshots": ["img01.png"]
+    }

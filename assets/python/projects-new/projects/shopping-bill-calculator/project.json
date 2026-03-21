@@ -1,0 +1,17 @@
+{
+  "title": "Shopping Bill Calculator",
+  "description": "A console-based application that allows the user to create a shopping bill by adding items with price and quantity. The program calculates item totals automatically, maintains a running grand total, allows viewing all items, deleting items, and displays the final bill.",
+  "technical": [
+    "Console input/output",
+    "Variables and data types",
+    "Multiple lists to store bill data",
+    "Functions for modular design",
+    "Menu-driven program using loop",
+    "Conditional statements",
+    "Arithmetic calculations",
+    "Adding and removing items from lists",
+    "Iterating through lists",
+    "Grand total calculation"
+  ],
+  "screenshots": ["img01.png"]
+}

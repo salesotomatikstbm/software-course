@@ -1,0 +1,16 @@
+{
+  "title": "To-Do List Manager",
+  "description": "A console-based application that allows users to manage their daily tasks. Users can add tasks, view all tasks, remove a specific task, clear all tasks, and exit the program.",
+  "technical": [
+    "Console input/output",
+    "Variables and data types",
+    "List to store tasks",
+    "Functions for modular design",
+    "Menu-driven program using loop",
+    "Conditional statements",
+    "Adding and removing items from list",
+    "Iterating through list",
+    "Index-based operations"
+  ],
+  "screenshots": ["img01.png"]
+}

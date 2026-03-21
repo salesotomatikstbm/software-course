@@ -1,0 +1,17 @@
+{
+  "title": "To-Do List Manager with Status Tracking",
+  "description": "A console-based application that allows users to manage their daily tasks. Users can add tasks, view all tasks with their status, mark tasks as completed, remove tasks, and exit the program.",
+  "technical": [
+    "Console input/output",
+    "Variables and data types",
+    "Lists to store tasks",
+    "Parallel lists to track task status",
+    "Functions for modular design",
+    "Menu-driven program using loop",
+    "Conditional statements",
+    "Adding, updating, and removing items from lists",
+    "Iterating through lists",
+    "Index-based operations"
+  ],
+  "screenshots": ["img01.png"]
+}

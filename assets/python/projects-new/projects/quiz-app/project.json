@@ -1,0 +1,15 @@
+{
+  "title": "Quiz Application",
+  "description": "A console-based quiz program that asks multiple-choice questions and calculates the user's score. The program displays questions one by one, accepts answers, checks correctness, and shows the final result at the end.",
+  "technical": [
+    "Console input/output",
+    "Variables and data types",
+    "Lists to store questions and answers",
+    "Functions for modular design",
+    "Loop for iterating through questions",
+    "Conditional statements",
+    "Score calculation",
+    "Menu-driven program"
+  ],
+  "screenshots": ["img01.png"]
+}

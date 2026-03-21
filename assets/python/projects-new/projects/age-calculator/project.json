@@ -1,0 +1,14 @@
+{
+      "title": "Age Calculator",
+      "description": "A simple program that calculates a person's age based on their birth year using functions.",
+      "technical": [
+        "Console input/output",
+        "Functions with parameters",
+        "Return values",
+        "Variables and data types",
+        "Arithmetic operations",
+        "Type conversion (int)",
+        "Function calls"
+      ],
+      "screenshots": ["img01.png"]
+    }

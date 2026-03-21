@@ -1,0 +1,17 @@
+{
+  "title": "Student Record Manager",
+  "description": "A console-based application to manage student records. Users can add student details, view all records, search for a student by name, delete a record, and calculate average marks.",
+  "technical": [
+    "Console input/output",
+    "Variables and data types",
+    "Multiple lists to store student data",
+    "Functions for modular design",
+    "Menu-driven program using loop",
+    "Conditional statements",
+    "Adding and removing items from lists",
+    "Searching within lists",
+    "Iterating through lists",
+    "Basic statistics (average calculation)"
+  ],
+  "screenshots": ["img01.png"]
+}

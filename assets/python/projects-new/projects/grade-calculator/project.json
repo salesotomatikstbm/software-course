@@ -1,0 +1,15 @@
+{
+      "title": "Grade Calculator",
+      "description": "A program that calculates total marks, average, grade, and pass/fail result for five fixed subjects.",
+      "technical": [
+        "Console input/output",
+        "Functions",
+        "Arithmetic calculations",
+        "Conditional statements (if-elif-else)",
+        "Loop for menu",
+        "Variables and data types",
+        "Type conversion (float)",
+        "Decision making logic"
+      ],
+      "screenshots": ["img01.png"]
+    }

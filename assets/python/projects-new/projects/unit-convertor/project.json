@@ -1,0 +1,14 @@
+{
+      "title": "Unit Converter",
+      "description": "A menu-driven application that converts values between meters and centimeters using separate functions.",
+      "technical": [
+        "Console input/output",
+        "Functions",
+        "Floating-point arithmetic",
+        "Loop for menu",
+        "Conditional statements",
+        "Type conversion (float)",
+        "Menu-driven program"
+      ],
+      "screenshots": ["img01.png"]
+    }

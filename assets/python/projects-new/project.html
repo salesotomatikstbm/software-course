@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Viewer</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", Arial;
+            margin: 0;
+            background: linear-gradient(135deg, #0dcf2d, #c4fae5);
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(8px);
+            padding: 20px;
+            color: #272626;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 6px;
+        }
+
+        .breadcrumb a {
+            color: #272626;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 22px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        #editor {
+            height: 520px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .screenshots img {
+            max-width: 260px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            transition: 0.2s;
+        }
+
+        .screenshots img:hover {
+            transform: scale(1.05);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #272626;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs/loader.min.js"></script>
+
+</head>
+
+<body>
+
+<header>
+
+    Project Viewer
+
+    <div class="breadcrumb">
+        <a href="index.html">Projects</a> > <span id="crumb">Loading...</span>
+    </div>
+
+</header>
+
+<div class="container">
+
+    <a class="back-link" href="index.html"><- Back to Project List</a>
+
+    <div class="card">
+        <h1 id="title">Loading...</h1>
+    </div>
+
+    <div class="card">
+        <h2>Description</h2>
+        <p id="description"></p>
+    </div>
+
+    <div class="card">
+        <h2>Technical Details</h2>
+        <ul id="technical"></ul>
+    </div>
+
+    <div class="card">
+        <h2>Code</h2>
+        <div id="editor"></div>
+    </div>
+
+    <div class="card">
+        <h2>Screenshots</h2>
+        <div class="screenshots" id="screenshots"></div>
+    </div>
+
+</div>
+
+<script>
+
+function getProjectName() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("p");
+}
+
+const projectName = getProjectName();
+
+// ---------- Load JSON ----------
+
+fetch(`projects/${projectName}/project.json`)
+.then(res => res.json())
+.then(data => {
+
+    document.getElementById("title").textContent = data.title;
+    document.getElementById("crumb").textContent = data.title;
+    document.getElementById("description").textContent = data.description;
+
+    const techList = document.getElementById("technical");
+    data.technical.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        techList.appendChild(li);
+    });
+
+    const screenshotDiv = document.getElementById("screenshots");
+    data.screenshots.forEach(img => {
+        const image = document.createElement("img");
+        image.src = `projects/${projectName}/${img}`;
+        screenshotDiv.appendChild(image);
+    });
+
+});
+
+// ---------- Load Python Code ----------
+
+fetch(`projects/${projectName}/project.py`)
+.then(res => res.text())
+.then(code => {
+
+    require.config({
+        paths: {
+            vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs'
+        }
+    });
+
+    require(["vs/editor/editor.main"], function () {
+        monaco.editor.create(document.getElementById("editor"), {
+            value: code,
+            language: "python",
+            theme: "vs-dark",
+            readOnly: true
+        });
+    });
+
+});
+
+</script>
+
+</body>
+</html>
